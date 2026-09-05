@@ -1,0 +1,12 @@
+# robots.txt for Ghanem Furniture
+# https://ghanem-furniture.vercel.app/
+
+User-agent: *
+Allow: /
+
+# Private & internal files
+Disallow: /server.ps1
+Disallow: /lang/README.md
+
+# Sitemap Location
+Sitemap: https://ghanem-furniture.vercel.app/sitemap.xml

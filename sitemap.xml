@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- الصفحة الرئيسية -->
+  <url>
+    <loc>https://ghanem-furniture.vercel.app/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ghanem-furniture.vercel.app/images/hero-kitchen.jpg</image:loc>
+      <image:title>تصميم وتصنيع أرقى المطابخ والأثاث الخشبي - Ghanem Furniture</image:title>
+    </image:image>
+  </url>
+
+  <!-- معرض الأعمال والتصاميم -->
+  <url>
+    <loc>https://ghanem-furniture.vercel.app/gallery.html</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://ghanem-furniture.vercel.app/images/hero-kitchen.jpg</image:loc>
+      <image:title>معرض أعمال وتصاميم Ghanem Furniture</image:title>
+    </image:image>
+  </url>
+
+  <!-- خدمات الورش والمصانع B2B -->
+  <url>
+    <loc>https://ghanem-furniture.vercel.app/workshop.html</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ghanem-furniture.vercel.app/images/workshop-machinery.jpg</image:loc>
+      <image:title>خطوط تجميع وتجهيز الأثاث والمسطحات B2B - Ghanem Furniture</image:title>
+    </image:image>
+  </url>
+
+  <!-- تصاميم 3D ثلاثية الأبعاد -->
+  <url>
+    <loc>https://ghanem-furniture.vercel.app/designs-3d.html</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ghanem-furniture.vercel.app/images/3d-render.jpg</image:loc>
+      <image:title>تصاميم 3D وتجسيد معماري واقعي - Ghanem Furniture</image:title>
+    </image:image>
+  </url>
+
+  <!-- اتصل بنا -->
+  <url>
+    <loc>https://ghanem-furniture.vercel.app/contact.html</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- من نحن -->
+  <url>
+    <loc>https://ghanem-furniture.vercel.app/about.html</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ghanem-furniture.vercel.app/images/gallery-woodwork.jpg</image:loc>
+      <image:title>من نحن وتاريخ خبرة 30 عاماً - Ghanem Furniture</image:title>
+    </image:image>
+  </url>
+
+  <!-- آراء وتقييمات العملاء -->
+  <url>
+    <loc>https://ghanem-furniture.vercel.app/testimonials.html</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- الأسئلة الشائعة -->
+  <url>
+    <loc>https://ghanem-furniture.vercel.app/faq.html</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
