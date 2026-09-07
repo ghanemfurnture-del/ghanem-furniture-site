@@ -3,7 +3,7 @@
  * Interactive Portfolio Filter & Lightbox Component
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+window.initGalleryInteractions = function initGalleryInteractions() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
   const lightboxModal = document.getElementById('lightboxModal');
@@ -198,4 +198,4 @@ document.addEventListener('DOMContentLoaded', () => {
       showPrevImage();
     }
   });
-});
+};

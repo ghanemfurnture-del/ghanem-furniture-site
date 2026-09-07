@@ -1,0 +1,466 @@
+{
+  "items": [
+    {
+      "title": "مطبخ رمادي مودرن مع أدراج مفتوحة",
+      "description": "تصميم هندسي متطور بأدراج تنظيمية وانسيابية",
+      "badge": "مطبخ مودرن",
+      "category": [
+        "kitchens"
+      ],
+      "image": "/images/kitchens/kitchen-1.jpg",
+      "alt": "مطبخ رمادي مودرن مع أدراج مفتوحة"
+    },
+    {
+      "title": "مطبخ خشبي رمادي مع فرن مدمج",
+      "description": "توليفة فاخرة بين الخشب المعالج وتناسق الأجهزة",
+      "badge": "مطبخ مودرن",
+      "category": [
+        "kitchens"
+      ],
+      "image": "/images/kitchens/kitchen-2.jpg",
+      "alt": "مطبخ خشبي رمادي مع فرن"
+    },
+    {
+      "title": "مطبخ أزرق داكن مع رخام أبيض",
+      "description": "فخامة ملكية بلون كحلي ورخام كوارتز ناصع",
+      "badge": "مطبخ مودرن",
+      "category": [
+        "kitchens"
+      ],
+      "image": "/images/kitchens/kitchen-3.jpg",
+      "alt": "مطبخ أزرق داكن مع رخام أبيض"
+    },
+    {
+      "title": "مطبخ عصري بخشب ورمادي مع إضاءة مخفية",
+      "description": "إضاءة LED مدمجة تبرز جمالية الخامات",
+      "badge": "مطبخ مودرن",
+      "category": [
+        "kitchens"
+      ],
+      "image": "/images/kitchens/kitchen-4.jpg",
+      "alt": "مطبخ عصري بخشب ورمادي مع إضاءة مخفية"
+    },
+    {
+      "title": "مطبخ رمادي مع أبواب زجاجية وأدراج مفتوحة",
+      "description": "شفافية عصرية وإكسسوارات هيدروليكية ذكية",
+      "badge": "مطبخ مودرن",
+      "category": [
+        "kitchens"
+      ],
+      "image": "/images/kitchens/kitchen-11.jpg",
+      "alt": "مطبخ رمادي مع أبواب زجاجية وأدراج مفتوحة"
+    },
+    {
+      "title": "مطبخ أزرق مدمج مع غسالة وفرن",
+      "description": "استغلال مريح ومتكامل للأجهزة المدمجة",
+      "badge": "مطبخ مودرن",
+      "category": [
+        "kitchens"
+      ],
+      "image": "/images/kitchens/kitchen-33.jpg",
+      "alt": "مطبخ أزرق مع غسالة وفرن"
+    },
+    {
+      "title": "مطبخ رمادي وخشبي مع إضاءة LED",
+      "description": "تناغم متكامل بين المسطحات ومسارات الضوء",
+      "badge": "مطبخ مودرن",
+      "category": [
+        "kitchens"
+      ],
+      "image": "/images/kitchens/kitchen-44.jpg",
+      "alt": "مطبخ رمادي وخشبي مع إضاءة LED"
+    },
+    {
+      "title": "سقف خشبي دائري مع إضاءة مخفية وثريا",
+      "description": "تصميم دائري معماري متقن يضفي دفئاً وفخامة",
+      "badge": "أسقف وديكورات",
+      "category": [
+        "woodwork",
+        "ceilings"
+      ],
+      "image": "/images/ceilings/ceiling-circular-wood.jpg",
+      "alt": "سقف خشبي دائري مع إضاءة مخفية وثريا كلاسيكية"
+    },
+    {
+      "title": "ثريا خشبية مربعة معلقة بتصميم عصري",
+      "description": "عمل فني معلق بدقة نجارة عالية وتشطيب راقٍ",
+      "badge": "أسقف وديكورات",
+      "category": [
+        "woodwork",
+        "ceilings"
+      ],
+      "image": "/images/ceilings/ceiling-square-chandelier.jpg",
+      "alt": "ثريا خشبية مربعة معلقة بتصميم عصري"
+    },
+    {
+      "title": "وحدة تلفزيون عائمة مع إضاءة LED خفية",
+      "description": "خطوط عصرية حرة ومظهر مينيمالست جذاب",
+      "badge": "وحدات تلفزيون",
+      "category": [
+        "woodwork",
+        "tv-units"
+      ],
+      "image": "/images/tv-units/tv-unit-floating-led.png",
+      "alt": "وحدة تلفزيون عائمة مع إضاءة LED خفية ورف خشبي"
+    },
+    {
+      "title": "وحدة تلفزيون بخلفية رخامية ورفوف خشبية",
+      "description": "تزاوج الخشب والرخام مع رفوف مضيئة",
+      "badge": "وحدات تلفزيون",
+      "category": [
+        "woodwork",
+        "tv-units"
+      ],
+      "image": "/images/tv-units/tv-unit-marble-shelves.jpg",
+      "alt": "وحدة تلفزيون مع خلفية رخامية ورفوف خشبية مع إضاءة"
+    },
+    {
+      "title": "وحدة تلفزيون بيضاء مع رفوف جدارية عصرية",
+      "description": "تناسق أبيض نقي مع ديكور الحائط المودرن",
+      "badge": "وحدات تلفزيون",
+      "category": [
+        "woodwork",
+        "tv-units"
+      ],
+      "image": "/images/tv-units/tv-unit-white-modern.jpg",
+      "alt": "وحدة تلفزيون بيضاء مع رفوف جدارية عصرية"
+    },
+    {
+      "title": "خزانة مودرن بيضاء كاملة الحائط",
+      "description": "تكامل جداري ناعم وأقصى سعة تخزين هندسية",
+      "badge": "غرف نوم ودريسنج",
+      "category": [
+        "bedrooms"
+      ],
+      "image": "/images/bedrooms/wardrobe-modern-white-wall.jpg",
+      "alt": "خزانة مودرن بيضاء كاملة الحائط"
+    },
+    {
+      "title": "خزانة دريسنج مفتوحة بأدراج خشبية فاخرة",
+      "description": "تقسيمات ذكية وإكسسوارات سحب ناعمة",
+      "badge": "غرف نوم ودريسنج",
+      "category": [
+        "bedrooms"
+      ],
+      "image": "/images/bedrooms/dressing-open-wood-drawers.jpg",
+      "alt": "خزانة مفتوحة بأدراج خشبية"
+    },
+    {
+      "title": "مكتبة ورفوف خشبية مع مكتب عمل متكامل",
+      "description": "تصميم متعدد الوظائف للغرف والماستر روم",
+      "badge": "غرف نوم ودريسنج",
+      "category": [
+        "bedrooms"
+      ],
+      "image": "/images/bedrooms/bedroom-shelves-integrated-desk.jpg",
+      "alt": "مكتبة ورفوف خشبية مع مكتب مدمج"
+    },
+    {
+      "title": "خزانة دريسنج خشبية مفتوحة بتصميم زاوية L",
+      "description": "استغلال زوايا الغرفة بأناقة وعملية",
+      "badge": "غرف نوم ودريسنج",
+      "category": [
+        "bedrooms"
+      ],
+      "image": "/images/bedrooms/dressing-corner-open-wood.jpg",
+      "alt": "خزانة خشبية مفتوحة بتصميم زاوية"
+    },
+    {
+      "title": "غرفة دريسنج روم بمرآة كاملة مضاءة",
+      "description": "إحساس فندقي رحب وانعكاسات ضوئية مريحة",
+      "badge": "غرف نوم ودريسنج",
+      "category": [
+        "bedrooms"
+      ],
+      "image": "/images/bedrooms/dressing-large-illuminated-mirror.jpg",
+      "alt": "غرفة دريسنج بمرآة كبيرة مضاءة"
+    },
+    {
+      "title": "خزانة ملابس ووكن بيضاء بتوزيع منظم",
+      "description": "أرفف متعددة وأماكن تعليق واسعة ومريحة",
+      "badge": "غرف نوم ودريسنج",
+      "category": [
+        "bedrooms"
+      ],
+      "image": "/images/bedrooms/dressing-white-walkin.jpg",
+      "alt": "خزانة ملابس بيضاء مفتوحة"
+    },
+    {
+      "title": "خزانة غرفة نوم بمرآة سوداء انعكاسية",
+      "description": "طابع مودرن غامق يمنح الغرفة هيبة وفخامة",
+      "badge": "غرف نوم ودريسنج",
+      "category": [
+        "bedrooms"
+      ],
+      "image": "/images/bedrooms/dressing-black-reflective-mirror.jpg",
+      "alt": "خزانة غرفة نوم بمرآة سوداء انعكاسية"
+    },
+    {
+      "title": "غرفة أطفال مع سرير طابقين ودرج تخزين",
+      "description": "أمان كامل للأطفال مع استغلال الدرج كوحدات تخزين",
+      "badge": "موبليا وأثاث",
+      "category": [
+        "furniture"
+      ],
+      "image": "/images/furniture/kids-bedroom-bunk-stairs.jpg",
+      "alt": "غرفة أطفال مع سرير دورين ودرج خشبي"
+    },
+    {
+      "title": "طقم طعام مودرن بطاولة خشبية وكراسي بيج",
+      "description": "جلسة طعام مريحة ودافئة للعائلة والضيوف",
+      "badge": "موبليا وأثاث",
+      "category": [
+        "furniture"
+      ],
+      "image": "/images/furniture/dining-modern-wood-beige.jpg",
+      "alt": "طقم طعام مودرن مع طاولة خشبية وكراسي بيج"
+    },
+    {
+      "title": "طاولة طعام خشبية مع كراسي مخملية زرقاء",
+      "description": "لمسة أرستقراطية تجمع الخشب الأصيل والمخمل الفاخر",
+      "badge": "موبليا وأثاث",
+      "category": [
+        "furniture"
+      ],
+      "image": "/images/furniture/dining-table-blue-velvet.jpg",
+      "alt": "طاولة طعام خشبية مع كراسي مخملية زرقاء"
+    },
+    {
+      "title": "وحدة تلفزيون بتكسية خشبية كاملة ومرآة عصرية",
+      "description": "تكسية ديكورية ممتدة تمنح الصالة هوية استثنائية",
+      "badge": "موبليا وأثاث",
+      "category": [
+        "furniture",
+        "woodwork"
+      ],
+      "image": "/images/furniture/tv-wall-paneling-mirror.jpg",
+      "alt": "وحدة تلفزيون مع تكسية خشبية كاملة ومرآة عصرية"
+    },
+    {
+      "title": "طاولات دائرية خشبية لقاعات المناسبات الراقية",
+      "description": "تنفيذ مشاريع الضيافة والقاعات الكبرى بأعلى دقة",
+      "badge": "موبليا وأثاث",
+      "category": [
+        "furniture"
+      ],
+      "image": "/images/furniture/event-hall-round-tables.jpg",
+      "alt": "قاعة مناسبات مع طاولات دائرية خشبية وكراسي ذهبية"
+    },
+    {
+      "title": "فانوس خشبي مزخرف بتصميم نجمي ونقوش ملونة",
+      "description": "نقوش تراثية فريدة مع إضاءة داخلية دافئة وساحرة",
+      "badge": "إضاءات خشبية",
+      "category": [
+        "woodwork",
+        "lighting"
+      ],
+      "image": "/images/lighting/IMG_5793.jpg",
+      "alt": "فانوس خشبي مزخرف بتصميم نجمي ونقوش ملونة"
+    },
+    {
+      "title": "فانوس خشبي نجمي 3D بألوان زاهية وإضاءة دافئة",
+      "description": "حفر دقيق بالليزر مع تدرج لوني مبهج للمناسبات",
+      "badge": "إضاءات خشبية",
+      "category": [
+        "woodwork",
+        "lighting"
+      ],
+      "image": "/images/lighting/IMG_5794.jpg",
+      "alt": "فانوس خشبي نجمي ثلاثي الأبعاد بألوان زاهية"
+    },
+    {
+      "title": "فانوس خشبي على شكل قلب بنقوش وزخارف ملونة",
+      "description": "لمسة فنية رومانسية بإضاءة محيطية ناعمة",
+      "badge": "إضاءات خشبية",
+      "category": [
+        "woodwork",
+        "lighting"
+      ],
+      "image": "/images/lighting/IMG_5835.jpg",
+      "alt": "فانوس خشبي على شكل قلب بنقوش وزخارف ملونة"
+    },
+    {
+      "title": "فانوس خشبي مضيء بأشكال قلوب منقوشة وتصميم فني",
+      "description": "إبداع يدوي مصري يجمع بين جمالية الخشب والضوء",
+      "badge": "إضاءات خشبية",
+      "category": [
+        "woodwork",
+        "lighting"
+      ],
+      "image": "/images/lighting/IMG_5836.jpg",
+      "alt": "فانوس خشبي مضيء بأشكال قلوب منقوشة"
+    },
+    {
+      "title": "درج خشبي عائم بدرابزين زجاجي مودرن",
+      "description": "هندسة معمارية عصرية لدرجات خشبية معلقة",
+      "badge": "سلالم خشبية",
+      "category": [
+        "woodwork",
+        "staircases"
+      ],
+      "image": "/images/staircases/staircase-floating-glass.jpg",
+      "alt": "درج خشبي عائم مع درابزين زجاجي وتصميم مودرن"
+    },
+    {
+      "title": "درج خشبي كلاسيكي بدرجات داكنة ودرابزين معدني",
+      "description": "صلابة الخشب الطبيعي وتشطيبات فندقية كلاسيكية",
+      "badge": "سلالم خشبية",
+      "category": [
+        "woodwork",
+        "staircases"
+      ],
+      "image": "/images/staircases/staircase-classic-dark-metal.jpg",
+      "alt": "درج خشبي كلاسيكي بدرجات داكنة ودرابزين معدني"
+    },
+    {
+      "title": "تكسيات جدارية خشبية وتجاليد فاخرة للفلل",
+      "description": "حلول خشبية مخصصة مصنعة بالمليمتر وفق التصميم",
+      "badge": "أعمال خشبية",
+      "category": [
+        "woodwork"
+      ],
+      "image": "/images/gallery-woodwork.jpg",
+      "alt": "أعمال خشبية وتكسيات جدارية مخصصة"
+    },
+    {
+      "title": "طاولة خشبية دائرية بقاعدة منحوتة",
+      "description": "تنفيذ متقن من خشب الجوز الطبيعي الفاخر",
+      "badge": "تصميم منفذ",
+      "category": [
+        "designs"
+      ],
+      "image": "/images/designs/wooden-round-table.jpg",
+      "alt": "طاولة خشبية دائرية - تنفيذ Ghanem Furniture"
+    },
+    {
+      "title": "خزانة ملابس خشبية بأبواب زجاجية بإطار أسود",
+      "description": "واجهات زجاجية عصرية بإضاءات داخلية مدمجة",
+      "badge": "تصميم منفذ",
+      "category": [
+        "designs"
+      ],
+      "image": "/images/designs/glass-door-wardrobe.jpg",
+      "alt": "خزانة ملابس خشبية بأبواب زجاجية - Ghanem Furniture"
+    },
+    {
+      "title": "غرفة نوم مودرن مع مكتب وخزانة متكاملة",
+      "description": "تكامل وظيفي متميز يوفر مساحة مريحة للعمل والنوم",
+      "badge": "تصميم منفذ",
+      "category": [
+        "designs"
+      ],
+      "image": "/images/designs/master-bedroom-desk-unit.jpg",
+      "alt": "غرفة نوم مودرن مع مكتب وخزانة - Ghanem Furniture"
+    },
+    {
+      "title": "غرفة نوم توأم بسريرين ودولاب متناسق",
+      "description": "تصميم عملي وأنيق مخصص لغرف الأبناء والضيوف",
+      "badge": "تصميم منفذ",
+      "category": [
+        "designs"
+      ],
+      "image": "/images/designs/twin-bedroom-wooden.jpg",
+      "alt": "غرفة نوم توأم - Ghanem Furniture"
+    },
+    {
+      "title": "غرفة نوم عصرية بأثاث أسود هادئ",
+      "description": "فخامة الطابع المودرن مع تكسيات خشبية خلفية",
+      "badge": "تصميم منفذ",
+      "category": [
+        "designs"
+      ],
+      "image": "/images/designs/black-luxury-bedroom.jpg",
+      "alt": "غرفة نوم عصرية بأثاث أسود - Ghanem Furniture"
+    },
+    {
+      "title": "غرفة معيشة مع وحدة تلفزيون عائمة",
+      "description": "تناغم متكامل بين الأريكة والوحدة المعلقة والإضاءة",
+      "badge": "تصميم منفذ",
+      "category": [
+        "designs"
+      ],
+      "image": "/images/designs/floating-tv-unit-led.jpg",
+      "alt": "غرفة معيشة مع وحدة تلفزيون - Ghanem Furniture"
+    },
+    {
+      "title": "طاولة سفرة دائرية بخشب الجوز وقاعدة منحنية",
+      "description": "تجسيد واقعي لتفاصيل الخشب والظلال الهندسية",
+      "badge": "تصميم 3D",
+      "category": [
+        "designs-3d"
+      ],
+      "image": "/images/designs/designs-round-table-walnut.jpg",
+      "alt": "طاولة سفرة دائرية بخشب الجوز وقاعدة منحنية مصممة"
+    },
+    {
+      "title": "غرفة نوم بسريرين مع دولاب ومكتب مدمج",
+      "description": "محاكاة واقعية لتوزيع الأثاث والإضاءات المخفية",
+      "badge": "تصميم 3D",
+      "category": [
+        "designs-3d"
+      ],
+      "image": "/images/designs/designs-bedroom-twin-desk-wardrobe.jpg",
+      "alt": "غرفة نوم بسريرين، دولاب مرايا، ومكتب مدمج"
+    },
+    {
+      "title": "دولاب زجاجي فاخر بإطار أسود ورفوف LED",
+      "description": "تصميم دريسنج روم عصري قبل بدء التصنيع",
+      "badge": "تصميم 3D",
+      "category": [
+        "designs-3d"
+      ],
+      "image": "/images/designs/designs-wardrobe-glass-black-frame.jpg",
+      "alt": "دولاب خشبي بأبواب زجاجية بإطار أسود ورفوف داخلية"
+    },
+    {
+      "title": "غرفة نوم ماستر بحائط Slat Wall وسجادة دائرية",
+      "description": "توليفة أخشاب طبيعية وإضاءة دافئة تحاكي الواقع",
+      "badge": "تصميم 3D",
+      "category": [
+        "designs-3d"
+      ],
+      "image": "/images/designs/designs-bedroom-master-slat-wall.jpg",
+      "alt": "غرفة نوم ماستر بحائط خشب مضلع وسجادة دائرية"
+    },
+    {
+      "title": "غرفة نوم بسريرين وحائط صور مع مكتب جانبي",
+      "description": "توزيع متناسق للأثاث والألوان على الشاشات",
+      "badge": "تصميم 3D",
+      "category": [
+        "designs-3d"
+      ],
+      "image": "/images/designs/designs-bedroom-twin-gallery-wall.jpg",
+      "alt": "غرفة نوم بسريرين وحائط صور ومكتب جانبي"
+    },
+    {
+      "title": "ركن معيشة بوحدة تلفزيون معلقة وأنتريه رمادي",
+      "description": "تجسيد متكامل للديكورات والمفروشات قبل التنفيذ",
+      "badge": "تصميم 3D",
+      "category": [
+        "designs-3d"
+      ],
+      "image": "/images/designs/designs-livingroom-tv-unit-sofa.jpg",
+      "alt": "ركن معيشة بوحدة تلفزيون معلقة وأنتريه رمادي"
+    },
+    {
+      "title": "تجميع وتجهيز الهياكل والأثاث الخشبي",
+      "description": "حرفيون متخصصون في تركيب وتجميع الأثاث الخشبي بأعلى معايير الدقة والتشطيب",
+      "badge": "خدمات الورش B2B",
+      "category": [
+        "workshop"
+      ],
+      "image": "/images/workshop-machinery.jpg",
+      "alt": "حرفيون ونجارون متخصصون في تجميع وتركيب الأثاث الخشبي داخل ورشة Ghanem Furniture"
+    },
+    {
+      "title": "ماكينة ومنشار تقطيع المسطحات والألواح الإيطالي",
+      "description": "أحدث تكنولوجيا التصنيع والتقطيع الدقيق للمهندسين وأصحاب الورش",
+      "badge": "خدمات الورش B2B",
+      "category": [
+        "workshop"
+      ],
+      "image": "/images/workshop-cutting-b2b.jpg",
+      "alt": "ماكينة تقطيع المسطحات والألواح الإيطالية لقطاع B2B"
+    }
+  ]
+}

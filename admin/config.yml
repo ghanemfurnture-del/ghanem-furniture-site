@@ -1,0 +1,49 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# اسم الموقع كما سيظهر في اللوحة
+site_url: https://ghanem-furniture.vercel.app
+display_url: https://ghanem-furniture.vercel.app
+logo_url: /images/logo.svg
+
+media_folder: "images/gallery"
+public_folder: "/images/gallery"
+
+locale: "ar"
+
+collections:
+  - name: "gallery"
+    label: "معرض الأعمال"
+    files:
+      - name: "items"
+        label: "الصور والمنتجات"
+        file: "data/gallery.json"
+        fields:
+          - label: "قائمة الصور والمنتجات"
+            name: "items"
+            widget: "list"
+            label_singular: "منتج / صورة"
+            summary: "{{title}}"
+            fields:
+              - { label: "العنوان", name: "title", widget: "string" }
+              - { label: "الوصف", name: "description", widget: "text", required: false }
+              - { label: "التصنيف الظاهر على الصورة (مثال: مطبخ مودرن)", name: "badge", widget: "string", required: false }
+              - label: "الأقسام (تحدد فين هتظهر الصورة في الفلاتر)"
+                name: "category"
+                widget: "select"
+                multiple: true
+                options:
+                  - { label: "المطابخ المودرن", value: "kitchens" }
+                  - { label: "غرف النوم والدريسنج", value: "bedrooms" }
+                  - { label: "الأعمال الخشبية والديكورات", value: "woodwork" }
+                  - { label: "أسقف خشبية وديكورات", value: "ceilings" }
+                  - { label: "وحدات تلفزيون وديكورات", value: "tv-units" }
+                  - { label: "موبليا وأثاث مخصص", value: "furniture" }
+                  - { label: "إضاءات خشبية مزخرفة", value: "lighting" }
+                  - { label: "سلالم خشبية", value: "staircases" }
+                  - { label: "التصميمات المنفذة", value: "designs" }
+                  - { label: "تصاميم 3D", value: "designs-3d" }
+                  - { label: "خدمات الورش (B2B)", value: "workshop" }
+              - { label: "الصورة", name: "image", widget: "image" }
+              - { label: "نص بديل للصورة (اختياري - لتحسين محركات البحث)", name: "alt", widget: "string", required: false }
