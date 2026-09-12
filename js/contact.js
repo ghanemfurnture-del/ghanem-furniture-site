@@ -102,6 +102,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Reset form upon successful email transmission
         contactForm.reset();
+
+        // Tracking: successful contact form submission
+        if (typeof gtag === 'function') {
+          gtag('event', 'form_submit', {
+            'event_category': 'engagement',
+            'event_label': 'contact_form',
+            'service_type': service
+          });
+        }
+        if (typeof fbq === 'function') {
+          fbq('track', 'Lead');
+        }
       })
       .catch((error) => {
         console.error('EmailJS Error:', error);
@@ -164,6 +176,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedMessage)}`;
       window.open(whatsappUrl, '_blank');
+
+      // Tracking: WhatsApp button click from within the contact form
+      if (typeof gtag === 'function') {
+        gtag('event', 'whatsapp_click', {
+          'event_category': 'engagement',
+          'event_label': 'contact_form_whatsapp_button'
+        });
+      }
+      if (typeof fbq === 'function') {
+        fbq('track', 'Contact');
+      }
     });
   }
 
