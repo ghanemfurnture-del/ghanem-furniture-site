@@ -99,6 +99,24 @@ src="https://www.facebook.com/tr?id=38373061858975722&ev=PageView&noscript=1"
     }
   });
 </script>
+<!-- Phone Number Click Tracking -->
+<script>
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href^="tel:"]');
+    if (link) {
+      if (typeof gtag === 'function') {
+        gtag('event', 'phone_click', {
+          'event_category': 'engagement',
+          'event_label': link.href
+        });
+      }
+      if (typeof fbq === 'function') {
+        fbq('track', 'Contact');
+      }
+    }
+  });
+</script>
+
 
 </head>
 <body>
