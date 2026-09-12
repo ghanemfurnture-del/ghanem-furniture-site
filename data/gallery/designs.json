@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "title": "طاولة خشبية دائرية بقاعدة منحوتة",
+      "description": "تنفيذ متقن من خشب الجوز الطبيعي الفاخر",
+      "badge": "تصميم منفذ",
+      "category": [
+        "designs"
+      ],
+      "image": "/images/designs/wooden-round-table.jpg",
+      "alt": "طاولة خشبية دائرية - تنفيذ Ghanem Furniture"
+    },
+    {
+      "title": "خزانة ملابس خشبية بأبواب زجاجية بإطار أسود",
+      "description": "واجهات زجاجية عصرية بإضاءات داخلية مدمجة",
+      "badge": "تصميم منفذ",
+      "category": [
+        "designs"
+      ],
+      "image": "/images/designs/glass-door-wardrobe.jpg",
+      "alt": "خزانة ملابس خشبية بأبواب زجاجية - Ghanem Furniture"
+    },
+    {
+      "title": "غرفة نوم مودرن مع مكتب وخزانة متكاملة",
+      "description": "تكامل وظيفي متميز يوفر مساحة مريحة للعمل والنوم",
+      "badge": "تصميم منفذ",
+      "category": [
+        "designs"
+      ],
+      "image": "/images/designs/master-bedroom-desk-unit.jpg",
+      "alt": "غرفة نوم مودرن مع مكتب وخزانة - Ghanem Furniture"
+    },
+    {
+      "title": "غرفة نوم توأم بسريرين ودولاب متناسق",
+      "description": "تصميم عملي وأنيق مخصص لغرف الأبناء والضيوف",
+      "badge": "تصميم منفذ",
+      "category": [
+        "designs"
+      ],
+      "image": "/images/designs/twin-bedroom-wooden.jpg",
+      "alt": "غرفة نوم توأم - Ghanem Furniture"
+    },
+    {
+      "title": "غرفة نوم عصرية بأثاث أسود هادئ",
+      "description": "فخامة الطابع المودرن مع تكسيات خشبية خلفية",
+      "badge": "تصميم منفذ",
+      "category": [
+        "designs"
+      ],
+      "image": "/images/designs/black-luxury-bedroom.jpg",
+      "alt": "غرفة نوم عصرية بأثاث أسود - Ghanem Furniture"
+    },
+    {
+      "title": "غرفة معيشة مع وحدة تلفزيون عائمة",
+      "description": "تناغم متكامل بين الأريكة والوحدة المعلقة والإضاءة",
+      "badge": "تصميم منفذ",
+      "category": [
+        "designs"
+      ],
+      "image": "/images/designs/floating-tv-unit-led.jpg",
+      "alt": "غرفة معيشة مع وحدة تلفزيون - Ghanem Furniture"
+    }
+  ]
+}

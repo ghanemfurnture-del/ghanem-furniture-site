@@ -1,0 +1,74 @@
+{
+  "items": [
+    {
+      "title": "خزانة مودرن بيضاء كاملة الحائط",
+      "description": "تكامل جداري ناعم وأقصى سعة تخزين هندسية",
+      "badge": "غرف نوم ودريسنج",
+      "category": [
+        "bedrooms"
+      ],
+      "image": "/images/bedrooms/wardrobe-modern-white-wall.jpg",
+      "alt": "خزانة مودرن بيضاء كاملة الحائط"
+    },
+    {
+      "title": "خزانة دريسنج مفتوحة بأدراج خشبية فاخرة",
+      "description": "تقسيمات ذكية وإكسسوارات سحب ناعمة",
+      "badge": "غرف نوم ودريسنج",
+      "category": [
+        "bedrooms"
+      ],
+      "image": "/images/bedrooms/dressing-open-wood-drawers.jpg",
+      "alt": "خزانة مفتوحة بأدراج خشبية"
+    },
+    {
+      "title": "مكتبة ورفوف خشبية مع مكتب عمل متكامل",
+      "description": "تصميم متعدد الوظائف للغرف والماستر روم",
+      "badge": "غرف نوم ودريسنج",
+      "category": [
+        "bedrooms"
+      ],
+      "image": "/images/bedrooms/bedroom-shelves-integrated-desk.jpg",
+      "alt": "مكتبة ورفوف خشبية مع مكتب مدمج"
+    },
+    {
+      "title": "خزانة دريسنج خشبية مفتوحة بتصميم زاوية L",
+      "description": "استغلال زوايا الغرفة بأناقة وعملية",
+      "badge": "غرف نوم ودريسنج",
+      "category": [
+        "bedrooms"
+      ],
+      "image": "/images/bedrooms/dressing-corner-open-wood.jpg",
+      "alt": "خزانة خشبية مفتوحة بتصميم زاوية"
+    },
+    {
+      "title": "غرفة دريسنج روم بمرآة كاملة مضاءة",
+      "description": "إحساس فندقي رحب وانعكاسات ضوئية مريحة",
+      "badge": "غرف نوم ودريسنج",
+      "category": [
+        "bedrooms"
+      ],
+      "image": "/images/bedrooms/dressing-large-illuminated-mirror.jpg",
+      "alt": "غرفة دريسنج بمرآة كبيرة مضاءة"
+    },
+    {
+      "title": "خزانة ملابس ووكن بيضاء بتوزيع منظم",
+      "description": "أرفف متعددة وأماكن تعليق واسعة ومريحة",
+      "badge": "غرف نوم ودريسنج",
+      "category": [
+        "bedrooms"
+      ],
+      "image": "/images/bedrooms/dressing-white-walkin.jpg",
+      "alt": "خزانة ملابس بيضاء مفتوحة"
+    },
+    {
+      "title": "خزانة غرفة نوم بمرآة سوداء انعكاسية",
+      "description": "طابع مودرن غامق يمنح الغرفة هيبة وفخامة",
+      "badge": "غرف نوم ودريسنج",
+      "category": [
+        "bedrooms"
+      ],
+      "image": "/images/bedrooms/dressing-black-reflective-mirror.jpg",
+      "alt": "خزانة غرفة نوم بمرآة سوداء انعكاسية"
+    }
+  ]
+}

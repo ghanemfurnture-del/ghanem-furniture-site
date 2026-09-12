@@ -1,0 +1,135 @@
+{
+  "items": [
+    {
+      "title": "سقف خشبي دائري مع إضاءة مخفية وثريا",
+      "description": "تصميم دائري معماري متقن يضفي دفئاً وفخامة",
+      "badge": "أسقف وديكورات",
+      "category": [
+        "woodwork",
+        "ceilings"
+      ],
+      "image": "/images/ceilings/ceiling-circular-wood.jpg",
+      "alt": "سقف خشبي دائري مع إضاءة مخفية وثريا كلاسيكية"
+    },
+    {
+      "title": "ثريا خشبية مربعة معلقة بتصميم عصري",
+      "description": "عمل فني معلق بدقة نجارة عالية وتشطيب راقٍ",
+      "badge": "أسقف وديكورات",
+      "category": [
+        "woodwork",
+        "ceilings"
+      ],
+      "image": "/images/ceilings/ceiling-square-chandelier.jpg",
+      "alt": "ثريا خشبية مربعة معلقة بتصميم عصري"
+    },
+    {
+      "title": "وحدة تلفزيون عائمة مع إضاءة LED خفية",
+      "description": "خطوط عصرية حرة ومظهر مينيمالست جذاب",
+      "badge": "وحدات تلفزيون",
+      "category": [
+        "woodwork",
+        "tv-units"
+      ],
+      "image": "/images/tv-units/tv-unit-floating-led.png",
+      "alt": "وحدة تلفزيون عائمة مع إضاءة LED خفية ورف خشبي"
+    },
+    {
+      "title": "وحدة تلفزيون بخلفية رخامية ورفوف خشبية",
+      "description": "تزاوج الخشب والرخام مع رفوف مضيئة",
+      "badge": "وحدات تلفزيون",
+      "category": [
+        "woodwork",
+        "tv-units"
+      ],
+      "image": "/images/tv-units/tv-unit-marble-shelves.jpg",
+      "alt": "وحدة تلفزيون مع خلفية رخامية ورفوف خشبية مع إضاءة"
+    },
+    {
+      "title": "وحدة تلفزيون بيضاء مع رفوف جدارية عصرية",
+      "description": "تناسق أبيض نقي مع ديكور الحائط المودرن",
+      "badge": "وحدات تلفزيون",
+      "category": [
+        "woodwork",
+        "tv-units"
+      ],
+      "image": "/images/tv-units/tv-unit-white-modern.jpg",
+      "alt": "وحدة تلفزيون بيضاء مع رفوف جدارية عصرية"
+    },
+    {
+      "title": "فانوس خشبي مزخرف بتصميم نجمي ونقوش ملونة",
+      "description": "نقوش تراثية فريدة مع إضاءة داخلية دافئة وساحرة",
+      "badge": "إضاءات خشبية",
+      "category": [
+        "woodwork",
+        "lighting"
+      ],
+      "image": "/images/lighting/IMG_5793.jpg",
+      "alt": "فانوس خشبي مزخرف بتصميم نجمي ونقوش ملونة"
+    },
+    {
+      "title": "فانوس خشبي نجمي 3D بألوان زاهية وإضاءة دافئة",
+      "description": "حفر دقيق بالليزر مع تدرج لوني مبهج للمناسبات",
+      "badge": "إضاءات خشبية",
+      "category": [
+        "woodwork",
+        "lighting"
+      ],
+      "image": "/images/lighting/IMG_5794.jpg",
+      "alt": "فانوس خشبي نجمي ثلاثي الأبعاد بألوان زاهية"
+    },
+    {
+      "title": "فانوس خشبي على شكل قلب بنقوش وزخارف ملونة",
+      "description": "لمسة فنية رومانسية بإضاءة محيطية ناعمة",
+      "badge": "إضاءات خشبية",
+      "category": [
+        "woodwork",
+        "lighting"
+      ],
+      "image": "/images/lighting/IMG_5835.jpg",
+      "alt": "فانوس خشبي على شكل قلب بنقوش وزخارف ملونة"
+    },
+    {
+      "title": "فانوس خشبي مضيء بأشكال قلوب منقوشة وتصميم فني",
+      "description": "إبداع يدوي مصري يجمع بين جمالية الخشب والضوء",
+      "badge": "إضاءات خشبية",
+      "category": [
+        "woodwork",
+        "lighting"
+      ],
+      "image": "/images/lighting/IMG_5836.jpg",
+      "alt": "فانوس خشبي مضيء بأشكال قلوب منقوشة"
+    },
+    {
+      "title": "درج خشبي عائم بدرابزين زجاجي مودرن",
+      "description": "هندسة معمارية عصرية لدرجات خشبية معلقة",
+      "badge": "سلالم خشبية",
+      "category": [
+        "woodwork",
+        "staircases"
+      ],
+      "image": "/images/staircases/staircase-floating-glass.jpg",
+      "alt": "درج خشبي عائم مع درابزين زجاجي وتصميم مودرن"
+    },
+    {
+      "title": "درج خشبي كلاسيكي بدرجات داكنة ودرابزين معدني",
+      "description": "صلابة الخشب الطبيعي وتشطيبات فندقية كلاسيكية",
+      "badge": "سلالم خشبية",
+      "category": [
+        "woodwork",
+        "staircases"
+      ],
+      "image": "/images/staircases/staircase-classic-dark-metal.jpg",
+      "alt": "درج خشبي كلاسيكي بدرجات داكنة ودرابزين معدني"
+    },
+    {
+      "title": "تكسيات جدارية خشبية وتجاليد فاخرة للفلل",
+      "description": "حلول خشبية مخصصة مصنعة بالمليمتر وفق التصميم",
+      "badge": "أعمال خشبية",
+      "category": [
+        "woodwork"
+      ],
+      "image": "/images/gallery-woodwork.jpg",
+      "alt": "أعمال خشبية وتكسيات جدارية مخصصة"
+    }
+  ]
+}

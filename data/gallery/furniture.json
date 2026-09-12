@@ -1,0 +1,55 @@
+{
+  "items": [
+    {
+      "title": "غرفة أطفال مع سرير طابقين ودرج تخزين",
+      "description": "أمان كامل للأطفال مع استغلال الدرج كوحدات تخزين",
+      "badge": "موبليا وأثاث",
+      "category": [
+        "furniture"
+      ],
+      "image": "/images/furniture/kids-bedroom-bunk-stairs.jpg",
+      "alt": "غرفة أطفال مع سرير دورين ودرج خشبي"
+    },
+    {
+      "title": "طقم طعام مودرن بطاولة خشبية وكراسي بيج",
+      "description": "جلسة طعام مريحة ودافئة للعائلة والضيوف",
+      "badge": "موبليا وأثاث",
+      "category": [
+        "furniture"
+      ],
+      "image": "/images/furniture/dining-modern-wood-beige.jpg",
+      "alt": "طقم طعام مودرن مع طاولة خشبية وكراسي بيج"
+    },
+    {
+      "title": "طاولة طعام خشبية مع كراسي مخملية زرقاء",
+      "description": "لمسة أرستقراطية تجمع الخشب الأصيل والمخمل الفاخر",
+      "badge": "موبليا وأثاث",
+      "category": [
+        "furniture"
+      ],
+      "image": "/images/furniture/dining-table-blue-velvet.jpg",
+      "alt": "طاولة طعام خشبية مع كراسي مخملية زرقاء"
+    },
+    {
+      "title": "وحدة تلفزيون بتكسية خشبية كاملة ومرآة عصرية",
+      "description": "تكسية ديكورية ممتدة تمنح الصالة هوية استثنائية",
+      "badge": "موبليا وأثاث",
+      "category": [
+        "furniture",
+        "woodwork"
+      ],
+      "image": "/images/furniture/tv-wall-paneling-mirror.jpg",
+      "alt": "وحدة تلفزيون مع تكسية خشبية كاملة ومرآة عصرية"
+    },
+    {
+      "title": "طاولات دائرية خشبية لقاعات المناسبات الراقية",
+      "description": "تنفيذ مشاريع الضيافة والقاعات الكبرى بأعلى دقة",
+      "badge": "موبليا وأثاث",
+      "category": [
+        "furniture"
+      ],
+      "image": "/images/furniture/event-hall-round-tables.jpg",
+      "alt": "قاعة مناسبات مع طاولات دائرية خشبية وكراسي ذهبية"
+    }
+  ]
+}

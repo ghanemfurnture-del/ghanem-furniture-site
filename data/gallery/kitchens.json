@@ -1,0 +1,74 @@
+{
+  "items": [
+    {
+      "title": "مطبخ رمادي مودرن مع أدراج مفتوحة",
+      "description": "تصميم هندسي متطور بأدراج تنظيمية وانسيابية",
+      "badge": "مطبخ مودرن",
+      "category": [
+        "kitchens"
+      ],
+      "image": "/images/kitchens/kitchen-1.jpg",
+      "alt": "مطبخ رمادي مودرن مع أدراج مفتوحة"
+    },
+    {
+      "title": "مطبخ خشبي رمادي مع فرن مدمج",
+      "description": "توليفة فاخرة بين الخشب المعالج وتناسق الأجهزة",
+      "badge": "مطبخ مودرن",
+      "category": [
+        "kitchens"
+      ],
+      "image": "/images/kitchens/kitchen-2.jpg",
+      "alt": "مطبخ خشبي رمادي مع فرن"
+    },
+    {
+      "title": "مطبخ أزرق داكن مع رخام أبيض",
+      "description": "فخامة ملكية بلون كحلي ورخام كوارتز ناصع",
+      "badge": "مطبخ مودرن",
+      "category": [
+        "kitchens"
+      ],
+      "image": "/images/kitchens/kitchen-3.jpg",
+      "alt": "مطبخ أزرق داكن مع رخام أبيض"
+    },
+    {
+      "title": "مطبخ عصري بخشب ورمادي مع إضاءة مخفية",
+      "description": "إضاءة LED مدمجة تبرز جمالية الخامات",
+      "badge": "مطبخ مودرن",
+      "category": [
+        "kitchens"
+      ],
+      "image": "/images/kitchens/kitchen-4.jpg",
+      "alt": "مطبخ عصري بخشب ورمادي مع إضاءة مخفية"
+    },
+    {
+      "title": "مطبخ رمادي مع أبواب زجاجية وأدراج مفتوحة",
+      "description": "شفافية عصرية وإكسسوارات هيدروليكية ذكية",
+      "badge": "مطبخ مودرن",
+      "category": [
+        "kitchens"
+      ],
+      "image": "/images/kitchens/kitchen-11.jpg",
+      "alt": "مطبخ رمادي مع أبواب زجاجية وأدراج مفتوحة"
+    },
+    {
+      "title": "مطبخ أزرق مدمج مع غسالة وفرن",
+      "description": "استغلال مريح ومتكامل للأجهزة المدمجة",
+      "badge": "مطبخ مودرن",
+      "category": [
+        "kitchens"
+      ],
+      "image": "/images/kitchens/kitchen-33.jpg",
+      "alt": "مطبخ أزرق مع غسالة وفرن"
+    },
+    {
+      "title": "مطبخ رمادي وخشبي مع إضاءة LED",
+      "description": "تناغم متكامل بين المسطحات ومسارات الضوء",
+      "badge": "مطبخ مودرن",
+      "category": [
+        "kitchens"
+      ],
+      "image": "/images/kitchens/kitchen-44.jpg",
+      "alt": "مطبخ رمادي وخشبي مع إضاءة LED"
+    }
+  ]
+}

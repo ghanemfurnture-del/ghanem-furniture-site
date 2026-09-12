@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "title": "طاولة سفرة دائرية بخشب الجوز وقاعدة منحنية",
+      "description": "تجسيد واقعي لتفاصيل الخشب والظلال الهندسية",
+      "badge": "تصميم 3D",
+      "category": [
+        "designs-3d"
+      ],
+      "image": "/images/designs/designs-round-table-walnut.jpg",
+      "alt": "طاولة سفرة دائرية بخشب الجوز وقاعدة منحنية مصممة"
+    },
+    {
+      "title": "غرفة نوم بسريرين مع دولاب ومكتب مدمج",
+      "description": "محاكاة واقعية لتوزيع الأثاث والإضاءات المخفية",
+      "badge": "تصميم 3D",
+      "category": [
+        "designs-3d"
+      ],
+      "image": "/images/designs/designs-bedroom-twin-desk-wardrobe.jpg",
+      "alt": "غرفة نوم بسريرين، دولاب مرايا، ومكتب مدمج"
+    },
+    {
+      "title": "دولاب زجاجي فاخر بإطار أسود ورفوف LED",
+      "description": "تصميم دريسنج روم عصري قبل بدء التصنيع",
+      "badge": "تصميم 3D",
+      "category": [
+        "designs-3d"
+      ],
+      "image": "/images/designs/designs-wardrobe-glass-black-frame.jpg",
+      "alt": "دولاب خشبي بأبواب زجاجية بإطار أسود ورفوف داخلية"
+    },
+    {
+      "title": "غرفة نوم ماستر بحائط Slat Wall وسجادة دائرية",
+      "description": "توليفة أخشاب طبيعية وإضاءة دافئة تحاكي الواقع",
+      "badge": "تصميم 3D",
+      "category": [
+        "designs-3d"
+      ],
+      "image": "/images/designs/designs-bedroom-master-slat-wall.jpg",
+      "alt": "غرفة نوم ماستر بحائط خشب مضلع وسجادة دائرية"
+    },
+    {
+      "title": "غرفة نوم بسريرين وحائط صور مع مكتب جانبي",
+      "description": "توزيع متناسق للأثاث والألوان على الشاشات",
+      "badge": "تصميم 3D",
+      "category": [
+        "designs-3d"
+      ],
+      "image": "/images/designs/designs-bedroom-twin-gallery-wall.jpg",
+      "alt": "غرفة نوم بسريرين وحائط صور ومكتب جانبي"
+    },
+    {
+      "title": "ركن معيشة بوحدة تلفزيون معلقة وأنتريه رمادي",
+      "description": "تجسيد متكامل للديكورات والمفروشات قبل التنفيذ",
+      "badge": "تصميم 3D",
+      "category": [
+        "designs-3d"
+      ],
+      "image": "/images/designs/designs-livingroom-tv-unit-sofa.jpg",
+      "alt": "ركن معيشة بوحدة تلفزيون معلقة وأنتريه رمادي"
+    }
+  ]
+}

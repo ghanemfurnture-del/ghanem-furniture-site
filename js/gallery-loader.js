@@ -7,13 +7,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const grid = document.getElementById('galleryGrid');
   if (!grid) return;
 
-  fetch('data/gallery.json', { cache: 'no-store' })
-    .then((res) => {
-      if (!res.ok) throw new Error('Failed to load gallery.json');
-      return res.json();
-    })
-    .then((data) => {
-      const items = Array.isArray(data) ? data : (data.items || []);
+  // كل قسم من أقسام المعرض له ملف JSON منفصل، عشان تقدر تدخل من لوحة
+  // التحكم على القسم اللي عاوزه (مطابخ / غرف نوم / ...) مباشرة من غير
+  // ما تدور بين كل الصور. أضف اسم الملف هنا لو ضفت قسم جديد من config.yml.
+  const GALLERY_SECTIONS = [
+    'kitchens',
+    'bedrooms',
+    'woodwork',
+    'furniture',
+    'designs',
+    'designs-3d',
+    'workshop',
+  ];
+
+  Promise.all(
+    GALLERY_SECTIONS.map((section) =>
+      fetch(`data/gallery/${section}.json`, { cache: 'no-store' })
+        .then((res) => (res.ok ? res.json() : { items: [] }))
+        .catch(() => ({ items: [] }))
+    )
+  )
+    .then((sections) => {
+      const items = sections.flatMap((data) => (Array.isArray(data) ? data : (data.items || [])));
       renderItems(items);
     })
     .catch((err) => {
