@@ -295,6 +295,11 @@
         if (grid) {
           const newCard = createReviewCard(newReview, true);
           grid.insertBefore(newCard, grid.firstChild);
+          // This card is inserted after the page's scroll-reveal observers
+          // already ran, so it would otherwise stay invisible (opacity: 0
+          // from the .reveal class) forever. Show it immediately since the
+          // user is about to be scrolled straight to it anyway.
+          newCard.classList.add('active');
           newCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
