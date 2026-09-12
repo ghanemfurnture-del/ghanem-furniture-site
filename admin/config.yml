@@ -1,8 +1,6 @@
 backend:
-  name: github
-  repo: ghanemfurnture-del/ghanem-furniture-site
+  name: git-gateway
   branch: main
-  base_url: https://ghanem-oauth-gateway.vercel.app
 
 # اسم الموقع كما سيظهر في اللوحة
 site_url: https://ghanem-furniture.vercel.app
@@ -18,10 +16,10 @@ collections:
   - name: "gallery"
     label: "معرض الأعمال"
     files:
-      - name: "items"
-        label: "الصور والمنتجات"
-        file: "data/gallery.json"
-        fields:
+      - name: "kitchens"
+        label: "المطابخ المودرن"
+        file: "data/gallery/kitchens.json"
+        fields: &gallery_item_fields
           - label: "قائمة الصور والمنتجات"
             name: "items"
             widget: "list"
@@ -35,7 +33,7 @@ collections:
                 name: "category"
                 widget: "select"
                 multiple: true
-                options:
+                options: &gallery_category_options
                   - { label: "المطابخ المودرن", value: "kitchens" }
                   - { label: "غرف النوم والدريسنج", value: "bedrooms" }
                   - { label: "الأعمال الخشبية والديكورات", value: "woodwork" }
@@ -49,3 +47,33 @@ collections:
                   - { label: "خدمات الورش (B2B)", value: "workshop" }
               - { label: "الصورة", name: "image", widget: "image" }
               - { label: "نص بديل للصورة (اختياري - لتحسين محركات البحث)", name: "alt", widget: "string", required: false }
+
+      - name: "bedrooms"
+        label: "غرف النوم والدريسنج"
+        file: "data/gallery/bedrooms.json"
+        fields: *gallery_item_fields
+
+      - name: "woodwork"
+        label: "الأعمال الخشبية والديكورات (يشمل الأسقف ووحدات التلفزيون والإضاءات والسلالم)"
+        file: "data/gallery/woodwork.json"
+        fields: *gallery_item_fields
+
+      - name: "furniture"
+        label: "موبليا وأثاث مخصص"
+        file: "data/gallery/furniture.json"
+        fields: *gallery_item_fields
+
+      - name: "designs"
+        label: "التصميمات المنفذة"
+        file: "data/gallery/designs.json"
+        fields: *gallery_item_fields
+
+      - name: "designs-3d"
+        label: "تصاميم 3D"
+        file: "data/gallery/designs-3d.json"
+        fields: *gallery_item_fields
+
+      - name: "workshop"
+        label: "خدمات الورش (B2B)"
+        file: "data/gallery/workshop.json"
+        fields: *gallery_item_fields
