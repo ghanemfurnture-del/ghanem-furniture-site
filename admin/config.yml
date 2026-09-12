@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: ghanemfurnture-del/ghanem-furniture-site
   branch: main
+  base_url: https://ghanem-oauth-gateway.vercel.app
+  auth_endpoint: auth
 
 # اسم الموقع كما سيظهر في اللوحة
 site_url: https://ghanem-furniture.vercel.app
