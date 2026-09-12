@@ -827,6 +827,7 @@ p:last-child { margin-bottom: 0; }
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  flex-direction: column;
 }
 
 .legacy-image-wrapper img {
@@ -1944,6 +1945,11 @@ html[dir="ltr"] .testimonial-badge-new {
   gap: 1.2rem;
 }
 
+.contact-info-item > div:last-child {
+  min-width: 0;
+  flex: 1;
+}
+
 .contact-icon-box {
   width: 48px;
   height: 48px;
@@ -1972,6 +1978,8 @@ html[dir="ltr"] .testimonial-badge-new {
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-white);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .contact-social-row {

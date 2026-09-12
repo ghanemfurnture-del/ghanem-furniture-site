@@ -166,6 +166,32 @@
     });
 
     updateCounters();
+    revealReviewCards();
+  }
+
+  // These cards are injected after main.js already set up its scroll-reveal
+  // IntersectionObserver, so they need their own observer, otherwise they
+  // stay permanently invisible (opacity: 0 from the .reveal class).
+  function revealReviewCards() {
+    const cards = document.querySelectorAll('.testimonials-grid .reveal');
+    if (!cards.length) return;
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.1
+      });
+      cards.forEach(card => observer.observe(card));
+    } else {
+      cards.forEach(card => card.classList.add('active'));
+    }
   }
 
   // Initialize Interactive Star Rating Selector
