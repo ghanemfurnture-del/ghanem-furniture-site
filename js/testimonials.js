@@ -1,6 +1,6 @@
 /**
  * GHANEM FURNITURE
- * Interactive Customer Reviews & Rating Engine
+ * Interactive Customer Reviews & Rating Engine with Multilingual Support
  */
 
 (function () {
@@ -9,64 +9,148 @@
   const STORAGE_KEY = 'ghanem_customer_reviews';
   let currentRating = 5;
 
-  // Rating labels in Arabic
+  function getCurrentLang() {
+    if (window.i18n && typeof window.i18n.getLanguage === 'function') {
+      return window.i18n.getLanguage();
+    }
+    return localStorage.getItem('site_lang') || 'ar';
+  }
+
+  function getLocalized(val, lang) {
+    if (!val) return '';
+    if (typeof val === 'object' && val !== null) {
+      return val[lang] || val['ar'] || val['en'] || '';
+    }
+    return String(val);
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+  }
+
+  // Rating labels in Arabic and English
   const RATING_LABELS = {
-    1: '⭐ 1 من 5 - غير راضٍ',
-    2: '⭐⭐ 2 من 5 - مقبول ولكن يحتاج تحسين',
-    3: '⭐⭐⭐ 3 من 5 - جيد بشكل عام',
-    4: '⭐⭐⭐⭐ 4 من 5 - ممتاز وخدمة راقية',
-    5: '⭐⭐⭐⭐⭐ 5 من 5 - تجربة استثنائية تفوق التوقعات'
+    ar: {
+      1: '⭐ 1 من 5 - غير راضٍ',
+      2: '⭐⭐ 2 من 5 - مقبول ولكن يحتاج تحسين',
+      3: '⭐⭐⭐ 3 من 5 - جيد بشكل عام',
+      4: '⭐⭐⭐⭐ 4 من 5 - ممتاز وخدمة راقية',
+      5: '⭐⭐⭐⭐⭐ 5 من 5 - تجربة استثنائية تفوق التوقعات'
+    },
+    en: {
+      1: '⭐ 1 of 5 - Unsatisfied',
+      2: '⭐⭐ 2 of 5 - Fair, needs improvement',
+      3: '⭐⭐⭐ 3 of 5 - Good overall',
+      4: '⭐⭐⭐⭐ 4 of 5 - Excellent, premium service',
+      5: '⭐⭐⭐⭐⭐ 5 of 5 - Exceptional, exceeds expectations'
+    }
   };
 
-  // Default human-sounding initial reviews
+  // Default human-sounding initial reviews with dual-language content
   const DEFAULT_REVIEWS = [
     {
       id: 'rev-1',
       name: 'م. أحمد الشريف',
-      role: 'مشروع مطبخ مودرن كامل - التجمع الخامس، القاهرة',
+      role: {
+        ar: 'مشروع مطبخ مودرن كامل - التجمع الخامس، القاهرة',
+        en: 'Full Modern Kitchen Project - Fifth Settlement, Cairo'
+      },
       rating: 5,
-      date: 'منذ أسبوعين',
-      quote: 'بصراحة كنت متردد في الأول أفصل عمولة وكنت هشتري جاهز، بس لما قعدت مع الباشمهندس وشفت عينات الخشب الزان والتصميم الـ 3D اقتنعت تماماً. المطبخ بقاله عندي 6 شهور، الخامات ممتازة والمفصلات بلوم أصلية وسلسة جداً ومفيش أي هبوط في الدلف ولا تأثر بالبخار. ربنا يبارك لكم على الضمير والشغل النضيف.'
+      date: {
+        ar: 'منذ أسبوعين',
+        en: '2 weeks ago'
+      },
+      quote: {
+        ar: 'بصراحة كنت متردد في الأول أفصل عمولة وكنت هشتري جاهز، بس لما قعدت مع الباشمهندس وشفت عينات الخشب الزان والتصميم الـ 3D اقتنعت تماماً. المطبخ بقاله عندي 6 شهور، الخامات ممتازة والمفصلات بلوم أصلية وسلسة جداً ومفيش أي هبوط في الدلف ولا تأثر بالبخار. ربنا يبارك لكم على الضمير والشغل النضيف.',
+        en: 'Honestly, I was hesitant at first about custom manufacturing and was about to buy ready-made. But after meeting the engineer and seeing the solid beechwood samples and the 3D design, I was completely convinced. The kitchen has been installed for 6 months now: exceptional materials, genuine smooth Blum hydraulic hinges, no sagging doors, and zero moisture impact. May God bless your integrity and immaculate craftsmanship.'
+      }
     },
     {
       id: 'rev-2',
       name: 'م. كريم السعدني',
-      role: 'مهندس تصميم داخلي ومقاولات - الشيخ زايد',
+      role: {
+        ar: 'مهندس تصميم داخلي ومقاولات - الشيخ زايد',
+        en: 'Interior Architect & Contractor - Sheikh Zayed'
+      },
       rating: 5,
-      date: 'منذ شهر',
-      quote: 'أنا عندي مكتب تشطيبات، وكل شغل تقطيع المسطحات ولزق شريط الحرف (القشاط) بعمله في ورشة غانم. بجد مكن التقطيع الإيطالي عندهم نتيجته زيرو رايش والزوايا 90 درجة بالمللي، وده بيوفر عليا وقت التركيب جداً ومبيكسفنيش قدام العميل. أمانة وسرعة وتسليم في الميعاد.'
+      date: {
+        ar: 'منذ شهر',
+        en: '1 month ago'
+      },
+      quote: {
+        ar: 'أنا عندي مكتب تشطيبات، وكل شغل تقطيع المسطحات ولزق شريط الحرف (القشاط) بعمله في ورشة غانم. بجد مكن التقطيع الإيطالي عندهم نتيجته زيرو رايش والزوايا 90 درجة بالمللي، وده بيوفر عليا وقت التركيب جداً ومبيكسفنيش قدام العميل. أمانة وسرعة وتسليم في الميعاد.',
+        en: 'I run an interior contracting firm, and I handle all sheet cutting and edge-banding at Ghanem workshops. Truly, their Italian panel saws yield zero chipout and perfect 90-degree cuts to the millimeter. This saves me tremendous installation time and ensures my clients are always impressed. Remarkable reliability, speed, and punctuality.'
+      }
     },
     {
       id: 'rev-3',
       name: 'أ. سارة عبد الرحمن',
-      role: 'دريسنج روم وغرفة نوم ماستر - المعادي',
+      role: {
+        ar: 'دريسنج روم وغرفة نوم ماستر - المعادي',
+        en: 'Walk-In Dressing Room & Master Bedroom - Maadi'
+      },
       rating: 5,
-      date: 'منذ شهر ونصف',
-      quote: 'فصلت دريسنج روم كاملة وغرفة نوم ماستر.. التشطيب فوق الوصف، ملمس الدهان ناعم جداً مفيش أي غلطة والتقسيمات الداخلية مريحة قوي واستغلت كل زاوية في الأوضة. والفنيين اللي جم ركبوا قمة في الذوق والأدب وما مشيوش غير لما اتأكدوا إني راضية عن كل درج ودلفة.'
+      date: {
+        ar: 'منذ شهر ونصف',
+        en: '1.5 months ago'
+      },
+      quote: {
+        ar: 'فصلت دريسنج روم كاملة وغرفة نوم ماستر.. التشطيب فوق الوصف، ملمس الدهان ناعم جداً مفيش أي غلطة والتقسيمات الداخلية مريحة قوي واستغلت كل زاوية في الأوضة. والفنيين اللي جم ركبوا قمة في الذوق والأدب وما مشيوش غير لما اتأكدوا إني راضية عن كل درج ودلفة.',
+        en: 'I ordered a complete custom dressing room and master bedroom suite. The finishing is beyond description—silky smooth lacquer with zero flaws, and an intuitive layout optimizing every room corner. The installation technicians were polite, considerate, and did not leave until ensuring I was completely satisfied with every drawer and door.'
+      }
     },
     {
       id: 'rev-4',
       name: 'أ. مصطفى كامل',
-      role: 'شقة عريس بالكامل - مصر الجديدة',
+      role: {
+        ar: 'شقة عريس بالكامل - مصر الجديدة',
+        en: 'Complete Bridal Residence - Heliopolis'
+      },
       rating: 5,
-      date: 'منذ شهرين',
-      quote: 'أهم حاجة كانت عندي هي الالتزام بالوقت عشان توضيب الشقة وميعاد الفرح كان مضغوط.. سلموني الشغل كامل قبل الميعاد المتفق عليه بيومين! قطع الخشب متينة وثقيلة خشب طبيعي معالج بجد مش كرتون مضغوط زي اللي بنشوفه في السوق. شكراً ليكم بجد رفعتوا راسي.'
+      date: {
+        ar: 'منذ شهرين',
+        en: '2 months ago'
+      },
+      quote: {
+        ar: 'أهم حاجة كانت عندي هي الالتزام بالوقت عشان توضيب الشقة وميعاد الفرح كان مضغوط.. سلموني الشغل كامل قبل الميعاد المتفق عليه بيومين! قطع الخشب متينة وثقيلة خشب طبيعي معالج بجد مش كرتون مضغوط زي اللي بنشوفه في السوق. شكراً ليكم بجد رفعتوا راسي.',
+        en: 'My top priority was adhering to the strict delivery schedule ahead of our wedding. They delivered everything two days ahead of the agreed date! The furniture is sturdy and substantial—genuine treated natural wood, not compressed board like most of the market. Thank you for exceeding all expectations.'
+      }
     },
     {
       id: 'rev-5',
       name: 'الحاج صبحي النجار',
-      role: 'صاحب ورشة موبيليا - دمياط (خدمات B2B)',
+      role: {
+        ar: 'صاحب ورشة موبيليا - دمياط (خدمات B2B)',
+        en: 'Furniture Workshop Owner - Damietta (B2B Services)'
+      },
       rating: 5,
-      date: 'منذ 3 أشهر',
-      quote: 'من أحسن الورش اللي اتعاملت معاها من سنين في السوق.. مفيش هدر في الألواح إطلاقاً لأنهم بيشتغلوا ببرامج تقطيع متطورة، وسعر المتر مناسب جداً لأصحاب الورش. القشاط الحراري ماسك في الحرف عمره ما يفك ولا يرطب.'
+      date: {
+        ar: 'منذ 3 أشهر',
+        en: '3 months ago'
+      },
+      quote: {
+        ar: 'من أحسن الورش اللي اتعاملت معاها من سنين في السوق.. مفيش هدر في الألواح إطلاقاً لأنهم بيشتغلوا ببرامج تقطيع متطورة، وسعر المتر مناسب جداً لأصحاب الورش. القشاط الحراري ماسك في الحرف عمره ما يفك ولا يرطب.',
+        en: 'One of the best industrial workshops I have partnered with in years. Zero panel wastage thanks to their advanced sheet optimization software, and highly competitive rates for workshops. Their hot-melt edge banding bonds permanently without peeling or absorbing moisture.'
+      }
     },
     {
       id: 'rev-6',
       name: 'د. منى السعيد',
-      role: 'تجديد مطبخ ودواليب ملابس - مدينة نصر',
+      role: {
+        ar: 'تجديد مطبخ ودواليب ملابس - مدينة نصر',
+        en: 'Kitchen & Wardrobe Renovation - Nasr City'
+      },
       rating: 5,
-      date: 'منذ 4 أشهر',
-      quote: 'خدمة ما بعد البيع هي اللي بتفرق المحترم عن غيره.. بعد التركيب بحوالي شهر طلبت أغير مكان رف في المطبخ عشان اشتريت ميكروويف بمقاس أكبر، جم في نفس الأسبوع وعملوا التعديل بكل ترحاب ومن غير أي تعقيد. شكراً لذوقكم ولدقة شغلكم.'
+      date: {
+        ar: 'منذ 4 أشهر',
+        en: '4 months ago'
+      },
+      quote: {
+        ar: 'خدمة ما بعد البيع هي اللي بتفرق المحترم عن غيره.. بعد التركيب بحوالي شهر طلبت أغير مكان رف في المطبخ عشان اشتريت ميكروويف بمقاس أكبر، جم في نفس الأسبوع وعملوا التعديل بكل ترحاب ومن غير أي تعقيد. شكراً لذوقكم ولدقة شغلكم.',
+        en: 'After-sales service is what truly sets a respectable business apart. A month after installation, I needed a shelf adjusted for a larger microwave. Their team arrived that same week and made the adjustment graciously without complications. Thank you for your courtesy and precision.'
+      }
     }
   ];
 
@@ -92,22 +176,29 @@
 
   // Create review HTML Card element
   function createReviewCard(rev, isNew = false) {
+    const lang = getCurrentLang();
     const card = document.createElement('div');
     card.className = 'testimonial-card reveal' + (isNew ? ' is-new-review' : '');
     card.id = rev.id;
 
+    const badgeText = lang === 'en' ? 'Recent Review ✨' : 'تقييم حديث ✨';
+    const defaultRole = lang === 'en' ? 'Verified Ghanem Furniture Client' : 'عميل معتمد لدى Ghanem Furniture';
+    const roleText = getLocalized(rev.role, lang) || defaultRole;
+    const quoteText = getLocalized(rev.quote, lang);
+    const dateText = getLocalized(rev.date, lang);
+
     card.innerHTML = `
-      ${isNew ? '<span class="testimonial-badge-new">تقييم حديث ✨</span>' : ''}
+      ${isNew ? `<span class="testimonial-badge-new">${badgeText}</span>` : ''}
       <div class="testimonial-stars">
         ${generateStarsSvg(rev.rating)}
       </div>
-      <p class="testimonial-quote">"${rev.quote}"</p>
+      <p class="testimonial-quote">"${escapeHtml(quoteText)}"</p>
       <div class="testimonial-author-wrap">
         <div class="testimonial-avatar">${getInitials(rev.name)}</div>
         <div style="flex: 1;">
-          <div class="testimonial-name">${rev.name}</div>
-          <div class="testimonial-role">${rev.role || 'عميل معتمد لدى Ghanem Furniture'}</div>
-          ${rev.date ? `<div class="testimonial-date">🕒 ${rev.date}</div>` : ''}
+          <div class="testimonial-name">${escapeHtml(rev.name)}</div>
+          <div class="testimonial-role">${escapeHtml(roleText)}</div>
+          ${dateText ? `<div class="testimonial-date">🕒 ${escapeHtml(dateText)}</div>` : ''}
         </div>
       </div>
     `;
@@ -139,11 +230,14 @@
 
   // Update Score Card & Counts
   function updateCounters() {
+    const lang = getCurrentLang();
     const stored = getStoredReviews();
     const totalCount = DEFAULT_REVIEWS.length + stored.length;
     const countEl = document.getElementById('reviewsTotalCount');
     if (countEl) {
-      countEl.textContent = `بناءً على ${totalCount} تقييماً موثقاً`;
+      countEl.textContent = lang === 'en'
+        ? `Based on ${totalCount} verified reviews`
+        : `بناءً على ${totalCount} تقييماً موثقاً`;
     }
   }
 
@@ -169,9 +263,6 @@
     revealReviewCards();
   }
 
-  // These cards are injected after main.js already set up its scroll-reveal
-  // IntersectionObserver, so they need their own observer, otherwise they
-  // stay permanently invisible (opacity: 0 from the .reveal class).
   function revealReviewCards() {
     const cards = document.querySelectorAll('.testimonials-grid .reveal');
     if (!cards.length) return;
@@ -203,6 +294,8 @@
     const starIcons = starsContainer.querySelectorAll('svg');
 
     function highlightStars(val) {
+      const lang = getCurrentLang();
+      const labels = RATING_LABELS[lang] || RATING_LABELS['ar'];
       starIcons.forEach(icon => {
         const ratingVal = parseInt(icon.getAttribute('data-value'), 10);
         if (ratingVal <= val) {
@@ -212,7 +305,7 @@
         }
       });
       if (labelEl) {
-        labelEl.textContent = RATING_LABELS[val] || '';
+        labelEl.textContent = labels[val] || '';
       }
     }
 
@@ -232,7 +325,6 @@
       highlightStars(currentRating);
     });
 
-    // Set initial
     highlightStars(currentRating);
   }
 
@@ -266,6 +358,7 @@
       form.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        const lang = getCurrentLang();
         const nameInput = document.getElementById('reviewAuthorName');
         const roleInput = document.getElementById('reviewAuthorRole');
         const quoteInput = document.getElementById('reviewQuote');
@@ -275,16 +368,20 @@
         const quote = quoteInput ? quoteInput.value.trim() : '';
 
         if (!name || !quote) {
-          alert('يرجى كتابة الاسم وتفاصيل رأيك / تعليقك.');
+          const alertMsg = lang === 'en'
+            ? 'Please enter your name and review details.'
+            : 'يرجى كتابة الاسم وتفاصيل رأيك / تعليقك.';
+          alert(alertMsg);
           return;
         }
 
+        const defaultRole = lang === 'en' ? 'Ghanem Furniture Client' : 'عميل Ghanem Furniture';
         const newReview = {
           id: 'rev-user-' + Date.now(),
           name: name,
-          role: role || 'عميل Ghanem Furniture',
+          role: role || defaultRole,
           rating: currentRating,
-          date: 'الآن (تقييم جديد)',
+          date: lang === 'en' ? 'Just now (New review)' : 'الآن (تقييم جديد)',
           quote: quote
         };
 
@@ -295,10 +392,6 @@
         if (grid) {
           const newCard = createReviewCard(newReview, true);
           grid.insertBefore(newCard, grid.firstChild);
-          // This card is inserted after the page's scroll-reveal observers
-          // already ran, so it would otherwise stay invisible (opacity: 0
-          // from the .reveal class) forever. Show it immediately since the
-          // user is about to be scrolled straight to it anyway.
           newCard.classList.add('active');
           newCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
@@ -322,6 +415,12 @@
       });
     }
   }
+
+  // Update on languageChanged event
+  window.addEventListener('languageChanged', () => {
+    renderAllReviews();
+    initStarRatingPicker();
+  });
 
   // Initialize
   document.addEventListener('DOMContentLoaded', () => {

@@ -246,6 +246,16 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    // Re-apply the caption for the currently active slide whenever the
+    // language changes (data-title is updated by i18n.js before this fires)
+    window.addEventListener('languageChanged', () => {
+      const activeSlide = slides[currentIndex];
+      if (activeSlide && titleEl) {
+        const title = activeSlide.getAttribute('data-title');
+        if (title) titleEl.textContent = title;
+      }
+    });
+
     // Pause on hover
     mockup.addEventListener('mouseenter', stopAutoPlay);
     mockup.addEventListener('mouseleave', startAutoPlay);

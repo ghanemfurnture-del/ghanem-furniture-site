@@ -1,64 +1,136 @@
 {
   "items": [
     {
-      "title": "طاولة سفرة دائرية بخشب الجوز وقاعدة منحنية",
-      "description": "تجسيد واقعي لتفاصيل الخشب والظلال الهندسية",
-      "badge": "تصميم 3D",
+      "title": {
+        "ar": "طاولة سفرة دائرية بخشب الجوز وقاعدة منحنية",
+        "en": "3D Render: Circular Walnut Dining Table with Sculpted Base"
+      },
+      "description": {
+        "ar": "تجسيد واقعي لتفاصيل الخشب والظلال الهندسية",
+        "en": "Photorealistic rendering of wood grain textures and optical reflections"
+      },
+      "badge": {
+        "ar": "تصميم 3D",
+        "en": "3D Concept"
+      },
       "category": [
         "designs-3d"
       ],
       "image": "/images/designs/designs-round-table-walnut.jpg",
-      "alt": "طاولة سفرة دائرية بخشب الجوز وقاعدة منحنية مصممة"
+      "alt": {
+        "ar": "طاولة سفرة دائرية بخشب الجوز وقاعدة منحنية مصممة",
+        "en": "3D architectural render of round walnut dining table"
+      }
     },
     {
-      "title": "غرفة نوم بسريرين مع دولاب ومكتب مدمج",
-      "description": "محاكاة واقعية لتوزيع الأثاث والإضاءات المخفية",
-      "badge": "تصميم 3D",
+      "title": {
+        "ar": "غرفة نوم بسريرين مع دولاب ومكتب مدمج",
+        "en": "3D Render: Twin Bedroom with Mirror Wardrobe & Study Desk"
+      },
+      "description": {
+        "ar": "محاكاة واقعية لتوزيع الأثاث والإضاءات المخفية",
+        "en": "Accurate volumetric study of spatial layout and concealed lighting"
+      },
+      "badge": {
+        "ar": "تصميم 3D",
+        "en": "3D Concept"
+      },
       "category": [
         "designs-3d"
       ],
       "image": "/images/designs/designs-bedroom-twin-desk-wardrobe.jpg",
-      "alt": "غرفة نوم بسريرين، دولاب مرايا، ومكتب مدمج"
+      "alt": {
+        "ar": "غرفة نوم بسريرين، دولاب مرايا، ومكتب مدمج",
+        "en": "3D visualization of twin bedroom with mirrored wardrobe and desk"
+      }
     },
     {
-      "title": "دولاب زجاجي فاخر بإطار أسود ورفوف LED",
-      "description": "تصميم دريسنج روم عصري قبل بدء التصنيع",
-      "badge": "تصميم 3D",
+      "title": {
+        "ar": "دولاب زجاجي فاخر بإطار أسود ورفوف LED",
+        "en": "3D Render: Smoked Glass Wardrobe with Linear LED Shelving"
+      },
+      "description": {
+        "ar": "تصميم دريسنج روم عصري قبل بدء التصنيع",
+        "en": "Pre-construction 3D visualization of walk-in wardrobe finishes"
+      },
+      "badge": {
+        "ar": "تصميم 3D",
+        "en": "3D Concept"
+      },
       "category": [
         "designs-3d"
       ],
       "image": "/images/designs/designs-wardrobe-glass-black-frame.jpg",
-      "alt": "دولاب خشبي بأبواب زجاجية بإطار أسود ورفوف داخلية"
+      "alt": {
+        "ar": "دولاب خشبي بأبواب زجاجية بإطار أسود ورفوف داخلية",
+        "en": "3D model of glass door wardrobe with black frame and interior illumination"
+      }
     },
     {
-      "title": "غرفة نوم ماستر بحائط Slat Wall وسجادة دائرية",
-      "description": "توليفة أخشاب طبيعية وإضاءة دافئة تحاكي الواقع",
-      "badge": "تصميم 3D",
+      "title": {
+        "ar": "غرفة نوم ماستر بحائط Slat Wall وسجادة دائرية",
+        "en": "3D Render: Master Suite with Acoustic Timber Slat Wall"
+      },
+      "description": {
+        "ar": "توليفة أخشاب طبيعية وإضاءة دافئة تحاكي الواقع",
+        "en": "Natural wood fluting and ambient lighting rendering reality before production"
+      },
+      "badge": {
+        "ar": "تصميم 3D",
+        "en": "3D Concept"
+      },
       "category": [
         "designs-3d"
       ],
       "image": "/images/designs/designs-bedroom-master-slat-wall.jpg",
-      "alt": "غرفة نوم ماستر بحائط خشب مضلع وسجادة دائرية"
+      "alt": {
+        "ar": "غرفة نوم ماستر بحائط خشب مضلع وسجادة دائرية",
+        "en": "3D master bedroom render with wooden slat accent wall"
+      }
     },
     {
-      "title": "غرفة نوم بسريرين وحائط صور مع مكتب جانبي",
-      "description": "توزيع متناسق للأثاث والألوان على الشاشات",
-      "badge": "تصميم 3D",
+      "title": {
+        "ar": "غرفة نوم بسريرين وحائط صور مع مكتب جانبي",
+        "en": "3D Render: Twin Bedroom with Gallery Accent Wall & Desk"
+      },
+      "description": {
+        "ar": "توزيع متناسق للأثاث والألوان على الشاشات",
+        "en": "Precise digital preview of proportions, materials, and finish palette"
+      },
+      "badge": {
+        "ar": "تصميم 3D",
+        "en": "3D Concept"
+      },
       "category": [
         "designs-3d"
       ],
       "image": "/images/designs/designs-bedroom-twin-gallery-wall.jpg",
-      "alt": "غرفة نوم بسريرين وحائط صور ومكتب جانبي"
+      "alt": {
+        "ar": "غرفة نوم بسريرين وحائط صور ومكتب جانبي",
+        "en": "3D digital model of twin bedroom with gallery wall and corner desk"
+      }
     },
     {
-      "title": "ركن معيشة بوحدة تلفزيون معلقة وأنتريه رمادي",
-      "description": "تجسيد متكامل للديكورات والمفروشات قبل التنفيذ",
-      "badge": "تصميم 3D",
+      "title": {
+        "ar": "ركن معيشة بوحدة تلفزيون معلقة وأنتريه رمادي",
+        "en": "3D Render: Contemporary Lounge with Floating Media Wall"
+      },
+      "description": {
+        "ar": "تجسيد متكامل للديكورات والمفروشات قبل التنفيذ",
+        "en": "Comprehensive 3D depiction of custom joinery, upholstery, and finishes"
+      },
+      "badge": {
+        "ar": "تصميم 3D",
+        "en": "3D Concept"
+      },
       "category": [
         "designs-3d"
       ],
       "image": "/images/designs/designs-livingroom-tv-unit-sofa.jpg",
-      "alt": "ركن معيشة بوحدة تلفزيون معلقة وأنتريه رمادي"
+      "alt": {
+        "ar": "ركن معيشة بوحدة تلفزيون معلقة وأنتريه رمادي",
+        "en": "3D living room visualization with suspended TV wall and gray sofa"
+      }
     }
   ]
 }

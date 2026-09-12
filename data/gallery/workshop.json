@@ -1,24 +1,48 @@
 {
   "items": [
     {
-      "title": "تجميع وتجهيز الهياكل والأثاث الخشبي",
-      "description": "حرفيون متخصصون في تركيب وتجميع الأثاث الخشبي بأعلى معايير الدقة والتشطيب",
-      "badge": "خدمات الورش B2B",
+      "title": {
+        "ar": "تجميع وتجهيز الهياكل والأثاث الخشبي",
+        "en": "Structural Assembly & Cabinet Carcass Preparation"
+      },
+      "description": {
+        "ar": "حرفيون متخصصون في تركيب وتجميع الأثاث الخشبي بأعلى معايير الدقة والتشطيب",
+        "en": "Expert craftsmen assembling precision wooden cabinetry to exacting industry tolerances"
+      },
+      "badge": {
+        "ar": "خدمات الورش B2B",
+        "en": "B2B Workshop Services"
+      },
       "category": [
         "workshop"
       ],
       "image": "/images/workshop-machinery.jpg",
-      "alt": "حرفيون ونجارون متخصصون في تجميع وتركيب الأثاث الخشبي داخل ورشة Ghanem Furniture"
+      "alt": {
+        "ar": "حرفيون ونجارون متخصصون في تجميع وتركيب الأثاث الخشبي داخل ورشة Ghanem Furniture",
+        "en": "Specialized craftsmen assembling wooden furniture in Ghanem Furniture workshops"
+      }
     },
     {
-      "title": "ماكينة ومنشار تقطيع المسطحات والألواح الإيطالي",
-      "description": "أحدث تكنولوجيا التصنيع والتقطيع الدقيق للمهندسين وأصحاب الورش",
-      "badge": "خدمات الورش B2B",
+      "title": {
+        "ar": "ماكينة ومنشار تقطيع المسطحات والألواح الإيطالي",
+        "en": "Italian Industrial Panel Saw & Board Sizing Machine"
+      },
+      "description": {
+        "ar": "أحدث تكنولوجيا التصنيع والتقطيع الدقيق للمهندسين وأصحاب الورش",
+        "en": "Advanced precision sizing and panel cutting technology for contractors and workshops"
+      },
+      "badge": {
+        "ar": "خدمات الورش B2B",
+        "en": "B2B Workshop Services"
+      },
       "category": [
         "workshop"
       ],
       "image": "/images/workshop-cutting-b2b.jpg",
-      "alt": "ماكينة تقطيع المسطحات والألواح الإيطالية لقطاع B2B"
+      "alt": {
+        "ar": "ماكينة تقطيع المسطحات والألواح الإيطالية لقطاع B2B",
+        "en": "Italian industrial panel sizing machine for commercial B2B clients"
+      }
     }
   ]
 }

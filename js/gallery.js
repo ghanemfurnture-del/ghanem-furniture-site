@@ -122,9 +122,11 @@ window.initGalleryInteractions = function initGalleryInteractions() {
     const item = imageItems[currentGalleryIndex];
     if (!item) return;
 
-    const img = item.querySelector('img.gallery-thumb, img');
-    const title = item.querySelector('.gallery-item-title, h3')?.textContent?.trim() || 'مشروع Ghanem Furniture';
-    const category = item.querySelector('.gallery-item-category, .gallery-badge')?.textContent?.trim() || 'أعمال خشبية فاخرة';
+    const isEn = (window.i18n && window.i18n.getLanguage() === 'en') || (localStorage.getItem('site_lang') === 'en');
+    const defaultTitle = isEn ? 'Ghanem Furniture Project' : 'مشروع Ghanem Furniture';
+    const defaultCategory = isEn ? 'Luxury Woodwork' : 'أعمال خشبية فاخرة';
+    const title = item.querySelector('.gallery-item-title, h3')?.textContent?.trim() || defaultTitle;
+    const category = item.querySelector('.gallery-item-category, .gallery-badge')?.textContent?.trim() || defaultCategory;
 
     if (lightboxImg && img) {
       lightboxImg.src = img.src;

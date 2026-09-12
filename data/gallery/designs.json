@@ -1,64 +1,136 @@
 {
   "items": [
     {
-      "title": "طاولة خشبية دائرية بقاعدة منحوتة",
-      "description": "تنفيذ متقن من خشب الجوز الطبيعي الفاخر",
-      "badge": "تصميم منفذ",
+      "title": {
+        "ar": "طاولة خشبية دائرية بقاعدة منحوتة",
+        "en": "Handcrafted Round Walnut Table with Sculpted Pedestal Base"
+      },
+      "description": {
+        "ar": "تنفيذ متقن من خشب الجوز الطبيعي الفاخر",
+        "en": "Masterfully turned and carved from premium solid natural walnut"
+      },
+      "badge": {
+        "ar": "تصميم منفذ",
+        "en": "Executed Design"
+      },
       "category": [
         "designs"
       ],
       "image": "/images/designs/wooden-round-table.jpg",
-      "alt": "طاولة خشبية دائرية - تنفيذ Ghanem Furniture"
+      "alt": {
+        "ar": "طاولة خشبية دائرية - تنفيذ Ghanem Furniture",
+        "en": "Solid round wooden table executed by Ghanem Furniture"
+      }
     },
     {
-      "title": "خزانة ملابس خشبية بأبواب زجاجية بإطار أسود",
-      "description": "واجهات زجاجية عصرية بإضاءات داخلية مدمجة",
-      "badge": "تصميم منفذ",
+      "title": {
+        "ar": "خزانة ملابس خشبية بأبواب زجاجية بإطار أسود",
+        "en": "Bespoke Timber Wardrobe with Black-Framed Glass Doors"
+      },
+      "description": {
+        "ar": "واجهات زجاجية عصرية بإضاءات داخلية مدمجة",
+        "en": "Contemporary glass display elevations with integrated internal LED illumination"
+      },
+      "badge": {
+        "ar": "تصميم منفذ",
+        "en": "Executed Design"
+      },
       "category": [
         "designs"
       ],
       "image": "/images/designs/glass-door-wardrobe.jpg",
-      "alt": "خزانة ملابس خشبية بأبواب زجاجية - Ghanem Furniture"
+      "alt": {
+        "ar": "خزانة ملابس خشبية بأبواب زجاجية - Ghanem Furniture",
+        "en": "Wooden wardrobe with black glass doors built by Ghanem Furniture"
+      }
     },
     {
-      "title": "غرفة نوم مودرن مع مكتب وخزانة متكاملة",
-      "description": "تكامل وظيفي متميز يوفر مساحة مريحة للعمل والنوم",
-      "badge": "تصميم منفذ",
+      "title": {
+        "ar": "غرفة نوم مودرن مع مكتب وخزانة متكاملة",
+        "en": "Modern Bedroom Suite with Built-In Desk & Wardrobe"
+      },
+      "description": {
+        "ar": "تكامل وظيفي متميز يوفر مساحة مريحة للعمل والنوم",
+        "en": "Seamless ergonomic synergy uniting serene sleep and study spaces"
+      },
+      "badge": {
+        "ar": "تصميم منفذ",
+        "en": "Executed Design"
+      },
       "category": [
         "designs"
       ],
       "image": "/images/designs/master-bedroom-desk-unit.jpg",
-      "alt": "غرفة نوم مودرن مع مكتب وخزانة - Ghanem Furniture"
+      "alt": {
+        "ar": "غرفة نوم مودرن مع مكتب وخزانة - Ghanem Furniture",
+        "en": "Modern bedroom with integrated desk and wardrobe by Ghanem Furniture"
+      }
     },
     {
-      "title": "غرفة نوم توأم بسريرين ودولاب متناسق",
-      "description": "تصميم عملي وأنيق مخصص لغرف الأبناء والضيوف",
-      "badge": "تصميم منفذ",
+      "title": {
+        "ar": "غرفة نوم توأم بسريرين ودولاب متناسق",
+        "en": "Twin Bedroom Suite with Harmonized Wardrobe & Beds"
+      },
+      "description": {
+        "ar": "تصميم عملي وأنيق مخصص لغرف الأبناء والضيوف",
+        "en": "Cohesive aesthetic and functional layout tailored for youth and guest rooms"
+      },
+      "badge": {
+        "ar": "تصميم منفذ",
+        "en": "Executed Design"
+      },
       "category": [
         "designs"
       ],
       "image": "/images/designs/twin-bedroom-wooden.jpg",
-      "alt": "غرفة نوم توأم - Ghanem Furniture"
+      "alt": {
+        "ar": "غرفة نوم توأم - Ghanem Furniture",
+        "en": "Twin wooden bedroom suite executed by Ghanem Furniture"
+      }
     },
     {
-      "title": "غرفة نوم عصرية بأثاث أسود هادئ",
-      "description": "فخامة الطابع المودرن مع تكسيات خشبية خلفية",
-      "badge": "تصميم منفذ",
+      "title": {
+        "ar": "غرفة نوم عصرية بأثاث أسود هادئ",
+        "en": "Sleek Contemporary Bedroom with Matte Black Furnishings"
+      },
+      "description": {
+        "ar": "فخامة الطابع المودرن مع تكسيات خشبية خلفية",
+        "en": "Modern understated luxury complemented by bespoke slatted wood feature walls"
+      },
+      "badge": {
+        "ar": "تصميم منفذ",
+        "en": "Executed Design"
+      },
       "category": [
         "designs"
       ],
       "image": "/images/designs/black-luxury-bedroom.jpg",
-      "alt": "غرفة نوم عصرية بأثاث أسود - Ghanem Furniture"
+      "alt": {
+        "ar": "غرفة نوم عصرية بأثاث أسود - Ghanem Furniture",
+        "en": "Contemporary bedroom with elegant black furniture by Ghanem Furniture"
+      }
     },
     {
-      "title": "غرفة معيشة مع وحدة تلفزيون عائمة",
-      "description": "تناغم متكامل بين الأريكة والوحدة المعلقة والإضاءة",
-      "badge": "تصميم منفذ",
+      "title": {
+        "ar": "غرفة معيشة مع وحدة تلفزيون عائمة",
+        "en": "Living Room with Cantilevered Floating TV Console"
+      },
+      "description": {
+        "ar": "تناغم متكامل بين الأريكة والوحدة المعلقة والإضاءة",
+        "en": "Harmonious composition of seating, floating cabinetry, and soft lighting"
+      },
+      "badge": {
+        "ar": "تصميم منفذ",
+        "en": "Executed Design"
+      },
       "category": [
         "designs"
       ],
       "image": "/images/designs/floating-tv-unit-led.jpg",
-      "alt": "غرفة معيشة مع وحدة تلفزيون - Ghanem Furniture"
+      "alt": {
+        "ar": "غرفة معيشة مع وحدة تلفزيون - Ghanem Furniture",
+        "en": "Living room featuring floating TV unit by Ghanem Furniture"
+      }
     }
   ]
 }

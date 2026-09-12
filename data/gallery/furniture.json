@@ -1,55 +1,115 @@
 {
   "items": [
     {
-      "title": "غرفة أطفال مع سرير طابقين ودرج تخزين",
-      "description": "أمان كامل للأطفال مع استغلال الدرج كوحدات تخزين",
-      "badge": "موبليا وأثاث",
+      "title": {
+        "ar": "غرفة أطفال مع سرير طابقين ودرج تخزين",
+        "en": "Kids' Bedroom with Bunk Bed & Built-In Storage Staircase"
+      },
+      "description": {
+        "ar": "أمان كامل للأطفال مع استغلال الدرج كوحدات تخزين",
+        "en": "Child-safe solid construction turning each step into pull-out storage"
+      },
+      "badge": {
+        "ar": "موبليا وأثاث",
+        "en": "Furniture & Mobilya"
+      },
       "category": [
         "furniture"
       ],
       "image": "/images/furniture/kids-bedroom-bunk-stairs.jpg",
-      "alt": "غرفة أطفال مع سرير دورين ودرج خشبي"
+      "alt": {
+        "ar": "غرفة أطفال مع سرير دورين ودرج خشبي",
+        "en": "Kids bedroom with custom wooden bunk bed and storage stairs"
+      }
     },
     {
-      "title": "طقم طعام مودرن بطاولة خشبية وكراسي بيج",
-      "description": "جلسة طعام مريحة ودافئة للعائلة والضيوف",
-      "badge": "موبليا وأثاث",
+      "title": {
+        "ar": "طقم طعام مودرن بطاولة خشبية وكراسي بيج",
+        "en": "Modern Dining Set with Solid Wood Table & Beige Chairs"
+      },
+      "description": {
+        "ar": "جلسة طعام مريحة ودافئة للعائلة والضيوف",
+        "en": "Warm, inviting dining configuration designed for family and guests"
+      },
+      "badge": {
+        "ar": "موبليا وأثاث",
+        "en": "Furniture & Mobilya"
+      },
       "category": [
         "furniture"
       ],
       "image": "/images/furniture/dining-modern-wood-beige.jpg",
-      "alt": "طقم طعام مودرن مع طاولة خشبية وكراسي بيج"
+      "alt": {
+        "ar": "طقم طعام مودرن مع طاولة خشبية وكراسي بيج",
+        "en": "Contemporary dining set with solid timber table and upholstered chairs"
+      }
     },
     {
-      "title": "طاولة طعام خشبية مع كراسي مخملية زرقاء",
-      "description": "لمسة أرستقراطية تجمع الخشب الأصيل والمخمل الفاخر",
-      "badge": "موبليا وأثاث",
+      "title": {
+        "ar": "طاولة طعام خشبية مع كراسي مخملية زرقاء",
+        "en": "Bespoke Timber Dining Table with Royal Blue Velvet Chairs"
+      },
+      "description": {
+        "ar": "لمسة أرستقراطية تجمع الخشب الأصيل والمخمل الفاخر",
+        "en": "An aristocratic union of authentic natural wood and rich velvet"
+      },
+      "badge": {
+        "ar": "موبليا وأثاث",
+        "en": "Furniture & Mobilya"
+      },
       "category": [
         "furniture"
       ],
       "image": "/images/furniture/dining-table-blue-velvet.jpg",
-      "alt": "طاولة طعام خشبية مع كراسي مخملية زرقاء"
+      "alt": {
+        "ar": "طاولة طعام خشبية مع كراسي مخملية زرقاء",
+        "en": "Solid wood dining table paired with deep blue velvet chairs"
+      }
     },
     {
-      "title": "وحدة تلفزيون بتكسية خشبية كاملة ومرآة عصرية",
-      "description": "تكسية ديكورية ممتدة تمنح الصالة هوية استثنائية",
-      "badge": "موبليا وأثاث",
+      "title": {
+        "ar": "وحدة تلفزيون بتكسية خشبية كاملة ومرآة عصرية",
+        "en": "Full-Wall Wood Paneling Media Unit with Integrated Mirror"
+      },
+      "description": {
+        "ar": "تكسية ديكورية ممتدة تمنح الصالة هوية استثنائية",
+        "en": "Expansive feature wall cladding conferring a striking living-room signature"
+      },
+      "badge": {
+        "ar": "موبليا وأثاث",
+        "en": "Furniture & Mobilya"
+      },
       "category": [
         "furniture",
         "woodwork"
       ],
       "image": "/images/furniture/tv-wall-paneling-mirror.jpg",
-      "alt": "وحدة تلفزيون مع تكسية خشبية كاملة ومرآة عصرية"
+      "alt": {
+        "ar": "وحدة تلفزيون مع تكسية خشبية كاملة ومرآة عصرية",
+        "en": "Living room TV console with full wooden wall paneling and mirror"
+      }
     },
     {
-      "title": "طاولات دائرية خشبية لقاعات المناسبات الراقية",
-      "description": "تنفيذ مشاريع الضيافة والقاعات الكبرى بأعلى دقة",
-      "badge": "موبليا وأثاث",
+      "title": {
+        "ar": "طاولات دائرية خشبية لقاعات المناسبات الراقية",
+        "en": "Bespoke Round Wooden Banquet Tables for Grand Venues"
+      },
+      "description": {
+        "ar": "تنفيذ مشاريع الضيافة والقاعات الكبرى بأعلى دقة",
+        "en": "Commercial hospitality manufacturing executed with high-traffic endurance"
+      },
+      "badge": {
+        "ar": "موبليا وأثاث",
+        "en": "Furniture & Mobilya"
+      },
       "category": [
         "furniture"
       ],
       "image": "/images/furniture/event-hall-round-tables.jpg",
-      "alt": "قاعة مناسبات مع طاولات دائرية خشبية وكراسي ذهبية"
+      "alt": {
+        "ar": "قاعة مناسبات مع طاولات دائرية خشبية وكراسي ذهبية",
+        "en": "Grand reception hall with circular wooden banquet tables and gold chairs"
+      }
     }
   ]
 }

@@ -1,74 +1,158 @@
 {
   "items": [
     {
-      "title": "خزانة مودرن بيضاء كاملة الحائط",
-      "description": "تكامل جداري ناعم وأقصى سعة تخزين هندسية",
-      "badge": "غرف نوم ودريسنج",
+      "title": {
+        "ar": "خزانة مودرن بيضاء كاملة الحائط",
+        "en": "Full-Height Modern White Wardrobe Wall"
+      },
+      "description": {
+        "ar": "تكامل جداري ناعم وأقصى سعة تخزين هندسية",
+        "en": "Seamless architectural integration providing maximum storage capacity"
+      },
+      "badge": {
+        "ar": "غرف نوم ودريسنج",
+        "en": "Bedrooms & Dressing"
+      },
       "category": [
         "bedrooms"
       ],
       "image": "/images/bedrooms/wardrobe-modern-white-wall.jpg",
-      "alt": "خزانة مودرن بيضاء كاملة الحائط"
+      "alt": {
+        "ar": "خزانة مودرن بيضاء كاملة الحائط",
+        "en": "Modern full-height white wardrobe wall"
+      }
     },
     {
-      "title": "خزانة دريسنج مفتوحة بأدراج خشبية فاخرة",
-      "description": "تقسيمات ذكية وإكسسوارات سحب ناعمة",
-      "badge": "غرف نوم ودريسنج",
+      "title": {
+        "ar": "خزانة دريسنج مفتوحة بأدراج خشبية فاخرة",
+        "en": "Open-Concept Dressing Room with Premium Wooden Drawers"
+      },
+      "description": {
+        "ar": "تقسيمات ذكية وإكسسوارات سحب ناعمة",
+        "en": "Smart interior compartmentation with soft-glide drawer runners"
+      },
+      "badge": {
+        "ar": "غرف نوم ودريسنج",
+        "en": "Bedrooms & Dressing"
+      },
       "category": [
         "bedrooms"
       ],
       "image": "/images/bedrooms/dressing-open-wood-drawers.jpg",
-      "alt": "خزانة مفتوحة بأدراج خشبية"
+      "alt": {
+        "ar": "خزانة مفتوحة بأدراج خشبية",
+        "en": "Open dressing room wardrobe with luxury wood drawers"
+      }
     },
     {
-      "title": "مكتبة ورفوف خشبية مع مكتب عمل متكامل",
-      "description": "تصميم متعدد الوظائف للغرف والماستر روم",
-      "badge": "غرف نوم ودريسنج",
+      "title": {
+        "ar": "مكتبة ورفوف خشبية مع مكتب عمل متكامل",
+        "en": "Integrated Bedroom Study Desk & Shelving Unit"
+      },
+      "description": {
+        "ar": "تصميم متعدد الوظائف للغرف والماستر روم",
+        "en": "Multi-functional bespoke workstation tailored for master suites"
+      },
+      "badge": {
+        "ar": "غرف نوم ودريسنج",
+        "en": "Bedrooms & Dressing"
+      },
       "category": [
         "bedrooms"
       ],
       "image": "/images/bedrooms/bedroom-shelves-integrated-desk.jpg",
-      "alt": "مكتبة ورفوف خشبية مع مكتب مدمج"
+      "alt": {
+        "ar": "مكتبة ورفوف خشبية مع مكتب مدمج",
+        "en": "Integrated wood study desk with open display shelves"
+      }
     },
     {
-      "title": "خزانة دريسنج خشبية مفتوحة بتصميم زاوية L",
-      "description": "استغلال زوايا الغرفة بأناقة وعملية",
-      "badge": "غرف نوم ودريسنج",
+      "title": {
+        "ar": "خزانة دريسنج خشبية مفتوحة بتصميم زاوية L",
+        "en": "L-Shaped Corner Walk-In Dressing Wardrobe"
+      },
+      "description": {
+        "ar": "استغلال زوايا الغرفة بأناقة وعملية",
+        "en": "Optimal corner utilization blending refined aesthetics with utility"
+      },
+      "badge": {
+        "ar": "غرف نوم ودريسنج",
+        "en": "Bedrooms & Dressing"
+      },
       "category": [
         "bedrooms"
       ],
       "image": "/images/bedrooms/dressing-corner-open-wood.jpg",
-      "alt": "خزانة خشبية مفتوحة بتصميم زاوية"
+      "alt": {
+        "ar": "خزانة خشبية مفتوحة بتصميم زاوية",
+        "en": "L-shaped wooden open dressing corner unit"
+      }
     },
     {
-      "title": "غرفة دريسنج روم بمرآة كاملة مضاءة",
-      "description": "إحساس فندقي رحب وانعكاسات ضوئية مريحة",
-      "badge": "غرف نوم ودريسنج",
+      "title": {
+        "ar": "غرفة دريسنج روم بمرآة كاملة مضاءة",
+        "en": "Luxury Dressing Suite with Illuminated Full-Length Mirror"
+      },
+      "description": {
+        "ar": "إحساس فندقي رحب وانعكاسات ضوئية مريحة",
+        "en": "Boutique hotel ambiance featuring perimeter-backlit full mirror"
+      },
+      "badge": {
+        "ar": "غرف نوم ودريسنج",
+        "en": "Bedrooms & Dressing"
+      },
       "category": [
         "bedrooms"
       ],
       "image": "/images/bedrooms/dressing-large-illuminated-mirror.jpg",
-      "alt": "غرفة دريسنج بمرآة كبيرة مضاءة"
+      "alt": {
+        "ar": "غرفة دريسنج بمرآة كبيرة مضاءة",
+        "en": "Spacious dressing room with large illuminated mirror"
+      }
     },
     {
-      "title": "خزانة ملابس ووكن بيضاء بتوزيع منظم",
-      "description": "أرفف متعددة وأماكن تعليق واسعة ومريحة",
-      "badge": "غرف نوم ودريسنج",
+      "title": {
+        "ar": "خزانة ملابس ووكن بيضاء بتوزيع منظم",
+        "en": "Organized White Walk-In Wardrobe System"
+      },
+      "description": {
+        "ar": "أرفف متعددة وأماكن تعليق واسعة ومريحة",
+        "en": "Multi-tier shelving and generous double-hanging modules"
+      },
+      "badge": {
+        "ar": "غرف نوم ودريسنج",
+        "en": "Bedrooms & Dressing"
+      },
       "category": [
         "bedrooms"
       ],
       "image": "/images/bedrooms/dressing-white-walkin.jpg",
-      "alt": "خزانة ملابس بيضاء مفتوحة"
+      "alt": {
+        "ar": "خزانة ملابس بيضاء مفتوحة",
+        "en": "Custom white open walk-in wardrobe system"
+      }
     },
     {
-      "title": "خزانة غرفة نوم بمرآة سوداء انعكاسية",
-      "description": "طابع مودرن غامق يمنح الغرفة هيبة وفخامة",
-      "badge": "غرف نوم ودريسنج",
+      "title": {
+        "ar": "خزانة غرفة نوم بمرآة سوداء انعكاسية",
+        "en": "Master Bedroom Wardrobe with Smoked Black Mirror Doors"
+      },
+      "description": {
+        "ar": "طابع مودرن غامق يمنح الغرفة هيبة وفخامة",
+        "en": "Sleek dark contemporary styling lending drama and distinction"
+      },
+      "badge": {
+        "ar": "غرف نوم ودريسنج",
+        "en": "Bedrooms & Dressing"
+      },
       "category": [
         "bedrooms"
       ],
       "image": "/images/bedrooms/dressing-black-reflective-mirror.jpg",
-      "alt": "خزانة غرفة نوم بمرآة سوداء انعكاسية"
+      "alt": {
+        "ar": "خزانة غرفة نوم بمرآة سوداء انعكاسية",
+        "en": "Bedroom wardrobe with reflective black smoked mirror doors"
+      }
     }
   ]
 }

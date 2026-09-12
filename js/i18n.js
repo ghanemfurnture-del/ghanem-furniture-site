@@ -103,6 +103,24 @@
       }
     });
 
+    // 4b. Aria-label attributes
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const key = el.getAttribute('data-i18n-aria');
+      const translation = getNestedValue(dict, key);
+      if (translation !== null && translation !== undefined) {
+        el.setAttribute('aria-label', translation);
+      }
+    });
+
+    // 4c. Custom caption/data-title attributes (e.g. mockup carousel captions)
+    document.querySelectorAll('[data-i18n-caption]').forEach(el => {
+      const key = el.getAttribute('data-i18n-caption');
+      const translation = getNestedValue(dict, key);
+      if (translation !== null && translation !== undefined) {
+        el.setAttribute('data-title', translation);
+      }
+    });
+
     // 5. Update document dir and lang
     document.documentElement.lang = lang;
     document.documentElement.dir = RTL_LANGS.includes(lang) ? 'rtl' : 'ltr';

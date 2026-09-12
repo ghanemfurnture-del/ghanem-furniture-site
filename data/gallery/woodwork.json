@@ -1,135 +1,279 @@
 {
   "items": [
     {
-      "title": "سقف خشبي دائري مع إضاءة مخفية وثريا",
-      "description": "تصميم دائري معماري متقن يضفي دفئاً وفخامة",
-      "badge": "أسقف وديكورات",
+      "title": {
+        "ar": "سقف خشبي دائري مع إضاءة مخفية وثريا",
+        "en": "Circular Architectural Wood Ceiling with Cove Lighting"
+      },
+      "description": {
+        "ar": "تصميم دائري معماري متقن يضفي دفئاً وفخامة",
+        "en": "Exquisite curved woodwork creating opulent warmth and dimension"
+      },
+      "badge": {
+        "ar": "أسقف وديكورات",
+        "en": "Ceilings & Décor"
+      },
       "category": [
         "woodwork",
         "ceilings"
       ],
       "image": "/images/ceilings/ceiling-circular-wood.jpg",
-      "alt": "سقف خشبي دائري مع إضاءة مخفية وثريا كلاسيكية"
+      "alt": {
+        "ar": "سقف خشبي دائري مع إضاءة مخفية وثريا كلاسيكية",
+        "en": "Circular wood ceiling medallion with indirect LED illumination"
+      }
     },
     {
-      "title": "ثريا خشبية مربعة معلقة بتصميم عصري",
-      "description": "عمل فني معلق بدقة نجارة عالية وتشطيب راقٍ",
-      "badge": "أسقف وديكورات",
+      "title": {
+        "ar": "ثريا خشبية مربعة معلقة بتصميم عصري",
+        "en": "Geometric Suspended Wood Chandelier"
+      },
+      "description": {
+        "ar": "عمل فني معلق بدقة نجارة عالية وتشطيب راقٍ",
+        "en": "Suspended sculptural woodwork crafted with precision joinery"
+      },
+      "badge": {
+        "ar": "أسقف وديكورات",
+        "en": "Ceilings & Décor"
+      },
       "category": [
         "woodwork",
         "ceilings"
       ],
       "image": "/images/ceilings/ceiling-square-chandelier.jpg",
-      "alt": "ثريا خشبية مربعة معلقة بتصميم عصري"
+      "alt": {
+        "ar": "ثريا خشبية مربعة معلقة بتصميم عصري",
+        "en": "Modern geometric suspended wooden chandelier"
+      }
     },
     {
-      "title": "وحدة تلفزيون عائمة مع إضاءة LED خفية",
-      "description": "خطوط عصرية حرة ومظهر مينيمالست جذاب",
-      "badge": "وحدات تلفزيون",
+      "title": {
+        "ar": "وحدة تلفزيون عائمة مع إضاءة LED خفية",
+        "en": "Floating Minimalist TV Console with LED Backlighting"
+      },
+      "description": {
+        "ar": "خطوط عصرية حرة ومظهر مينيمالست جذاب",
+        "en": "Clean cantilevered lines offering a striking minimalist focal point"
+      },
+      "badge": {
+        "ar": "وحدات تلفزيون",
+        "en": "TV Units"
+      },
       "category": [
         "woodwork",
         "tv-units"
       ],
       "image": "/images/tv-units/tv-unit-floating-led.png",
-      "alt": "وحدة تلفزيون عائمة مع إضاءة LED خفية ورف خشبي"
+      "alt": {
+        "ar": "وحدة تلفزيون عائمة مع إضاءة LED خفية ورف خشبي",
+        "en": "Floating wooden TV unit with hidden warm LED lighting"
+      }
     },
     {
-      "title": "وحدة تلفزيون بخلفية رخامية ورفوف خشبية",
-      "description": "تزاوج الخشب والرخام مع رفوف مضيئة",
-      "badge": "وحدات تلفزيون",
+      "title": {
+        "ar": "وحدة تلفزيون بخلفية رخامية ورفوف خشبية",
+        "en": "TV Feature Wall with Bookmatched Marble & Wood Shelves"
+      },
+      "description": {
+        "ar": "تزاوج الخشب والرخام مع رفوف مضيئة",
+        "en": "Sophisticated interplay of natural marble slabs and illuminated timber"
+      },
+      "badge": {
+        "ar": "وحدات تلفزيون",
+        "en": "TV Units"
+      },
       "category": [
         "woodwork",
         "tv-units"
       ],
       "image": "/images/tv-units/tv-unit-marble-shelves.jpg",
-      "alt": "وحدة تلفزيون مع خلفية رخامية ورفوف خشبية مع إضاءة"
+      "alt": {
+        "ar": "وحدة تلفزيون مع خلفية رخامية ورفوف خشبية مع إضاءة",
+        "en": "Marble backdrop TV media wall with floating illuminated shelves"
+      }
     },
     {
-      "title": "وحدة تلفزيون بيضاء مع رفوف جدارية عصرية",
-      "description": "تناسق أبيض نقي مع ديكور الحائط المودرن",
-      "badge": "وحدات تلفزيون",
+      "title": {
+        "ar": "وحدة تلفزيون بيضاء مع رفوف جدارية عصرية",
+        "en": "Modern White Media Console with Floating Wall Displays"
+      },
+      "description": {
+        "ar": "تناسق أبيض نقي مع ديكور الحائط المودرن",
+        "en": "Pristine white lacquered finish matched with floating display shelves"
+      },
+      "badge": {
+        "ar": "وحدات تلفزيون",
+        "en": "TV Units"
+      },
       "category": [
         "woodwork",
         "tv-units"
       ],
       "image": "/images/tv-units/tv-unit-white-modern.jpg",
-      "alt": "وحدة تلفزيون بيضاء مع رفوف جدارية عصرية"
+      "alt": {
+        "ar": "وحدة تلفزيون بيضاء مع رفوف جدارية عصرية",
+        "en": "Contemporary white TV unit with wall-mounted display shelving"
+      }
     },
     {
-      "title": "فانوس خشبي مزخرف بتصميم نجمي ونقوش ملونة",
-      "description": "نقوش تراثية فريدة مع إضاءة داخلية دافئة وساحرة",
-      "badge": "إضاءات خشبية",
+      "title": {
+        "ar": "فانوس خشبي مزخرف بتصميم نجمي ونقوش ملونة",
+        "en": "Artisan Carved Star Lantern with Colored Accents"
+      },
+      "description": {
+        "ar": "نقوش تراثية فريدة مع إضاءة داخلية دافئة وساحرة",
+        "en": "Heritage fretwork craftsmanship casting enchanting ambient shadows"
+      },
+      "badge": {
+        "ar": "إضاءات خشبية",
+        "en": "Wooden Lighting"
+      },
       "category": [
         "woodwork",
         "lighting"
       ],
       "image": "/images/lighting/IMG_5793.jpg",
-      "alt": "فانوس خشبي مزخرف بتصميم نجمي ونقوش ملونة"
+      "alt": {
+        "ar": "فانوس خشبي مزخرف بتصميم نجمي ونقوش ملونة",
+        "en": "Artisanal carved wooden star lantern with colorful motifs"
+      }
     },
     {
-      "title": "فانوس خشبي نجمي 3D بألوان زاهية وإضاءة دافئة",
-      "description": "حفر دقيق بالليزر مع تدرج لوني مبهج للمناسبات",
-      "badge": "إضاءات خشبية",
+      "title": {
+        "ar": "فانوس خشبي نجمي 3D بألوان زاهية وإضاءة دافئة",
+        "en": "3D Geometric Star Lantern with Radiant Tone Inlays"
+      },
+      "description": {
+        "ar": "حفر دقيق بالليزر مع تدرج لوني مبهج للمناسبات",
+        "en": "Precision laser-cut wooden lantern with rich celebratory hues"
+      },
+      "badge": {
+        "ar": "إضاءات خشبية",
+        "en": "Wooden Lighting"
+      },
       "category": [
         "woodwork",
         "lighting"
       ],
       "image": "/images/lighting/IMG_5794.jpg",
-      "alt": "فانوس خشبي نجمي ثلاثي الأبعاد بألوان زاهية"
+      "alt": {
+        "ar": "فانوس خشبي نجمي ثلاثي الأبعاد بألوان زاهية",
+        "en": "Three-dimensional wooden geometric star lantern with warm light"
+      }
     },
     {
-      "title": "فانوس خشبي على شكل قلب بنقوش وزخارف ملونة",
-      "description": "لمسة فنية رومانسية بإضاءة محيطية ناعمة",
-      "badge": "إضاءات خشبية",
+      "title": {
+        "ar": "فانوس خشبي على شكل قلب بنقوش وزخارف ملونة",
+        "en": "Carved Heart-Shaped Wooden Lantern with Filigree Patterns"
+      },
+      "description": {
+        "ar": "لمسة فنية رومانسية بإضاءة محيطية ناعمة",
+        "en": "Intricate filigree woodwork creating a warm romantic glow"
+      },
+      "badge": {
+        "ar": "إضاءات خشبية",
+        "en": "Wooden Lighting"
+      },
       "category": [
         "woodwork",
         "lighting"
       ],
       "image": "/images/lighting/IMG_5835.jpg",
-      "alt": "فانوس خشبي على شكل قلب بنقوش وزخارف ملونة"
+      "alt": {
+        "ar": "فانوس خشبي على شكل قلب بنقوش وزخارف ملونة",
+        "en": "Heart-shaped handcrafted wooden lantern with decorative patterns"
+      }
     },
     {
-      "title": "فانوس خشبي مضيء بأشكال قلوب منقوشة وتصميم فني",
-      "description": "إبداع يدوي مصري يجمع بين جمالية الخشب والضوء",
-      "badge": "إضاءات خشبية",
+      "title": {
+        "ar": "فانوس خشبي مضيء بأشكال قلوب منقوشة وتصميم فني",
+        "en": "Sculpted Wooden Heart Luminary with Ambient Glow"
+      },
+      "description": {
+        "ar": "إبداع يدوي مصري يجمع بين جمالية الخشب والضوء",
+        "en": "Authentic Egyptian woodwork artistry fusing natural timber and soft light"
+      },
+      "badge": {
+        "ar": "إضاءات خشبية",
+        "en": "Wooden Lighting"
+      },
       "category": [
         "woodwork",
         "lighting"
       ],
       "image": "/images/lighting/IMG_5836.jpg",
-      "alt": "فانوس خشبي مضيء بأشكال قلوب منقوشة"
+      "alt": {
+        "ar": "فانوس خشبي مضيء بأشكال قلوب منقوشة",
+        "en": "Decorative wooden luminary with engraved heart silhouettes"
+      }
     },
     {
-      "title": "درج خشبي عائم بدرابزين زجاجي مودرن",
-      "description": "هندسة معمارية عصرية لدرجات خشبية معلقة",
-      "badge": "سلالم خشبية",
+      "title": {
+        "ar": "درج خشبي عائم بدرابزين زجاجي مودرن",
+        "en": "Cantilevered Floating Hardwood Staircase with Glass Balustrade"
+      },
+      "description": {
+        "ar": "هندسة معمارية عصرية لدرجات خشبية معلقة",
+        "en": "Dramatic architectural cantilever treads paired with frameless glass"
+      },
+      "badge": {
+        "ar": "سلالم خشبية",
+        "en": "Wooden Staircases"
+      },
       "category": [
         "woodwork",
         "staircases"
       ],
       "image": "/images/staircases/staircase-floating-glass.jpg",
-      "alt": "درج خشبي عائم مع درابزين زجاجي وتصميم مودرن"
+      "alt": {
+        "ar": "درج خشبي عائم مع درابزين زجاجي وتصميم مودرن",
+        "en": "Floating hardwood staircase with modern glass balustrade"
+      }
     },
     {
-      "title": "درج خشبي كلاسيكي بدرجات داكنة ودرابزين معدني",
-      "description": "صلابة الخشب الطبيعي وتشطيبات فندقية كلاسيكية",
-      "badge": "سلالم خشبية",
+      "title": {
+        "ar": "درج خشبي كلاسيكي بدرجات داكنة ودرابزين معدني",
+        "en": "Classic Dark Oak Staircase with Forged Metal Railings"
+      },
+      "description": {
+        "ar": "صلابة الخشب الطبيعي وتشطيبات فندقية كلاسيكية",
+        "en": "Solid timber strength with luxury bespoke wrought-iron railings"
+      },
+      "badge": {
+        "ar": "سلالم خشبية",
+        "en": "Wooden Staircases"
+      },
       "category": [
         "woodwork",
         "staircases"
       ],
       "image": "/images/staircases/staircase-classic-dark-metal.jpg",
-      "alt": "درج خشبي كلاسيكي بدرجات داكنة ودرابزين معدني"
+      "alt": {
+        "ar": "درج خشبي كلاسيكي بدرجات داكنة ودرابزين معدني",
+        "en": "Classic solid wood staircase with dark steps and metal railings"
+      }
     },
     {
-      "title": "تكسيات جدارية خشبية وتجاليد فاخرة للفلل",
-      "description": "حلول خشبية مخصصة مصنعة بالمليمتر وفق التصميم",
-      "badge": "أعمال خشبية",
+      "title": {
+        "ar": "تكسيات جدارية خشبية وتجاليد فاخرة للفلل",
+        "en": "Bespoke Architectural Wood Wall Cladding for Luxury Villas"
+      },
+      "description": {
+        "ar": "حلول خشبية مخصصة مصنعة بالمليمتر وفق التصميم",
+        "en": "Millimeter-precise custom wall paneling tailored to high-end interiors"
+      },
+      "badge": {
+        "ar": "أعمال خشبية",
+        "en": "Bespoke Woodwork"
+      },
       "category": [
         "woodwork"
       ],
       "image": "/images/gallery-woodwork.jpg",
-      "alt": "أعمال خشبية وتكسيات جدارية مخصصة"
+      "alt": {
+        "ar": "أعمال خشبية وتكسيات جدارية مخصصة",
+        "en": "Custom architectural wood wall cladding and paneling"
+      }
     }
   ]
 }

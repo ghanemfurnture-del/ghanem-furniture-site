@@ -1,74 +1,158 @@
 {
   "items": [
     {
-      "title": "مطبخ رمادي مودرن مع أدراج مفتوحة",
-      "description": "تصميم هندسي متطور بأدراج تنظيمية وانسيابية",
-      "badge": "مطبخ مودرن",
+      "title": {
+        "ar": "مطبخ رمادي مودرن مع أدراج مفتوحة",
+        "en": "Modern Gray Kitchen with Open Drawers"
+      },
+      "description": {
+        "ar": "تصميم هندسي متطور بأدراج تنظيمية وانسيابية",
+        "en": "Advanced architectural design with smooth, organized drawer systems"
+      },
+      "badge": {
+        "ar": "مطبخ مودرن",
+        "en": "Modern Kitchen"
+      },
       "category": [
         "kitchens"
       ],
       "image": "/images/kitchens/kitchen-1.jpg",
-      "alt": "مطبخ رمادي مودرن مع أدراج مفتوحة"
+      "alt": {
+        "ar": "مطبخ رمادي مودرن مع أدراج مفتوحة",
+        "en": "Modern gray kitchen with open drawers"
+      }
     },
     {
-      "title": "مطبخ خشبي رمادي مع فرن مدمج",
-      "description": "توليفة فاخرة بين الخشب المعالج وتناسق الأجهزة",
-      "badge": "مطبخ مودرن",
+      "title": {
+        "ar": "مطبخ خشبي رمادي مع فرن مدمج",
+        "en": "Gray Wood Kitchen with Integrated Oven"
+      },
+      "description": {
+        "ar": "توليفة فاخرة بين الخشب المعالج وتناسق الأجهزة",
+        "en": "A luxurious blend of treated wood and seamless appliance integration"
+      },
+      "badge": {
+        "ar": "مطبخ مودرن",
+        "en": "Modern Kitchen"
+      },
       "category": [
         "kitchens"
       ],
       "image": "/images/kitchens/kitchen-2.jpg",
-      "alt": "مطبخ خشبي رمادي مع فرن"
+      "alt": {
+        "ar": "مطبخ خشبي رمادي مع فرن",
+        "en": "Gray wood kitchen with integrated oven"
+      }
     },
     {
-      "title": "مطبخ أزرق داكن مع رخام أبيض",
-      "description": "فخامة ملكية بلون كحلي ورخام كوارتز ناصع",
-      "badge": "مطبخ مودرن",
+      "title": {
+        "ar": "مطبخ أزرق داكن مع رخام أبيض",
+        "en": "Navy Blue Kitchen with White Quartz Marble"
+      },
+      "description": {
+        "ar": "فخامة ملكية بلون كحلي ورخام كوارتز ناصع",
+        "en": "Regal navy blue cabinetry paired with pristine white quartz countertops"
+      },
+      "badge": {
+        "ar": "مطبخ مودرن",
+        "en": "Modern Kitchen"
+      },
       "category": [
         "kitchens"
       ],
       "image": "/images/kitchens/kitchen-3.jpg",
-      "alt": "مطبخ أزرق داكن مع رخام أبيض"
+      "alt": {
+        "ar": "مطبخ أزرق داكن مع رخام أبيض",
+        "en": "Navy blue kitchen with white marble countertops"
+      }
     },
     {
-      "title": "مطبخ عصري بخشب ورمادي مع إضاءة مخفية",
-      "description": "إضاءة LED مدمجة تبرز جمالية الخامات",
-      "badge": "مطبخ مودرن",
+      "title": {
+        "ar": "مطبخ عصري بخشب ورمادي مع إضاءة مخفية",
+        "en": "Contemporary Two-Tone Kitchen with Cove LED Lighting"
+      },
+      "description": {
+        "ar": "إضاءة LED مدمجة تبرز جمالية الخامات",
+        "en": "Integrated warm LED profiles accentuating rich natural wood grains"
+      },
+      "badge": {
+        "ar": "مطبخ مودرن",
+        "en": "Modern Kitchen"
+      },
       "category": [
         "kitchens"
       ],
       "image": "/images/kitchens/kitchen-4.jpg",
-      "alt": "مطبخ عصري بخشب ورمادي مع إضاءة مخفية"
+      "alt": {
+        "ar": "مطبخ عصري بخشب ورمادي مع إضاءة مخفية",
+        "en": "Contemporary wood and gray kitchen with hidden LED illumination"
+      }
     },
     {
-      "title": "مطبخ رمادي مع أبواب زجاجية وأدراج مفتوحة",
-      "description": "شفافية عصرية وإكسسوارات هيدروليكية ذكية",
-      "badge": "مطبخ مودرن",
+      "title": {
+        "ar": "مطبخ رمادي مع أبواب زجاجية وأدراج مفتوحة",
+        "en": "Gray Kitchen with Fluted Glass Doors & Open Shelving"
+      },
+      "description": {
+        "ar": "شفافية عصرية وإكسسوارات هيدروليكية ذكية",
+        "en": "Modern transparency with soft-close hydraulic hardware systems"
+      },
+      "badge": {
+        "ar": "مطبخ مودرن",
+        "en": "Modern Kitchen"
+      },
       "category": [
         "kitchens"
       ],
       "image": "/images/kitchens/kitchen-11.jpg",
-      "alt": "مطبخ رمادي مع أبواب زجاجية وأدراج مفتوحة"
+      "alt": {
+        "ar": "مطبخ رمادي مع أبواب زجاجية وأدراج مفتوحة",
+        "en": "Modern gray kitchen with glass display doors"
+      }
     },
     {
-      "title": "مطبخ أزرق مدمج مع غسالة وفرن",
-      "description": "استغلال مريح ومتكامل للأجهزة المدمجة",
-      "badge": "مطبخ مودرن",
+      "title": {
+        "ar": "مطبخ أزرق مدمج مع غسالة وفرن",
+        "en": "Custom Blue Kitchen with Built-In Appliances"
+      },
+      "description": {
+        "ar": "استغلال مريح ومتكامل للأجهزة المدمجة",
+        "en": "Optimized space planning with seamless appliance integration"
+      },
+      "badge": {
+        "ar": "مطبخ مودرن",
+        "en": "Modern Kitchen"
+      },
       "category": [
         "kitchens"
       ],
       "image": "/images/kitchens/kitchen-33.jpg",
-      "alt": "مطبخ أزرق مع غسالة وفرن"
+      "alt": {
+        "ar": "مطبخ أزرق مع غسالة وفرن",
+        "en": "Custom blue kitchen with built-in washer and oven"
+      }
     },
     {
-      "title": "مطبخ رمادي وخشبي مع إضاءة LED",
-      "description": "تناغم متكامل بين المسطحات ومسارات الضوء",
-      "badge": "مطبخ مودرن",
+      "title": {
+        "ar": "مطبخ رمادي وخشبي مع إضاءة LED",
+        "en": "Architectural Wood & Charcoal Kitchen with Ambient Lighting"
+      },
+      "description": {
+        "ar": "تناغم متكامل بين المسطحات ومسارات الضوء",
+        "en": "Harmonious balance of premium surfaces and linear illumination"
+      },
+      "badge": {
+        "ar": "مطبخ مودرن",
+        "en": "Modern Kitchen"
+      },
       "category": [
         "kitchens"
       ],
       "image": "/images/kitchens/kitchen-44.jpg",
-      "alt": "مطبخ رمادي وخشبي مع إضاءة LED"
+      "alt": {
+        "ar": "مطبخ رمادي وخشبي مع إضاءة LED",
+        "en": "Charcoal gray and wood kitchen with ambient LED lighting"
+      }
     }
   ]
 }
