@@ -51,15 +51,11 @@
     }
   };
 
-  // Authentic verified reviews from the official Facebook page
+  // Authentic verified reviews
   const DEFAULT_REVIEWS = [
     {
       id: 'rev-fb-1',
       name: 'Amal Tarek',
-      role: {
-        ar: 'توصية عبر صفحة فيسبوك الرسمية',
-        en: 'Recommendation via official Facebook page'
-      },
       rating: 5,
       date: {
         ar: '5 مايو 2025',
@@ -73,10 +69,6 @@
     {
       id: 'rev-fb-2',
       name: 'مشاء الله',
-      role: {
-        ar: 'توصية عبر صفحة فيسبوك الرسمية',
-        en: 'Recommendation via official Facebook page'
-      },
       rating: 5,
       date: {
         ar: '5 مايو 2025',
@@ -90,10 +82,6 @@
     {
       id: 'rev-fb-3',
       name: 'Eman Kashwaa',
-      role: {
-        ar: 'توصية عبر صفحة فيسبوك الرسمية',
-        en: 'Recommendation via official Facebook page'
-      },
       rating: 5,
       date: {
         ar: '22 مايو 2022',
@@ -107,10 +95,6 @@
     {
       id: 'rev-fb-4',
       name: 'Hussein Tharwat',
-      role: {
-        ar: 'توصية عبر صفحة فيسبوك الرسمية',
-        en: 'Recommendation via official Facebook page'
-      },
       rating: 5,
       date: {
         ar: '27 ديسمبر 2019',
@@ -124,10 +108,6 @@
     {
       id: 'rev-fb-5',
       name: 'Anas Hamed Atta',
-      role: {
-        ar: 'توصية عبر صفحة فيسبوك الرسمية',
-        en: 'Recommendation via official Facebook page'
-      },
       rating: 5,
       date: {
         ar: '2 ديسمبر 2018',
@@ -141,10 +121,6 @@
     {
       id: 'rev-fb-6',
       name: 'Hamada Eldesouky',
-      role: {
-        ar: 'توصية عبر صفحة فيسبوك الرسمية',
-        en: 'Recommendation via official Facebook page'
-      },
       rating: 5,
       date: {
         ar: '13 يونيو 2018',
@@ -187,8 +163,7 @@
     card.id = rev.id;
 
     const badgeText = lang === 'en' ? 'Recent Review ✨' : 'تقييم حديث ✨';
-    const defaultRole = lang === 'en' ? 'Verified Ghanem Furniture Client' : 'عميل معتمد لدى Ghanem Furniture';
-    const roleText = getLocalized(rev.role, lang) || defaultRole;
+    const roleText = getLocalized(rev.role, lang).trim();
     const quoteText = getLocalized(rev.quote, lang);
     const dateText = getLocalized(rev.date, lang);
 
@@ -202,7 +177,7 @@
         <div class="testimonial-avatar">${getInitials(rev.name)}</div>
         <div style="flex: 1;">
           <div class="testimonial-name">${escapeHtml(rev.name)}</div>
-          <div class="testimonial-role">${escapeHtml(roleText)}</div>
+          ${roleText ? `<div class="testimonial-role">${escapeHtml(roleText)}</div>` : ''}
           ${dateText ? `<div class="testimonial-date">🕒 ${escapeHtml(dateText)}</div>` : ''}
         </div>
       </div>
@@ -241,8 +216,8 @@
     const countEl = document.getElementById('reviewsTotalCount');
     if (countEl) {
       countEl.textContent = lang === 'en'
-        ? `Based on ${totalCount} verified reviews from official Facebook page`
-        : `بناءً على ${totalCount} تقييمات موثقة من صفحة فيسبوك الرسمية`;
+        ? `Based on ${totalCount} verified reviews`
+        : `بناءً على ${totalCount} تقييمات موثقة`;
     }
   }
 
@@ -380,11 +355,10 @@
           return;
         }
 
-        const defaultRole = lang === 'en' ? 'Ghanem Furniture Client' : 'عميل Ghanem Furniture';
         const newReview = {
           id: 'rev-user-' + Date.now(),
           name: name,
-          role: role || defaultRole,
+          role: role,
           rating: currentRating,
           date: lang === 'en' ? 'Just now (New review)' : 'الآن (تقييم جديد)',
           quote: quote
