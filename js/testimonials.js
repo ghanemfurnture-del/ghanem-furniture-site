@@ -6,7 +6,10 @@
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'ghanem_customer_reviews';
+  const STORAGE_KEY = 'ghanem_customer_reviews_v2';
+  try {
+    localStorage.removeItem('ghanem_customer_reviews');
+  } catch (e) {}
   let currentRating = 5;
 
   function getCurrentLang() {
@@ -48,118 +51,120 @@
     }
   };
 
-  // Default human-sounding initial reviews with dual-language content
+  // Authentic verified reviews from the official Facebook page
   const DEFAULT_REVIEWS = [
     {
-      id: 'rev-1',
-      name: 'م. أحمد الشريف',
+      id: 'rev-fb-1',
+      name: 'Amal Tarek',
       role: {
-        ar: 'مشروع مطبخ مودرن كامل - التجمع الخامس، القاهرة',
-        en: 'Full Modern Kitchen Project - Fifth Settlement, Cairo'
+        ar: 'توصية عبر صفحة فيسبوك الرسمية',
+        en: 'Recommendation via official Facebook page'
       },
       rating: 5,
       date: {
-        ar: 'منذ أسبوعين',
-        en: '2 weeks ago'
+        ar: '5 مايو 2025',
+        en: 'May 5, 2025'
       },
       quote: {
-        ar: 'بصراحة كنت متردد في الأول أفصل عمولة وكنت هشتري جاهز، بس لما قعدت مع الباشمهندس وشفت عينات الخشب الزان والتصميم الـ 3D اقتنعت تماماً. المطبخ بقاله عندي 6 شهور، الخامات ممتازة والمفصلات بلوم أصلية وسلسة جداً ومفيش أي هبوط في الدلف ولا تأثر بالبخار. ربنا يبارك لكم على الضمير والشغل النضيف.',
-        en: 'Honestly, I was hesitant at first about custom manufacturing and was about to buy ready-made. But after meeting the engineer and seeing the solid beechwood samples and the 3D design, I was completely convinced. The kitchen has been installed for 6 months now: exceptional materials, genuine smooth Blum hydraulic hinges, no sagging doors, and zero moisture impact. May God bless your integrity and immaculate craftsmanship.'
+        ar: 'ديكورات تحفه و الخامات ممتازة',
+        en: 'ديكورات تحفه و الخامات ممتازة'
       }
     },
     {
-      id: 'rev-2',
-      name: 'م. كريم السعدني',
+      id: 'rev-fb-2',
+      name: 'مشاء الله',
       role: {
-        ar: 'مهندس تصميم داخلي ومقاولات - الشيخ زايد',
-        en: 'Interior Architect & Contractor - Sheikh Zayed'
+        ar: 'توصية عبر صفحة فيسبوك الرسمية',
+        en: 'Recommendation via official Facebook page'
       },
       rating: 5,
       date: {
-        ar: 'منذ شهر',
-        en: '1 month ago'
+        ar: '5 مايو 2025',
+        en: 'May 5, 2025'
       },
       quote: {
-        ar: 'أنا عندي مكتب تشطيبات، وكل شغل تقطيع المسطحات ولزق شريط الحرف (القشاط) بعمله في ورشة غانم. بجد مكن التقطيع الإيطالي عندهم نتيجته زيرو رايش والزوايا 90 درجة بالمللي، وده بيوفر عليا وقت التركيب جداً ومبيكسفنيش قدام العميل. أمانة وسرعة وتسليم في الميعاد.',
-        en: 'I run an interior contracting firm, and I handle all sheet cutting and edge-banding at Ghanem workshops. Truly, their Italian panel saws yield zero chipout and perfect 90-degree cuts to the millimeter. This saves me tremendous installation time and ensures my clients are always impressed. Remarkable reliability, speed, and punctuality.'
+        ar: 'مكان ممتاز و الخامات تحفه و كنت عملت من عنده مطبخ و حقيقي شغله ممتاز',
+        en: 'مكان ممتاز و الخامات تحفه و كنت عملت من عنده مطبخ و حقيقي شغله ممتاز'
       }
     },
     {
-      id: 'rev-3',
-      name: 'أ. سارة عبد الرحمن',
+      id: 'rev-fb-3',
+      name: 'Eman Kashwaa',
       role: {
-        ar: 'دريسنج روم وغرفة نوم ماستر - المعادي',
-        en: 'Walk-In Dressing Room & Master Bedroom - Maadi'
+        ar: 'توصية عبر صفحة فيسبوك الرسمية',
+        en: 'Recommendation via official Facebook page'
       },
       rating: 5,
       date: {
-        ar: 'منذ شهر ونصف',
-        en: '1.5 months ago'
+        ar: '22 مايو 2022',
+        en: 'May 22, 2022'
       },
       quote: {
-        ar: 'فصلت دريسنج روم كاملة وغرفة نوم ماستر.. التشطيب فوق الوصف، ملمس الدهان ناعم جداً مفيش أي غلطة والتقسيمات الداخلية مريحة قوي واستغلت كل زاوية في الأوضة. والفنيين اللي جم ركبوا قمة في الذوق والأدب وما مشيوش غير لما اتأكدوا إني راضية عن كل درج ودلفة.',
-        en: 'I ordered a complete custom dressing room and master bedroom suite. The finishing is beyond description—silky smooth lacquer with zero flaws, and an intuitive layout optimizing every room corner. The installation technicians were polite, considerate, and did not leave until ensuring I was completely satisfied with every drawer and door.'
+        ar: 'تسلم ايديك ا غانم شغل جميل والفنش تحفه ومواعيد التسليم ربنا يباركلك',
+        en: 'تسلم ايديك ا غانم شغل جميل والفنش تحفه ومواعيد التسليم ربنا يباركلك'
       }
     },
     {
-      id: 'rev-4',
-      name: 'أ. مصطفى كامل',
+      id: 'rev-fb-4',
+      name: 'Hussein Tharwat',
       role: {
-        ar: 'شقة عريس بالكامل - مصر الجديدة',
-        en: 'Complete Bridal Residence - Heliopolis'
+        ar: 'توصية عبر صفحة فيسبوك الرسمية',
+        en: 'Recommendation via official Facebook page'
       },
       rating: 5,
       date: {
-        ar: 'منذ شهرين',
-        en: '2 months ago'
+        ar: '27 ديسمبر 2019',
+        en: 'December 27, 2019'
       },
       quote: {
-        ar: 'أهم حاجة كانت عندي هي الالتزام بالوقت عشان توضيب الشقة وميعاد الفرح كان مضغوط.. سلموني الشغل كامل قبل الميعاد المتفق عليه بيومين! قطع الخشب متينة وثقيلة خشب طبيعي معالج بجد مش كرتون مضغوط زي اللي بنشوفه في السوق. شكراً ليكم بجد رفعتوا راسي.',
-        en: 'My top priority was adhering to the strict delivery schedule ahead of our wedding. They delivered everything two days ahead of the agreed date! The furniture is sturdy and substantial—genuine treated natural wood, not compressed board like most of the market. Thank you for exceeding all expectations.'
+        ar: 'ديكورات ممتازة خامات جيدة',
+        en: 'ديكورات ممتازة خامات جيدة'
       }
     },
     {
-      id: 'rev-5',
-      name: 'الحاج صبحي النجار',
+      id: 'rev-fb-5',
+      name: 'Anas Hamed Atta',
       role: {
-        ar: 'صاحب ورشة موبيليا - دمياط (خدمات B2B)',
-        en: 'Furniture Workshop Owner - Damietta (B2B Services)'
+        ar: 'توصية عبر صفحة فيسبوك الرسمية',
+        en: 'Recommendation via official Facebook page'
       },
       rating: 5,
       date: {
-        ar: 'منذ 3 أشهر',
-        en: '3 months ago'
+        ar: '2 ديسمبر 2018',
+        en: 'December 2, 2018'
       },
       quote: {
-        ar: 'من أحسن الورش اللي اتعاملت معاها من سنين في السوق.. مفيش هدر في الألواح إطلاقاً لأنهم بيشتغلوا ببرامج تقطيع متطورة، وسعر المتر مناسب جداً لأصحاب الورش. القشاط الحراري ماسك في الحرف عمره ما يفك ولا يرطب.',
-        en: 'One of the best industrial workshops I have partnered with in years. Zero panel wastage thanks to their advanced sheet optimization software, and highly competitive rates for workshops. Their hot-melt edge banding bonds permanently without peeling or absorbing moisture.'
+        ar: 'VERY NICE WORK. HOPE STILL',
+        en: 'VERY NICE WORK. HOPE STILL'
       }
     },
     {
-      id: 'rev-6',
-      name: 'د. منى السعيد',
+      id: 'rev-fb-6',
+      name: 'Hamada Eldesouky',
       role: {
-        ar: 'تجديد مطبخ ودواليب ملابس - مدينة نصر',
-        en: 'Kitchen & Wardrobe Renovation - Nasr City'
+        ar: 'توصية عبر صفحة فيسبوك الرسمية',
+        en: 'Recommendation via official Facebook page'
       },
       rating: 5,
       date: {
-        ar: 'منذ 4 أشهر',
-        en: '4 months ago'
+        ar: '13 يونيو 2018',
+        en: 'June 13, 2018'
       },
       quote: {
-        ar: 'خدمة ما بعد البيع هي اللي بتفرق المحترم عن غيره.. بعد التركيب بحوالي شهر طلبت أغير مكان رف في المطبخ عشان اشتريت ميكروويف بمقاس أكبر، جم في نفس الأسبوع وعملوا التعديل بكل ترحاب ومن غير أي تعقيد. شكراً لذوقكم ولدقة شغلكم.',
-        en: 'After-sales service is what truly sets a respectable business apart. A month after installation, I needed a shelf adjusted for a larger microwave. Their team arrived that same week and made the adjustment graciously without complications. Thank you for your courtesy and precision.'
+        ar: 'بسم الله ماشاء الله إبداع عالي جدا',
+        en: 'بسم الله ماشاء الله إبداع عالي جدا'
       }
     }
   ];
 
   // Helper to generate initials avatar
   function getInitials(name) {
-    if (!name) return 'ع';
+    if (!name) return 'غ';
     const parts = name.trim().split(/\s+/);
     if (parts.length >= 2) {
-      return (parts[0][0] + '.' + parts[1][0]);
+      const first = parts[0][0];
+      const second = parts[1][0];
+      return (first + '.' + second).toUpperCase();
     }
     return parts[0].substring(0, 2);
   }
@@ -236,8 +241,8 @@
     const countEl = document.getElementById('reviewsTotalCount');
     if (countEl) {
       countEl.textContent = lang === 'en'
-        ? `Based on ${totalCount} verified reviews`
-        : `بناءً على ${totalCount} تقييماً موثقاً`;
+        ? `Based on ${totalCount} verified reviews from official Facebook page`
+        : `بناءً على ${totalCount} تقييمات موثقة من صفحة فيسبوك الرسمية`;
     }
   }
 
