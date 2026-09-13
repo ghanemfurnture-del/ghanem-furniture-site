@@ -40,6 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
     return div.innerHTML;
   }
 
+  function generateSlug(item, index) {
+    if (item.slug) return item.slug;
+    if (item.image) {
+      const filename = item.image.split('/').pop().replace(/\.[^.]+$/, '');
+      return filename.toLowerCase().replace(/[^a-z0-9_-]/g, '-');
+    }
+    return `project-${index + 1}`;
+  }
+
   function renderItems(items, lang) {
     grid.innerHTML = items.map((item, index) => {
       const categories = Array.isArray(item.category) ? item.category.join(' ') : (item.category || '');
@@ -48,9 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const badge = escapeHtml(getLocalized(item.badge, lang));
       const title = escapeHtml(getLocalized(item.title, lang));
       const description = escapeHtml(getLocalized(item.description, lang));
+      const slug = generateSlug(item, index);
 
       return `
-        <div class="gallery-item" data-index="${index}" data-category="${escapeHtml(categories)}">
+        <div class="gallery-item" data-index="${index}" data-slug="${slug}" data-category="${escapeHtml(categories)}">
           <img src="${image}" alt="${alt}" loading="lazy" decoding="async">
           <div class="gallery-overlay">
             ${badge ? `<span class="gallery-badge">${badge}</span>` : ''}

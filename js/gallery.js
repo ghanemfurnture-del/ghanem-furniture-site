@@ -92,20 +92,73 @@ window.initGalleryInteractions = function initGalleryInteractions() {
     });
   }
 
-  // --- 1. Interactive Category Filter ---
+  // --- 1. Interactive Category Filter & Deep Linking ---
+  function getInitialCategory() {
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get('category');
+    if (catParam) return catParam.toLowerCase();
+    const hash = window.location.hash.replace('#', '').toLowerCase();
+    if (hash && hash !== 'gallerygrid' && hash !== '') return hash;
+    return null;
+  }
+
+  function setCategoryFilter(filterValue, updateUrl = true) {
+    const targetBtn = Array.from(filterBtns).find(b => (b.getAttribute('data-filter') || '').toLowerCase() === filterValue.toLowerCase());
+    if (targetBtn) {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      targetBtn.classList.add('active');
+      updateVisibleItems(filterValue);
+      if (updateUrl) {
+        const url = new URL(window.location);
+        if (filterValue === 'all') {
+          url.searchParams.delete('category');
+          if (url.hash && url.hash.replace('#', '').toLowerCase() === filterValue.toLowerCase()) {
+            url.hash = '';
+          }
+        } else {
+          url.searchParams.set('category', filterValue);
+        }
+        history.replaceState(null, '', url);
+      }
+    } else if (filterValue === 'all') {
+      updateVisibleItems('all');
+    }
+  }
+
   if (filterBtns.length > 0 && galleryItems.length > 0) {
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
         const filterValue = btn.getAttribute('data-filter') || 'all';
-        updateVisibleItems(filterValue);
+        setCategoryFilter(filterValue, true);
       });
     });
+
+    // Check for category deep link on initial load
+    const initialCat = getInitialCategory();
+    if (initialCat) {
+      setCategoryFilter(initialCat, false);
+    }
   }
 
-  // --- 2. Lightbox Modal Functionality ---
+  // --- 2. Lightbox Modal Functionality & Item Deep Linking ---
+  function updateUrlWithItem(item) {
+    if (!item) return;
+    const slug = item.getAttribute('data-slug') || item.getAttribute('data-index');
+    if (slug) {
+      const url = new URL(window.location);
+      url.searchParams.set('item', slug);
+      history.replaceState(null, '', url);
+    }
+  }
+
+  function clearItemFromUrl() {
+    const url = new URL(window.location);
+    if (url.searchParams.has('item')) {
+      url.searchParams.delete('item');
+      history.replaceState(null, '', url);
+    }
+  }
+
   function openLightbox(index) {
     const imageItems = getImageItems();
     if (!lightboxModal || imageItems.length === 0) return;
@@ -122,6 +175,7 @@ window.initGalleryInteractions = function initGalleryInteractions() {
     const item = imageItems[currentGalleryIndex];
     if (!item) return;
 
+    const img = item.querySelector('img');
     const isEn = (window.i18n && window.i18n.getLanguage() === 'en') || (localStorage.getItem('site_lang') === 'en');
     const defaultTitle = isEn ? 'Ghanem Furniture Project' : 'مشروع Ghanem Furniture';
     const defaultCategory = isEn ? 'Luxury Woodwork' : 'أعمال خشبية فاخرة';
@@ -137,12 +191,16 @@ window.initGalleryInteractions = function initGalleryInteractions() {
 
     lightboxModal.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // Update URL with item slug for deep linking & sharing
+    updateUrlWithItem(item);
   }
 
   function closeLightbox() {
     if (!lightboxModal) return;
     lightboxModal.classList.remove('active');
     document.body.style.overflow = '';
+    clearItemFromUrl();
   }
 
   function showNextImage() {
@@ -186,6 +244,93 @@ window.initGalleryInteractions = function initGalleryInteractions() {
     });
   }
 
+  // --- 3. Lightbox Share Button ---
+  const lightboxShareBtn = document.getElementById('lightboxShareBtn');
+  if (lightboxShareBtn) {
+    lightboxShareBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const shareUrl = window.location.href;
+      const isEn = (window.i18n && window.i18n.getLanguage() === 'en') || (localStorage.getItem('site_lang') === 'en');
+      const copiedText = isEn ? '✓ Link Copied!' : '✓ تم نسخ الرابط!';
+      const shareTitle = lightboxTitle ? lightboxTitle.textContent : 'Ghanem Furniture';
+
+      // On mobile devices with Web Share API
+      if (navigator.share && window.innerWidth <= 768) {
+        try {
+          await navigator.share({
+            title: shareTitle,
+            text: `${shareTitle} - Ghanem Furniture`,
+            url: shareUrl
+          });
+          return;
+        } catch (err) {
+          // User dismissed or aborted; fallback to clipboard
+        }
+      }
+
+      // Clipboard fallback
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(shareUrl);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = shareUrl;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+
+        // Visual feedback on button
+        const span = lightboxShareBtn.querySelector('span');
+        const originalText = span ? span.textContent : '';
+        if (span) span.textContent = copiedText;
+        lightboxShareBtn.style.background = 'rgba(16, 185, 129, 0.25)';
+        lightboxShareBtn.style.borderColor = '#10B981';
+        lightboxShareBtn.style.color = '#34D399';
+
+        setTimeout(() => {
+          if (span) span.textContent = originalText;
+          lightboxShareBtn.style.background = '';
+          lightboxShareBtn.style.borderColor = '';
+          lightboxShareBtn.style.color = '';
+        }, 2200);
+      } catch (err) {
+        console.warn('Could not copy link:', err);
+      }
+    });
+  }
+
+  // --- 4. Deep Link Auto-Open on Page Load (?item=slug) ---
+  const itemParam = new URLSearchParams(window.location.search).get('item');
+  if (itemParam) {
+    const slugQuery = itemParam.toLowerCase();
+    const imageItems = getImageItems();
+    let matchedItem = imageItems.find(it => (it.getAttribute('data-slug') || '').toLowerCase() === slugQuery);
+
+    if (!matchedItem) {
+      // Look across all galleryItems if current filter excluded it
+      matchedItem = galleryItems.find(it => (it.getAttribute('data-slug') || '').toLowerCase() === slugQuery);
+      if (matchedItem) {
+        setCategoryFilter('all', false);
+      }
+    }
+
+    if (matchedItem) {
+      const refreshedImageItems = getImageItems();
+      const targetIdx = refreshedImageItems.indexOf(matchedItem);
+      if (targetIdx !== -1) {
+        setTimeout(() => {
+          openLightbox(targetIdx);
+        }, 150);
+      }
+    }
+  }
+
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     if (!lightboxModal || !lightboxModal.classList.contains('active')) return;
@@ -193,10 +338,8 @@ window.initGalleryInteractions = function initGalleryInteractions() {
     if (e.key === 'Escape') {
       closeLightbox();
     } else if (e.key === 'ArrowLeft') {
-      // In RTL, left arrow moves to next image
       showNextImage();
     } else if (e.key === 'ArrowRight') {
-      // In RTL, right arrow moves to previous image
       showPrevImage();
     }
   });
