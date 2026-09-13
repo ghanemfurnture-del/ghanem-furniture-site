@@ -356,8 +356,10 @@
     "privacy_title": "Privacy Policy | Ghanem Furniture",
     "privacy_heading": "Privacy & Data Protection Policy",
     "privacy_desc": "At Ghanem Furniture, we are committed to safeguarding your privacy and personal data with utmost transparency and security.",
+    "privacy_link": "Privacy Policy",
     "terms_title": "Terms & Conditions | Ghanem Furniture",
     "terms_heading": "Terms & Conditions",
-    "terms_desc": "Guidelines and terms governing the use of the Ghanem Furniture website and engagement with custom projects and designs."
+    "terms_desc": "Guidelines and terms governing the use of the Ghanem Furniture website and engagement with custom projects and designs.",
+    "terms_link": "Terms & Conditions"
   }
 }

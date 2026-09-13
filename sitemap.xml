@@ -86,4 +86,20 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- سياسة الخصوصية -->
+  <url>
+    <loc>https://ghanem-furniture.vercel.app/privacy-policy.html</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- الشروط والأحكام -->
+  <url>
+    <loc>https://ghanem-furniture.vercel.app/terms-conditions.html</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
