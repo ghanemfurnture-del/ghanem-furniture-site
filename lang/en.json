@@ -205,7 +205,10 @@
     "filter_designs": "Executed Designs",
     "filter_3d": "3D Visualizations",
     "filter_workshop": "B2B Workshop",
-    "loading": "Loading gallery items..."
+    "loading": "Loading gallery items...",
+    "share_project": "Share direct link to this project",
+    "share_btn": "Share Link",
+    "copied_toast": "✓ Project link copied to clipboard!"
   },
   "workshop": {
     "hero_tag": "B2B Industrial Services",

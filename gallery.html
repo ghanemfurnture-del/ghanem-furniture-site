@@ -114,7 +114,44 @@ src="https://www.facebook.com/tr?id=38373061858975722&ev=PageView&noscript=1"
   });
 </script>
 
-
+  <!-- LocalBusiness Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["FurnitureStore", "HomeAndConstructionBusiness"],
+    "name": "Ghanem Furniture | غانم للأثاث والأعمال الخشبية",
+    "image": "https://ghanem-furniture.vercel.app/images/hero-kitchen.jpg",
+    "url": "https://ghanem-furniture.vercel.app/",
+    "telephone": "+201000363618",
+    "email": "ghanemfurnture@gmail.com",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "شارع عمر بن الخطاب، بعد كوبري المرور، بجوار مسجد الخيف",
+      "addressLocality": "المنصورة",
+      "addressRegion": "الدقهلية",
+      "addressCountry": "EG"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 31.0379,
+      "longitude": 31.3815
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/originalwoodghanem",
+      "https://www.instagram.com/ghanemfurniture",
+      "https://www.tiktok.com/@ghanem_furniture"
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -367,9 +404,15 @@ src="https://www.facebook.com/tr?id=38373061858975722&ev=PageView&noscript=1"
           <h4 id="lightboxTitle">عنوان المشروع</h4>
           <p id="lightboxCategory">القسم</p>
         </div>
-        <a href="contact.html" class="btn btn-gold btn-sm">
-          <span data-i18n="common.order_similar">طلب تصميم مماثل</span>
-        </a>
+        <div class="lightbox-actions" style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+          <button type="button" class="btn btn-outline-white btn-sm" id="lightboxShareBtn" title="مشاركة رابط المشروع" data-i18n-title="gallery.share_project">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            <span data-i18n="gallery.share_btn">مشاركة الرابط</span>
+          </button>
+          <a href="contact.html" class="btn btn-gold btn-sm">
+            <span data-i18n="common.order_similar">طلب تصميم مماثل</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
