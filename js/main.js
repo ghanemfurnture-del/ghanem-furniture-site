@@ -286,4 +286,84 @@ document.addEventListener('DOMContentLoaded', () => {
     goToSlide(0);
     startAutoPlay();
   });
+
+  // --- 8. Cookie Consent Banner Component ---
+  (function initCookieConsent() {
+    const COOKIE_STORAGE_KEY = 'ghanem_cookie_consent';
+    if (localStorage.getItem(COOKIE_STORAGE_KEY)) return;
+
+    const isEn = (window.i18n && window.i18n.getLanguage() === 'en') || (localStorage.getItem('site_lang') === 'en');
+    const text = isEn
+      ? 'We use cookies and analytical tools to improve your browsing experience and provide tailored services. By continuing to browse, you agree to our use of cookies.'
+      : 'نستخدم ملفات تعريف الارتباط (Cookies) وأدوات التحليل لتعزيز تجربة تصفحك وتقديم خدمات مخصصة. بتصفحك للموقع، فإنك توافق على ذلك.';
+    const privacyText = isEn ? 'Privacy Policy' : 'سياسة الخصوصية';
+    const acceptText = isEn ? 'Accept' : 'موافق';
+
+    const banner = document.createElement('div');
+    banner.className = 'cookie-consent-banner';
+    banner.id = 'cookieConsentBanner';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-live', 'polite');
+    banner.innerHTML = `
+      <div class="cookie-consent-inner">
+        <div class="cookie-consent-text">
+          <svg class="cookie-consent-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a10 10 0 0 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path>
+            <path d="M8.5 8.5v.01"></path>
+            <path d="M7.5 15.5v.01"></path>
+            <path d="M15.5 15.5v.01"></path>
+            <path d="M11.5 12.5v.01"></path>
+          </svg>
+          <p>
+            <span data-i18n="cookie.text">${text}</span>
+            <a href="privacy-policy.html" class="cookie-privacy-link" data-i18n="cookie.privacy_link">${privacyText}</a>
+          </p>
+        </div>
+        <div class="cookie-consent-actions">
+          <button type="button" class="btn btn-gold btn-sm" id="cookieAcceptBtn">
+            <span data-i18n="cookie.accept">${acceptText}</span>
+          </button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(banner);
+
+    // Fade in
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        banner.classList.add('visible');
+      }, 400);
+    });
+
+    const acceptBtn = document.getElementById('cookieAcceptBtn');
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem(COOKIE_STORAGE_KEY, 'accepted');
+        banner.classList.remove('visible');
+        setTimeout(() => {
+          banner.remove();
+        }, 350);
+      });
+    }
+
+    // Update texts on language change
+    window.addEventListener('languageChanged', (e) => {
+      const currentLang = (e && e.detail && e.detail.lang) || localStorage.getItem('site_lang') || 'ar';
+      const textSpan = banner.querySelector('[data-i18n="cookie.text"]');
+      const linkSpan = banner.querySelector('[data-i18n="cookie.privacy_link"]');
+      const btnSpan = banner.querySelector('[data-i18n="cookie.accept"]');
+
+      if (currentLang === 'en') {
+        if (textSpan) textSpan.textContent = 'We use cookies and analytical tools to improve your browsing experience and provide tailored services. By continuing to browse, you agree to our use of cookies.';
+        if (linkSpan) linkSpan.textContent = 'Privacy Policy';
+        if (btnSpan) btnSpan.textContent = 'Accept';
+      } else {
+        if (textSpan) textSpan.textContent = 'نستخدم ملفات تعريف الارتباط (Cookies) وأدوات التحليل لتعزيز تجربة تصفحك وتقديم خدمات مخصصة. بتصفحك للموقع، فإنك توافق على ذلك.';
+        if (linkSpan) linkSpan.textContent = 'سياسة الخصوصية';
+        if (btnSpan) btnSpan.textContent = 'موافق';
+      }
+    });
+  })();
 });

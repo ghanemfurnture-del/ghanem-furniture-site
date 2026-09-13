@@ -345,5 +345,19 @@
     "heic_error": "HEIC format could not be converted on this browser. Please save as JPG or PNG and try again.",
     "uploading_photos_status": "Uploading reference photos and sending your message...",
     "photos_attached_title": "Attached Reference Photos from Client:"
+  },
+  "cookie": {
+    "title": "Cookie Consent Notice",
+    "text": "We use cookies and analytical tools to improve your browsing experience and provide tailored services. By continuing to browse, you agree to our use of cookies.",
+    "accept": "Accept",
+    "privacy_link": "Privacy Policy"
+  },
+  "legal": {
+    "privacy_title": "Privacy Policy | Ghanem Furniture",
+    "privacy_heading": "Privacy & Data Protection Policy",
+    "privacy_desc": "At Ghanem Furniture, we are committed to safeguarding your privacy and personal data with utmost transparency and security.",
+    "terms_title": "Terms & Conditions | Ghanem Furniture",
+    "terms_heading": "Terms & Conditions",
+    "terms_desc": "Guidelines and terms governing the use of the Ghanem Furniture website and engagement with custom projects and designs."
   }
 }
