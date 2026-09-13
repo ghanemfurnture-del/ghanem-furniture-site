@@ -1822,6 +1822,17 @@ html[dir="ltr"] .testimonial-badge-new {
     min-width: 28px;
     font-size: 0.8rem;
   }
+  .faq-question {
+    padding: 1.1rem 1.25rem;
+    font-size: 1rem;
+    gap: 1rem;
+  }
+  .faq-answer {
+    padding: 0 1.25rem;
+  }
+  .faq-item.active .faq-answer {
+    padding: 0 1.25rem 1.4rem 1.25rem;
+  }
 }
 
 /* ==========================================================================
@@ -1902,7 +1913,7 @@ html[dir="ltr"] .testimonial-badge-new {
 }
 
 .faq-item.active .faq-answer {
-  max-height: 400px;
+  max-height: 1000px;
   padding: 0 2rem 1.8rem 2rem;
 }
 
@@ -2618,6 +2629,13 @@ textarea.form-control {
     gap: 0.8rem;
   }
 
+  .lightbox-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
   .lightbox-info .btn {
     width: 100%;
   }
@@ -2764,6 +2782,16 @@ textarea.form-control {
   .btn-lg {
     padding: 0.95rem 1.8rem;
     font-size: 1rem;
+  }
+
+  .location-map-header .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-file-select {
+    width: 100%;
+    justify-content: center;
   }
 
   .page-hero {
@@ -3049,9 +3077,14 @@ html[dir="rtl"] .lang-dropdown {
 }
 
 .mobile-lang-wrapper .lang-dropdown {
+  position: relative;
   width: 100%;
+  top: auto;
+  left: auto;
+  margin-top: 0.5rem;
   background: var(--dark-850);
   border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
 }
 
 .mobile-lang-wrapper .lang-option {
@@ -3087,6 +3120,7 @@ html[dir="ltr"] h4,
 html[dir="ltr"] h5,
 html[dir="ltr"] h6,
 html[dir="ltr"] .section-title,
+html[dir="ltr"] .hero-title,
 html[dir="ltr"] .page-hero-title {
   font-family: 'Outfit', 'Montserrat', sans-serif;
   letter-spacing: -0.01em;
@@ -3103,17 +3137,75 @@ html[dir="ltr"] .mobile-drawer.open {
   right: auto;
 }
 
-html[dir="ltr"] .mobile-nav-link span {
+/* Rotate ONLY the arrow icon, NOT the text inside mobile-nav-link */
+html[dir="ltr"] .mobile-nav-link span:last-child {
   transform: rotate(180deg);
+  display: inline-block;
 }
 
+html[dir="ltr"] .mobile-nav-link:hover,
+html[dir="ltr"] .mobile-nav-link.active {
+  padding-right: 0;
+  padding-left: 0.5rem;
+}
+
+/* Hero Stats Bar in LTR */
 html[dir="ltr"] .hero-stat-item {
   border-left: none;
   border-right: 1px solid rgba(255, 255, 255, 0.12);
+  padding-left: 0;
+  padding-right: 1rem;
 }
 
 html[dir="ltr"] .hero-stat-item:last-child {
   border-right: none;
+  padding-right: 0;
+}
+
+@media (max-width: 991px) {
+  html[dir="ltr"] .hero-stat-item:nth-child(2) {
+    border-right: none;
+    padding-right: 0;
+  }
+}
+
+/* Header Dropdown Alignment in LTR */
+html[dir="ltr"] .site-header .lang-dropdown {
+  left: auto;
+  right: 0;
+}
+
+/* Footer Title Accent & Link Hover in LTR */
+html[dir="ltr"] .footer-col-title::after {
+  right: auto;
+  left: 0;
+}
+
+html[dir="ltr"] .footer-link:hover {
+  padding-right: 0;
+  padding-left: 0.4rem;
+}
+
+/* Button Micro-interactions in LTR */
+html[dir="ltr"] .btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* FAQ Accordion Alignment in LTR */
+html[dir="ltr"] .faq-question {
+  text-align: left;
+}
+
+/* 3D Steps Card Number in LTR (repositions away from left-aligned icon) */
+html[dir="ltr"] .step-number {
+  left: auto;
+  right: 1.5rem;
+}
+
+/* Workshop & Features Specs in LTR */
+html[dir="ltr"] .spec-item {
+  border-right: none;
+  border-left: 3px solid var(--gold-500);
 }
 
 html[dir="ltr"] .contact-item-icon {
@@ -3121,6 +3213,7 @@ html[dir="ltr"] .contact-item-icon {
   margin-right: 1rem;
 }
 
+/* Lightbox Controls in LTR */
 html[dir="ltr"] .lightbox-prev {
   right: auto;
   left: 20px;
@@ -3129,6 +3222,18 @@ html[dir="ltr"] .lightbox-prev {
 html[dir="ltr"] .lightbox-next {
   left: auto;
   right: 20px;
+}
+
+html[dir="ltr"] .lightbox-close-btn {
+  left: auto;
+  right: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  html[dir="ltr"] .lightbox-close-btn {
+    left: auto;
+    right: 0.6rem;
+  }
 }
 
 /* ==========================================================================
