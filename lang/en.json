@@ -328,6 +328,14 @@
     "follow_social": "Follow us on social media:",
     "form_quick_tag": "Quick Contact Form",
     "form_quick_title": "Send Your Inquiry or Request",
-    "form_quick_desc": "Fill in the details below and we will contact you by phone or WhatsApp shortly."
+    "form_quick_desc": "Fill in the details below and we will contact you by phone or WhatsApp shortly.",
+    "form_photos": "Attach reference photos or floorplan (Optional)",
+    "select_photos_btn": "Select photos from your device (Max 3 photos)",
+    "upload_hint": "You can select up to 3 photos (PNG, JPG, HEIC). Images are automatically compressed (max 250KB) for instant, high-quality transmission.",
+    "compressing_text": "Processing and optimizing photos in high resolution...",
+    "max_photos_alert": "Sorry, you can attach a maximum of 3 photos per message.",
+    "heic_error": "HEIC format could not be converted on this browser. Please save as JPG or PNG and try again.",
+    "uploading_photos_status": "Uploading reference photos and sending your message...",
+    "photos_attached_title": "Attached Reference Photos from Client:"
   }
 }

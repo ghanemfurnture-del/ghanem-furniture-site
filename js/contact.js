@@ -1,6 +1,6 @@
 /**
  * GHANEM FURNITURE
- * Contact Form Validation, EmailJS Real Sending & WhatsApp Integration
+ * Contact Form Validation, Image Compression, ImgBB Cloud Upload & EmailJS Integration
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,13 +8,248 @@ document.addEventListener('DOMContentLoaded', () => {
   const formStatus = document.getElementById('formStatus');
   const sendWhatsAppBtn = document.getElementById('sendWhatsAppBtn');
   const whatsappNumber = '201000363618';
+  const IMGBB_API_KEY = 'ec8c122dae2b32dc53c6595cb835d7a2';
+
+  // Photo Upload Elements
+  const referencePhotosInput = document.getElementById('referencePhotos');
+  const selectPhotosBtn = document.getElementById('selectPhotosBtn');
+  const photoPreviewGrid = document.getElementById('photoPreviewGrid');
+  const compressionLoading = document.getElementById('compressionLoading');
+  const photoLimitAlert = document.getElementById('photoLimitAlert');
+  const fileUploadZone = document.getElementById('fileUploadZone');
+
+  // State: array of { id, originalName, file, previewUrl, sizeKb }
+  let attachedPhotos = [];
+  const MAX_PHOTOS = 3;
 
   function isEnglish() {
     return document.documentElement.lang === 'en' || (window.i18n && window.i18n.getLanguage() === 'en');
   }
 
+  function getI18nText(keyPath, fallback) {
+    if (window.i18n && typeof window.i18n.translate === 'function') {
+      const val = window.i18n.translate(keyPath);
+      if (val && val !== keyPath) return val;
+    }
+    return fallback;
+  }
+
+  // --- Photo Upload & Compression Handling ---
+  if (selectPhotosBtn && referencePhotosInput) {
+    selectPhotosBtn.addEventListener('click', () => {
+      referencePhotosInput.click();
+    });
+  }
+
+  // Drag & Drop support on upload zone
+  if (fileUploadZone && referencePhotosInput) {
+    ['dragenter', 'dragover'].forEach(eventName => {
+      fileUploadZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        fileUploadZone.classList.add('dragover');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      fileUploadZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        fileUploadZone.classList.remove('dragover');
+      });
+    });
+
+    fileUploadZone.addEventListener('drop', (e) => {
+      if (e.dataTransfer && e.dataTransfer.files) {
+        handleSelectedFiles(Array.from(e.dataTransfer.files));
+      }
+    });
+  }
+
+  if (referencePhotosInput) {
+    referencePhotosInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files.length > 0) {
+        handleSelectedFiles(Array.from(e.target.files));
+        referencePhotosInput.value = ''; // Reset input to allow selecting same file again if removed
+      }
+    });
+  }
+
+  function showAlert(message) {
+    if (!photoLimitAlert) return;
+    photoLimitAlert.textContent = message;
+    photoLimitAlert.style.display = 'block';
+    setTimeout(() => {
+      photoLimitAlert.style.display = 'none';
+    }, 6000);
+  }
+
+  async function handleSelectedFiles(files) {
+    if (!files || files.length === 0) return;
+
+    // Filter image files
+    const imageFiles = files.filter(f => {
+      const ext = f.name.split('.').pop().toLowerCase();
+      return f.type.startsWith('image/') || ext === 'heic' || ext === 'heif';
+    });
+
+    if (imageFiles.length === 0) return;
+
+    // Check count limit
+    const remainingSlots = MAX_PHOTOS - attachedPhotos.length;
+    if (remainingSlots <= 0) {
+      const msg = isEnglish()
+        ? `You can only attach a maximum of ${MAX_PHOTOS} photos.`
+        : `عذراً، الحد الأقصى المسموح به هو ${MAX_PHOTOS} صور فقط لكل رسالة.`;
+      showAlert(msg);
+      return;
+    }
+
+    let filesToProcess = imageFiles;
+    if (imageFiles.length > remainingSlots) {
+      const msg = isEnglish()
+        ? `You can only add ${remainingSlots} more photo(s). Extra photos were ignored.`
+        : `يمكنك إضافة ${remainingSlots} صور إضافية فقط. تم تجاهل الصور الزائدة.`;
+      showAlert(msg);
+      filesToProcess = imageFiles.slice(0, remainingSlots);
+    }
+
+    // Show loading indicator
+    if (compressionLoading) {
+      compressionLoading.style.display = 'flex';
+    }
+
+    for (const rawFile of filesToProcess) {
+      try {
+        let fileToCompress = rawFile;
+
+        // HEIC detection & preparation
+        const ext = rawFile.name.split('.').pop().toLowerCase();
+        const isHeic = ext === 'heic' || ext === 'heif' || rawFile.type === 'image/heic' || rawFile.type === 'image/heif';
+
+        // Check browser-image-compression availability
+        if (typeof imageCompression !== 'function') {
+          console.warn('imageCompression is not loaded yet, using original file');
+          addPhotoToState(rawFile, rawFile);
+          continue;
+        }
+
+        // Compression settings
+        const options = {
+          maxSizeMB: 0.25, // 250 KB
+          maxWidthOrHeight: 1280,
+          useWebWorker: true,
+          fileType: 'image/jpeg',
+          initialQuality: 0.75
+        };
+
+        const compressedFile = await imageCompression(fileToCompress, options);
+        addPhotoToState(compressedFile, rawFile);
+      } catch (err) {
+        console.error('Error compressing file:', rawFile.name, err);
+        const isHeic = rawFile.name.toLowerCase().endsWith('.heic') || rawFile.name.toLowerCase().endsWith('.heif');
+        if (isHeic) {
+          showAlert(isEnglish()
+            ? `Could not convert HEIC photo "${rawFile.name}". Please save as JPG/PNG and try again.`
+            : `تعذر تحويل صورة الآيفون HEIC "${rawFile.name}". يرجى حفظها كـ JPG أو PNG.`);
+        } else {
+          showAlert(isEnglish()
+            ? `Could not process image "${rawFile.name}".`
+            : `تعذر معالجة الصورة "${rawFile.name}".`);
+        }
+      }
+    }
+
+    // Hide loading
+    if (compressionLoading) {
+      compressionLoading.style.display = 'none';
+    }
+
+    renderPhotoPreviews();
+  }
+
+  function addPhotoToState(compressedFile, rawFile) {
+    const id = 'photo_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
+    const previewUrl = URL.createObjectURL(compressedFile);
+    const sizeKb = Math.round(compressedFile.size / 1024);
+
+    attachedPhotos.push({
+      id,
+      originalName: rawFile.name,
+      file: compressedFile,
+      previewUrl,
+      sizeKb
+    });
+  }
+
+  function renderPhotoPreviews() {
+    if (!photoPreviewGrid) return;
+    photoPreviewGrid.innerHTML = '';
+
+    attachedPhotos.forEach((item, index) => {
+      const card = document.createElement('div');
+      card.className = 'preview-item';
+      card.innerHTML = `
+        <img src="${item.previewUrl}" alt="Preview ${index + 1}" class="preview-thumb">
+        <button type="button" class="preview-remove-btn" title="${isEnglish() ? 'Remove photo' : 'حذف الصورة'}" aria-label="Remove photo">×</button>
+        <div class="preview-size-badge">${item.sizeKb} KB</div>
+      `;
+
+      card.querySelector('.preview-remove-btn').addEventListener('click', () => {
+        removePhoto(item.id);
+      });
+
+      photoPreviewGrid.appendChild(card);
+    });
+  }
+
+  function removePhoto(photoId) {
+    const idx = attachedPhotos.findIndex(p => p.id === photoId);
+    if (idx !== -1) {
+      URL.revokeObjectURL(attachedPhotos[idx].previewUrl);
+      attachedPhotos.splice(idx, 1);
+      renderPhotoPreviews();
+    }
+  }
+
+  function clearAllPhotos() {
+    attachedPhotos.forEach(p => URL.revokeObjectURL(p.previewUrl));
+    attachedPhotos = [];
+    if (photoPreviewGrid) photoPreviewGrid.innerHTML = '';
+    if (referencePhotosInput) referencePhotosInput.value = '';
+    if (photoLimitAlert) photoLimitAlert.style.display = 'none';
+  }
+
+  // Upload compressed photos to ImgBB
+  async function uploadPhotosToImgBB(photos) {
+    const uploadedUrls = [];
+    for (let i = 0; i < photos.length; i++) {
+      const item = photos[i];
+      const formData = new FormData();
+      formData.append('image', item.file);
+
+      const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!response.ok) {
+        throw new Error(`ImgBB upload failed with status ${response.status}`);
+      }
+
+      const resData = await response.json();
+      if (resData && resData.data && resData.data.url) {
+        uploadedUrls.push(resData.data.url);
+      } else {
+        throw new Error('Invalid response from ImgBB');
+      }
+    }
+    return uploadedUrls;
+  }
+
+  // --- Form Submission Handling ---
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const nameInput = document.getElementById('contactName');
@@ -38,44 +273,69 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Format WhatsApp message as an extra instant option
-      let formattedMessage = '';
-      if (isEnglish()) {
-        formattedMessage = `Hello Ghanem Furniture,\n\nI would like to inquire about: ${service}\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\n\nMessage:\n${message}`;
-      } else {
-        formattedMessage = `مرحباً Ghanem Furniture،\n\nأود الاستفسار بخصوص: ${service}\nالاسم: ${name}\nرقم الهاتف: ${phone}\nالبريد الإلكتروني: ${email}\n\nنص الرسالة:\n${message}`;
-      }
-
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedMessage)}`;
-
       // Disable submit button and indicate loading state
       const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = isEnglish()
-          ? '<span>Sending message...</span>'
-          : '<span>جاري إرسال الرسالة...</span>';
+        submitBtn.innerHTML = attachedPhotos.length > 0
+          ? (isEnglish() ? '<span>Uploading photos & sending...</span>' : '<span>جاري رفع الصور وإرسال الرسالة...</span>')
+          : (isEnglish() ? '<span>Sending message...</span>' : '<span>جاري إرسال الرسالة...</span>');
       }
 
-      // Send real email via EmailJS
-      emailjs.send("service_ngeifoq", "template_v1mkb5i", {
-        name: name,
-        phone: phone,
-        email: email,
-        service: service,
-        message: message
-      })
-      .then((response) => {
+      let uploadedPhotoUrls = [];
+
+      try {
+        // 1. Upload photos to ImgBB if any
+        if (attachedPhotos.length > 0) {
+          uploadedPhotoUrls = await uploadPhotosToImgBB(attachedPhotos);
+        }
+
+        // 2. Build complete message including reference photo links
+        let finalMessage = message;
+        let photosTextSummary = '';
+        if (uploadedPhotoUrls.length > 0) {
+          const photosTitle = isEnglish()
+            ? '\n\n--- Attached Reference Photos ---'
+            : '\n\n--- الصور المرجعية المرفقة ---';
+          const photosList = uploadedPhotoUrls.map((url, idx) => {
+            return isEnglish() ? `Photo ${idx + 1}: ${url}` : `صورة ${idx + 1}: ${url}`;
+          }).join('\n');
+          finalMessage += photosTitle + '\n' + photosList;
+          photosTextSummary = uploadedPhotoUrls.join('\n');
+        }
+
+        // 3. Send email via EmailJS
+        const response = await emailjs.send("service_ngeifoq", "template_v1mkb5i", {
+          name: name,
+          phone: phone,
+          email: email,
+          service: service,
+          message: finalMessage,
+          reference_photos: photosTextSummary
+        });
+
         console.log('EmailJS Success:', response.status, response.text);
 
-        // Show luxury success feedback with direct one-click WhatsApp button as an extra option
+        // Format WhatsApp URL for direct chat button in success alert
+        let formattedWhatsApp = '';
+        if (isEnglish()) {
+          formattedWhatsApp = `Hello Ghanem Furniture,\n\nI would like to inquire about: ${service}\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\n\nMessage:\n${finalMessage}`;
+        } else {
+          formattedWhatsApp = `مرحباً Ghanem Furniture،\n\nأود الاستفسار بخصوص: ${service}\nالاسم: ${name}\nرقم الهاتف: ${phone}\nالبريد الإلكتروني: ${email}\n\nنص الرسالة:\n${finalMessage}`;
+        }
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedWhatsApp)}`;
+
+        // Show luxury success feedback
         if (formStatus) {
           const successTitle = isEnglish()
             ? '✓ Your message has been sent successfully!'
             : '✓ تم إرسال رسالتك واستلامها بنجاح!';
+          const photosNote = uploadedPhotoUrls.length > 0
+            ? (isEnglish() ? ` (${uploadedPhotoUrls.length} reference photo(s) attached)` : ` (تم إرفاق ${uploadedPhotoUrls.length} صور مرجعية)`)
+            : '';
           const successDesc = isEnglish()
-            ? `Thank you for reaching out, <strong>${escapeHtml(name)}</strong>! An automatic email notification has been delivered to the Ghanem Furniture team, and we will get back to you shortly. You can also chat with us directly via WhatsApp below as an extra option:`
-            : `شكراً لتواصلك معنا يا <strong>${escapeHtml(name)}</strong>! تم إرسال رسالتك بنجاح ووصل إشعار تلقائي لفريق Ghanem Furniture وسنتواصل معك في أقرب وقت. كما يمكنك أيضاً بدء محادثة واتساب مباشرة معنا كخيار إضافي:`;
+            ? `Thank you for reaching out, <strong>${escapeHtml(name)}</strong>! An automatic email notification${photosNote} has been delivered to the Ghanem Furniture team, and we will get back to you shortly. You can also chat with us directly via WhatsApp below:`
+            : `شكراً لتواصلك معنا يا <strong>${escapeHtml(name)}</strong>! تم إرسال رسالتك بنجاح${photosNote} ووصل إشعار تلقائي لفريق Ghanem Furniture وسنتواصل معك في أقرب وقت. كما يمكنك أيضاً بدء محادثة واتساب مباشرة معنا:`;
           const sendBtnText = isEnglish() ? 'Optional: Chat via WhatsApp' : 'خيار إضافي: محادثة مباشرة عبر واتساب';
 
           formStatus.innerHTML = `
@@ -100,31 +360,46 @@ document.addEventListener('DOMContentLoaded', () => {
           }, 100);
         }
 
-        // Reset form upon successful email transmission
+        // Reset form and clear uploaded photos
         contactForm.reset();
+        clearAllPhotos();
 
         // Tracking: successful contact form submission
         if (typeof gtag === 'function') {
           gtag('event', 'form_submit', {
             'event_category': 'engagement',
             'event_label': 'contact_form',
-            'service_type': service
+            'service_type': service,
+            'has_photos': uploadedPhotoUrls.length > 0
           });
         }
         if (typeof fbq === 'function') {
           fbq('track', 'Lead');
         }
-      })
-      .catch((error) => {
-        console.error('EmailJS Error:', error);
+
+      } catch (error) {
+        console.error('Submission Error:', error);
+
+        // Prepare WhatsApp message fallback
+        let fallbackMsg = message;
+        if (uploadedPhotoUrls.length > 0) {
+          fallbackMsg += `\n\nالصور المرفقة:\n` + uploadedPhotoUrls.join('\n');
+        }
+        let formattedWhatsApp = '';
+        if (isEnglish()) {
+          formattedWhatsApp = `Hello Ghanem Furniture,\n\nI would like to inquire about: ${service}\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\n\nMessage:\n${fallbackMsg}`;
+        } else {
+          formattedWhatsApp = `مرحباً Ghanem Furniture،\n\nأود الاستفسار بخصوص: ${service}\nالاسم: ${name}\nرقم الهاتف: ${phone}\nالبريد الإلكتروني: ${email}\n\nنص الرسالة:\n${fallbackMsg}`;
+        }
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedWhatsApp)}`;
 
         if (formStatus) {
           const errorTitle = isEnglish()
-            ? '✕ Could not send email at the moment'
-            : '✕ تعذر إرسال الإيميل حالياً';
+            ? '✕ Could not send your message at the moment'
+            : '✕ تعذر إرسال رسالتك حالياً';
           const errorDesc = isEnglish()
             ? 'There was an issue sending your message via email. Don\'t worry, you can click below to send it directly to our team via WhatsApp:'
-            : 'حدث تعذر مؤقت في إرسال الإيميل. لا تقلق، يمكنك الضغط على الزر أدناه لإرسال نفس الرسالة مباشرة لفريقنا عبر واتساب:';
+            : 'حدث تعذر مؤقت في إرسال الرسالة عبر الإيميل. لا تقلق، يمكنك الضغط على الزر أدناه لإرسال نفس الرسالة مباشرة لفريقنا عبر واتساب:';
           const sendBtnText = isEnglish() ? 'Send Message via WhatsApp' : 'إرسال الرسالة عبر واتساب الآن';
 
           formStatus.innerHTML = `
@@ -148,16 +423,16 @@ document.addEventListener('DOMContentLoaded', () => {
             formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }, 100);
         }
-      })
-      .finally(() => {
+      } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalBtnHtml;
         }
-      });
+      }
     });
   }
 
+  // WhatsApp quick button
   if (sendWhatsAppBtn) {
     sendWhatsAppBtn.addEventListener('click', () => {
       const isEn = isEnglish();
@@ -167,17 +442,23 @@ document.addEventListener('DOMContentLoaded', () => {
       const service = serviceSelect ? (serviceSelect.options[serviceSelect.selectedIndex]?.text || serviceSelect.value) : (isEn ? 'General Inquiry' : 'استفسار عام');
       const message = document.getElementById('contactMessage')?.value.trim() || (isEn ? 'I would like to inquire about Ghanem Furniture services and projects.' : 'أود الاستفسار عن خدمات وأعمال Ghanem Furniture');
 
+      let photosNote = '';
+      if (attachedPhotos.length > 0) {
+        photosNote = isEn
+          ? `\n(I have ${attachedPhotos.length} reference photo(s) to share)`
+          : `\n(لدي ${attachedPhotos.length} صور مرجعية للمعاينة سأرفقها في الشات)`;
+      }
+
       let formattedMessage = '';
       if (isEn) {
-        formattedMessage = `Hello Ghanem Furniture,\n\nI would like to inquire about: ${service}\nName: ${name}\nPhone: ${phone}\n\nMessage:\n${message}`;
+        formattedMessage = `Hello Ghanem Furniture,\n\nI would like to inquire about: ${service}\nName: ${name}\nPhone: ${phone}\n\nMessage:\n${message}${photosNote}`;
       } else {
-        formattedMessage = `مرحباً Ghanem Furniture،\n\nأود الاستفسار بخصوص: ${service}\nالاسم: ${name}\nالهاتف: ${phone}\n\nالرسالة:\n${message}`;
+        formattedMessage = `مرحباً Ghanem Furniture،\n\nأود الاستفسار بخصوص: ${service}\nالاسم: ${name}\nالهاتف: ${phone}\n\nالرسالة:\n${message}${photosNote}`;
       }
 
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedMessage)}`;
       window.open(whatsappUrl, '_blank');
 
-      // Tracking: WhatsApp button click from within the contact form
       if (typeof gtag === 'function') {
         gtag('event', 'whatsapp_click', {
           'event_category': 'engagement',
