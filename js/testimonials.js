@@ -403,6 +403,44 @@
 
         updateCounters();
 
+        // Send email notification to site owner in background via EmailJS
+        try {
+          if (typeof emailjs !== 'undefined') {
+            if (typeof emailjs.init === 'function') {
+              emailjs.init({ publicKey: "fLXg3QrDyPaSMa1oN" });
+            }
+            const starsEmoji = '⭐'.repeat(newReview.rating);
+            const reviewEmailBody = 
+`🌟 تقييم ورأي عميل جديد تم إرساله عبر موقع Ghanem Furniture:
+---------------------------------------------
+👤 اسم العميل: ${newReview.name}
+💼 نوع المشروع / المدينة: ${newReview.role || 'غير محدد'}
+⭐ التقييم: ${newReview.rating} من 5 (${starsEmoji})
+💬 نص الرأي والتعليق:
+"${newReview.quote}"
+---------------------------------------------
+🕒 توقيت الإرسال: ${new Date().toLocaleString('ar-EG')}
+📍 الصفحة: آراء وتقييمات العملاء (testimonials.html)`;
+
+            emailjs.send("service_ngeifoq", "template_v1mkb5i", {
+              name: newReview.name,
+              phone: newReview.role || 'تقييم من صفحة الآراء',
+              email: 'testimonials@ghanemfurniture.com',
+              service: `[رأي عميل جديد] ${newReview.rating} نجوم ${starsEmoji}`,
+              message: reviewEmailBody,
+              reference_photos: 'رأي عميل جديد للمراجعة'
+            }).then(function (res) {
+              console.log('[testimonials.js] EmailJS review notification sent successfully:', res.status, res.text);
+            }).catch(function (err) {
+              console.warn('[testimonials.js] EmailJS review notification failed:', err);
+            });
+          } else {
+            console.warn('[testimonials.js] emailjs SDK not loaded');
+          }
+        } catch (emailErr) {
+          console.warn('[testimonials.js] Error triggering EmailJS notification:', emailErr);
+        }
+
         // Show Success banner
         if (successAlert) {
           successAlert.style.display = 'flex';
