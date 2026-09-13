@@ -1,0 +1,46 @@
+{
+  "reviews": [
+    {
+      "id": "rev-fb-1",
+      "name": "Amal Tarek",
+      "rating": 5,
+      "date": "5 مايو 2025",
+      "quote": "ديكورات تحفه و الخامات ممتازة"
+    },
+    {
+      "id": "rev-fb-2",
+      "name": "مشاء الله",
+      "rating": 5,
+      "date": "5 مايو 2025",
+      "quote": "مكان ممتاز و الخامات تحفه و كنت عملت من عنده مطبخ و حقيقي شغله ممتاز"
+    },
+    {
+      "id": "rev-fb-3",
+      "name": "Eman Kashwaa",
+      "rating": 5,
+      "date": "22 مايو 2022",
+      "quote": "تسلم ايديك ا غانم شغل جميل والفنش تحفه ومواعيد التسليم ربنا يباركلك"
+    },
+    {
+      "id": "rev-fb-4",
+      "name": "Hussein Tharwat",
+      "rating": 5,
+      "date": "27 ديسمبر 2019",
+      "quote": "ديكورات ممتازة خامات جيدة"
+    },
+    {
+      "id": "rev-fb-5",
+      "name": "Anas Hamed Atta",
+      "rating": 5,
+      "date": "2 ديسمبر 2018",
+      "quote": "VERY NICE WORK. HOPE STILL"
+    },
+    {
+      "id": "rev-fb-6",
+      "name": "Hamada Eldesouky",
+      "rating": 5,
+      "date": "13 يونيو 2018",
+      "quote": "بسم الله ماشاء الله إبداع عالي جدا"
+    }
+  ]
+}

@@ -51,8 +51,8 @@
     }
   };
 
-  // Authentic verified reviews
-  const DEFAULT_REVIEWS = [
+  // Fallback reviews in case data/reviews-published.json cannot be loaded
+  const FALLBACK_REVIEWS = [
     {
       id: 'rev-fb-1',
       name: 'Amal Tarek',
@@ -133,6 +133,24 @@
     }
   ];
 
+  // Active reviews list loaded from data/reviews-published.json
+  let publishedReviews = [...FALLBACK_REVIEWS];
+
+  async function fetchPublishedReviews() {
+    try {
+      const res = await fetch('data/reviews-published.json?v=' + Date.now());
+      if (res.ok) {
+        const data = await res.json();
+        const list = Array.isArray(data.reviews) ? data.reviews : (Array.isArray(data) ? data : []);
+        if (list.length > 0) {
+          publishedReviews = list;
+        }
+      }
+    } catch (err) {
+      console.warn('[testimonials.js] Could not load data/reviews-published.json, using fallback:', err);
+    }
+  }
+
   // Helper to generate initials avatar
   function getInitials(name) {
     if (!name) return 'غ';
@@ -212,7 +230,7 @@
   function updateCounters() {
     const lang = getCurrentLang();
     const stored = getStoredReviews();
-    const totalCount = DEFAULT_REVIEWS.length + stored.length;
+    const totalCount = publishedReviews.length + stored.length;
     const countEl = document.getElementById('reviewsTotalCount');
     if (countEl) {
       countEl.textContent = lang === 'en'
@@ -234,8 +252,8 @@
       grid.appendChild(createReviewCard(rev, true));
     });
 
-    // 2. Default verified reviews
-    DEFAULT_REVIEWS.forEach(rev => {
+    // 2. Published reviews from data/reviews-published.json
+    publishedReviews.forEach(rev => {
       grid.appendChild(createReviewCard(rev, false));
     });
 
@@ -377,7 +395,31 @@
 
         updateCounters();
 
-        // Send email notification to site owner in background via EmailJS
+        // 1. Submit review to Vercel Serverless Function to commit into data/reviews-pending.json
+        try {
+          fetch('/api/submit-review', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              name: newReview.name,
+              rating: newReview.rating,
+              quote: newReview.quote,
+              role: newReview.role
+            })
+          }).then(function (res) {
+            return res.json();
+          }).then(function (data) {
+            console.log('[testimonials.js] Review submitted to /api/submit-review:', data);
+          }).catch(function (apiErr) {
+            console.warn('[testimonials.js] /api/submit-review submission error:', apiErr);
+          });
+        } catch (e) {
+          console.warn('[testimonials.js] Failed to call /api/submit-review:', e);
+        }
+
+        // 2. Send email notification to site owner in background via EmailJS
         try {
           if (typeof emailjs !== 'undefined') {
             if (typeof emailjs.init === 'function') {
@@ -433,6 +475,13 @@
     }
   }
 
+  async function init() {
+    await fetchPublishedReviews();
+    renderAllReviews();
+    initStarRatingPicker();
+    initReviewForm();
+  }
+
   // Update on languageChanged event
   window.addEventListener('languageChanged', () => {
     renderAllReviews();
@@ -440,9 +489,9 @@
   });
 
   // Initialize
-  document.addEventListener('DOMContentLoaded', () => {
-    renderAllReviews();
-    initStarRatingPicker();
-    initReviewForm();
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

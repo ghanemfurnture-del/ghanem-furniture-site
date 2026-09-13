@@ -80,3 +80,41 @@ collections:
         label: "خدمات الورش (B2B)"
         file: "data/gallery/workshop.json"
         fields: *gallery_item_fields
+
+  - name: "testimonials"
+    label: "آراء وتقييمات العملاء"
+    files:
+      - name: "published_reviews"
+        label: "آراء العملاء المنشورة"
+        file: "data/reviews-published.json"
+        description: "الآراء المعتمدة المعروضة حالياً على الموقع"
+        fields:
+          - label: "قائمة التقييمات المنشورة"
+            name: "reviews"
+            widget: "list"
+            label_singular: "رأي منشور"
+            summary: "{{name}} - {{rating}} نجوم"
+            fields:
+              - { label: "المعرّف (ID)", name: "id", widget: "string", required: false }
+              - { label: "اسم العميل", name: "name", widget: "string" }
+              - { label: "التقييم (من 1 إلى 5 نجوم)", name: "rating", widget: "number", value_type: "int", min: 1, max: 5, default: 5 }
+              - { label: "تاريخ التقييم (مثال: 5 مايو 2025)", name: "date", widget: "string" }
+              - { label: "نص الرأي / التعليق", name: "quote", widget: "text" }
+
+      - name: "pending_reviews"
+        label: "آراء تحت المراجعة (Pending)"
+        file: "data/reviews-pending.json"
+        description: "الآراء الواردة حديثاً من زوار الموقع عبر النموذج والتي تنتظر الاعتماد"
+        fields:
+          - label: "قائمة التقييمات الواردة"
+            name: "reviews"
+            widget: "list"
+            label_singular: "رأي معلّق"
+            summary: "{{name}} ({{rating}} نجوم) - {{date}}"
+            fields:
+              - { label: "المعرّف (ID)", name: "id", widget: "string", required: false }
+              - { label: "اسم العميل", name: "name", widget: "string" }
+              - { label: "التقييم (من 1 إلى 5 نجوم)", name: "rating", widget: "number", value_type: "int", min: 1, max: 5 }
+              - { label: "تاريخ التقييم", name: "date", widget: "string" }
+              - { label: "نص الرأي / التعليق", name: "quote", widget: "text" }
+              - { label: "تاريخ ووقت الإرسال الفعلي", name: "submitted_at", widget: "string", required: false }
