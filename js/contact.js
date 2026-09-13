@@ -3,7 +3,8 @@
  * Contact Form Validation, Image Compression, ImgBB Cloud Upload & EmailJS Integration
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+function initContact() {
+  console.log('[contact.js] Initializing contact form & photo upload logic. Document readyState:', document.readyState);
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
   const sendWhatsAppBtn = document.getElementById('sendWhatsAppBtn');
@@ -17,6 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const compressionLoading = document.getElementById('compressionLoading');
   const photoLimitAlert = document.getElementById('photoLimitAlert');
   const fileUploadZone = document.getElementById('fileUploadZone');
+
+  console.log('[contact.js] Elements found:', {
+    hasForm: !!contactForm,
+    hasInput: !!referencePhotosInput,
+    hasBtn: !!selectPhotosBtn,
+    hasZone: !!fileUploadZone
+  });
 
   // State: array of { id, originalName, file, previewUrl, sizeKb }
   let attachedPhotos = [];
@@ -36,8 +44,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Photo Upload & Compression Handling ---
   if (selectPhotosBtn && referencePhotosInput) {
-    selectPhotosBtn.addEventListener('click', () => {
-      referencePhotosInput.click();
+    selectPhotosBtn.addEventListener('click', (e) => {
+      console.log('[contact.js] selectPhotosBtn clicked!');
+      // If element is not a label, or if label failed to open dialog, trigger input click
+      if (selectPhotosBtn.tagName.toLowerCase() !== 'label') {
+        referencePhotosInput.click();
+      }
+    });
+
+    selectPhotosBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        console.log('[contact.js] selectPhotosBtn activated via keyboard');
+        referencePhotosInput.click();
+      }
     });
   }
 
@@ -68,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (referencePhotosInput) {
     referencePhotosInput.addEventListener('change', (e) => {
+      console.log('[contact.js] referencePhotosInput change event fired! Files selected:', e.target.files?.length);
       if (e.target.files && e.target.files.length > 0) {
         handleSelectedFiles(Array.from(e.target.files));
         referencePhotosInput.value = ''; // Reset input to allow selecting same file again if removed
@@ -487,4 +508,12 @@ document.addEventListener('DOMContentLoaded', () => {
     div.textContent = str;
     return div.innerHTML;
   }
-});
+}
+
+// Ensure execution whether DOM is loading or already parsed
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initContact);
+} else {
+  initContact();
+}
+
