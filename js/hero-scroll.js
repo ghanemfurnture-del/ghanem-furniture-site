@@ -3,13 +3,16 @@
  * Cinematic Scroll-Driven Hero Motion with WebP Image Sequence & GSAP ScrollTrigger
  * 
  * Features:
+ * - Instant Poster Visibility: hero-poster.webp displays immediately via HTML/CSS (zero delay/blank space)
+ * - Canvas paints frame 1 and smoothly reveals via .is-ready class
+ * - Nearest-Loaded Frame Fallback: scrub never clears to black even if frames are loading
  * - High-DPI canvas rendering with 'object-fit: cover' mathematics
  * - Responsive sequence selection (120 frames desktop / 60 frames mobile)
  * - Configurable sequence paths via window.HERO_MOTION_CONFIG
  * - Smooth GSAP ScrollTrigger pin + scrub sync
  * - Progressive chunk preloading with sleek luxury gold progress indicator
  * - Full prefers-reduced-motion support (graceful static fallback)
- * - Safe fallback to poster image if frames are missing or fail to load
+ * - Safe fallback: if frames fail or GSAP is blocked, resets to static hero with zero layout shifts
  * - Fully RTL and multilingual compatible
  */
 
@@ -47,6 +50,7 @@
     const heroContainer = document.getElementById('heroPinnedContainer');
     const canvas = document.getElementById('heroCanvas');
     const fallbackPic = document.getElementById('heroFallbackPicture');
+    const fallbackImg = document.getElementById('heroFallbackImg');
     const preloader = document.getElementById('heroPreloader');
     const preloaderBar = document.getElementById('heroPreloaderBar');
     const scrollPrompt = document.getElementById('heroScrollPrompt');
@@ -57,7 +61,9 @@
 
     const ctx = canvas.getContext('2d');
     if (!ctx) {
-      console.warn('[hero-scroll] Canvas 2D context not supported. Fallback active.');
+      console.warn('[hero-scroll] Canvas 2D context not supported. Fallback poster active.');
+      heroSection.style.height = 'auto';
+      heroSection.classList.add('reduced-motion');
       return;
     }
 
@@ -65,6 +71,7 @@
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
       console.info('[hero-scroll] prefers-reduced-motion detected: using static hero display.');
+      heroSection.style.height = 'auto';
       heroSection.classList.add('reduced-motion');
       return;
     }
@@ -77,7 +84,6 @@
     // Cache of Image objects
     const images = new Array(totalFrames);
     let loadedCount = 0;
-    let frame1Loaded = false;
     let currentRenderedIndex = -1;
 
     // Canvas sizing with DPR
@@ -107,6 +113,8 @@
       const nw = img.naturalWidth;
       const nh = img.naturalHeight;
 
+      if (cw === 0 || ch === 0 || nw === 0 || nh === 0) return;
+
       const canvasRatio = cw / ch;
       const imageRatio = nw / nh;
 
@@ -128,17 +136,53 @@
       ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
     }
 
-    function renderFrame(frameIndex) {
-      const clampedIndex = Math.max(1, Math.min(totalFrames, frameIndex));
-      const img = images[clampedIndex - 1];
+    // Find closest loaded frame if requested index is still downloading
+    function getBestAvailableImage(targetIndex) {
+      const clampedIndex = Math.max(1, Math.min(totalFrames, targetIndex));
+      if (images[clampedIndex - 1] && images[clampedIndex - 1].complete && images[clampedIndex - 1].naturalWidth > 0) {
+        return { img: images[clampedIndex - 1], index: clampedIndex };
+      }
 
-      if (img && img.complete && img.naturalWidth > 0) {
-        drawImageCover(img);
-        currentRenderedIndex = clampedIndex;
-        
-        // Hide fallback once canvas has rendered frame
+      // Look backward for nearest loaded frame
+      for (let i = clampedIndex - 2; i >= 0; i--) {
+        if (images[i] && images[i].complete && images[i].naturalWidth > 0) {
+          return { img: images[i], index: i + 1 };
+        }
+      }
+
+      // Look forward
+      for (let i = clampedIndex; i < totalFrames; i++) {
+        if (images[i] && images[i].complete && images[i].naturalWidth > 0) {
+          return { img: images[i], index: i + 1 };
+        }
+      }
+
+      // Fallback to initial DOM poster image
+      if (fallbackImg && fallbackImg.complete && fallbackImg.naturalWidth > 0) {
+        return { img: fallbackImg, index: 1 };
+      }
+
+      return null;
+    }
+
+    function renderFrame(frameIndex) {
+      const best = getBestAvailableImage(frameIndex);
+      if (best && best.img) {
+        drawImageCover(best.img);
+        currentRenderedIndex = best.index;
+
+        // Reveal canvas smoothly
+        if (!canvas.classList.contains('is-ready')) {
+          canvas.classList.add('is-ready');
+        }
+
+        // Hide fallback once canvas has taken over
         if (fallbackPic && !fallbackPic.classList.contains('hidden')) {
-          fallbackPic.classList.add('hidden');
+          setTimeout(function () {
+            if (canvas.classList.contains('is-ready')) {
+              fallbackPic.classList.add('hidden');
+            }
+          }, 200);
         }
       }
     }
@@ -152,7 +196,7 @@
       if (percent >= 100) {
         setTimeout(function () {
           if (preloader) preloader.classList.add('done');
-        }, 400);
+        }, 300);
       }
     }
 
@@ -168,20 +212,24 @@
           resolve(img);
         };
         img.onerror = function (err) {
-          // Record failed image gracefully
           images[index - 1] = null;
           reject(err);
         };
       });
     }
 
-    // Resize canvas initially
+    // Setup canvas dimensions immediately
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas, { passive: true });
 
-    // Step 1: Preload Frame 1 immediately (LCP fallback / instant visual)
+    // Step 0: Immediate visual check from preloaded poster in DOM
+    if (fallbackImg && fallbackImg.complete && fallbackImg.naturalWidth > 0) {
+      drawImageCover(fallbackImg);
+      canvas.classList.add('is-ready');
+    }
+
+    // Step 1: Preload Frame 1 immediately
     loadImage(1).then(function (firstImg) {
-      frame1Loaded = true;
       renderFrame(1);
 
       // Initialize GSAP ScrollTrigger after first frame is safely ready
@@ -192,10 +240,11 @@
     }).catch(function (err) {
       console.warn('[hero-scroll] Could not load initial frame. Keeping static poster image.', err);
       if (preloader) preloader.classList.add('done');
+      heroSection.style.height = 'auto';
       heroSection.classList.add('motion-fallback-active');
     });
 
-    // Progressive loader in controlled chunks (avoids network congestions)
+    // Progressive loader in controlled chunks
     function loadRemainingFrames() {
       let nextIndex = 2;
       const CHUNK_SIZE = 6;
@@ -210,11 +259,10 @@
 
         Promise.all(promises).then(function () {
           if (nextIndex <= totalFrames) {
-            // Yield briefly to main thread for smooth UI
             if (window.requestIdleCallback) {
-              window.requestIdleCallback(loadNextBatch, { timeout: 200 });
+              window.requestIdleCallback(loadNextBatch, { timeout: 150 });
             } else {
-              setTimeout(loadNextBatch, 30);
+              setTimeout(loadNextBatch, 25);
             }
           }
         });
@@ -226,14 +274,15 @@
     // Step 3: Setup GSAP Timeline with ScrollTrigger
     function setupScrollTrigger() {
       if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-        console.warn('[hero-scroll] GSAP or ScrollTrigger not loaded. Frame 1 displayed.');
+        console.warn('[hero-scroll] GSAP/ScrollTrigger not loaded. Keeping static hero.');
+        heroSection.style.height = 'auto';
+        heroSection.classList.add('reduced-motion');
         return;
       }
 
       gsap.registerPlugin(ScrollTrigger);
 
       const motionSeq = { frame: 1 };
-      const heroContent = heroContainer.querySelector('.hero-content');
       const badge = document.getElementById('heroBadge');
       const title = document.getElementById('heroTitle');
       const desc = document.getElementById('heroDesc');
@@ -250,7 +299,6 @@
           pin: heroContainer,
           anticipatePin: 1,
           onUpdate: function (self) {
-            // Optional: Hide scroll prompt once user starts scrolling
             if (scrollPrompt) {
               if (self.progress > 0.04) {
                 scrollPrompt.classList.add('scrolled-away');
@@ -300,7 +348,6 @@
         }, 0.45);
       }
 
-      // Refresh ScrollTrigger after DOM has completely settled
       ScrollTrigger.refresh();
     }
   }
