@@ -48,7 +48,7 @@
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 
   <!-- Preload Critical Resources for Faster LCP -->
-  <link rel="preload" as="image" href="images/hero-kitchen.jpg">
+  <link rel="preload" as="image" href="images/hero-poster.webp">
   <link rel="preload" as="style" href="css/style.css?v=2">
 
   <!-- Stylesheet -->
@@ -433,70 +433,87 @@ src="https://www.facebook.com/tr?id=38373061858975722&ev=PageView&noscript=1"
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-bg-wrapper">
-      <picture><source srcset="images/hero-kitchen.webp" type="image/webp"><img src="images/hero-kitchen.jpg" alt="أفخم المطابخ والأثاث الراقي - Ghanem Furniture" class="hero-bg-img" width="1376" height="768" fetchpriority="high" decoding="async"></picture>
-      <div class="hero-overlay"></div>
-    </div>
-
-    <div class="container hero-content">
-      <!-- 30+ Years Heritage Badge -->
-      <div class="heritage-badge reveal">
-        <svg class="heritage-badge-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-          </path>
-        </svg>
-        <span class="heritage-badge-text" data-i18n="home.hero_tag">أكثر من 30 عامًا من الخبرة في صناعة الأثاث والمطابخ
-          والأعمال الخشبية</span>
+  <!-- Hero Section with Cinematic Scroll-Driven Motion -->
+  <section class="hero hero-motion-section" id="heroMotionSection">
+    <div class="hero-pinned-container" id="heroPinnedContainer">
+      <div class="hero-bg-wrapper">
+        <canvas id="heroCanvas" class="hero-canvas"></canvas>
+        <picture class="hero-fallback-pic" id="heroFallbackPicture">
+          <source srcset="images/hero-poster.webp" type="image/webp">
+          <img src="images/hero-poster.webp" alt="أفخم المطابخ والأثاث الراقي - Ghanem Furniture" class="hero-fallback-img" id="heroFallbackImg" width="1280" height="720" fetchpriority="high" decoding="async">
+        </picture>
+        <div class="hero-gradient-overlay"></div>
       </div>
 
-      <h1 class="hero-title reveal reveal-delay-1" data-i18n="home.hero_title">نجمع بين لمسة الحرفي الخبير وتكنولوجيا
-        التصنيع الدقيقة</h1>
-
-      <p class="hero-desc reveal reveal-delay-2" data-i18n="home.hero_desc">
-        أكثر من 30 عاماً من الريادة في تصميم وتنفيذ المطابخ المودرن، غرف النوم الماستر، والأعمال الخشبية الفاخرة، مع
-        خدمات متخصصة لورش النجارة والمهندسين.
-      </p>
-
-      <div class="hero-cta-group reveal reveal-delay-3">
-        <a href="gallery.html" class="btn btn-gold btn-lg">
-          <span data-i18n="home.explore_gallery">استعرض سابقة أعمالنا</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-            stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-        <a href="workshop.html" class="btn btn-outline-white btn-lg">
-          <span data-i18n="home.b2b_cta">خدمات الورش B2B</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-            stroke-linejoin="round">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-            <polyline points="2 17 12 22 22 17"></polyline>
-            <polyline points="2 12 12 17 22 12"></polyline>
-          </svg>
-        </a>
+      <!-- Luxury Loading Indicator -->
+      <div class="hero-motion-preloader" id="heroPreloader" aria-hidden="true">
+        <div class="hero-preloader-bar" id="heroPreloaderBar"></div>
       </div>
 
-      <!-- Live Stats Bar (تحديث يدوي: هذه الأرقام تسويقية ثابتة وتحتاج مراجعة وتحديث دوري كل 6 شهور بناءً على إحصائيات الأعمال الفعلية) -->
-      <div class="hero-stats-bar reveal reveal-delay-3">
-        <div class="hero-stat-item">
-          <span class="hero-stat-num">+30</span>
-          <span class="hero-stat-label" data-i18n="home.stat_years">عاماً من الخبرة</span>
+      <div class="container hero-content">
+        <!-- 30+ Years Heritage Badge -->
+        <div class="heritage-badge" id="heroBadge">
+          <svg class="heritage-badge-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+            </path>
+          </svg>
+          <span class="heritage-badge-text" data-i18n="home.hero_tag">أكثر من 30 عامًا من الخبرة في صناعة الأثاث والمطابخ
+            والأعمال الخشبية</span>
         </div>
-        <div class="hero-stat-item">
-          <span class="hero-stat-num">+1500</span>
-          <span class="hero-stat-label" data-i18n="home.stat_projects">مشروع منجز</span>
+
+        <h1 class="hero-title" id="heroTitle" data-i18n="home.hero_title">نجمع بين لمسة الحرفي الخبير وتكنولوجيا
+          التصنيع الدقيقة</h1>
+
+        <p class="hero-desc" id="heroDesc" data-i18n="home.hero_desc">
+          أكثر من 30 عاماً من الريادة في تصميم وتنفيذ المطابخ المودرن، غرف النوم الماستر، والأعمال الخشبية الفاخرة، مع
+          خدمات متخصصة لورش النجارة والمهندسين.
+        </p>
+
+        <div class="hero-cta-group" id="heroCta">
+          <a href="gallery.html" class="btn btn-gold btn-lg">
+            <span data-i18n="home.explore_gallery">استعرض سابقة أعمالنا</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="workshop.html" class="btn btn-outline-white btn-lg">
+            <span data-i18n="home.b2b_cta">خدمات الورش B2B</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </a>
         </div>
-        <div class="hero-stat-item">
-          <span class="hero-stat-num">100%</span>
-          <span class="hero-stat-label" data-i18n="home.stat_satisfaction">رضا العملاء</span>
+
+        <!-- Live Stats Bar (تحديث يدوي: هذه الأرقام تسويقية ثابتة وتحتاج مراجعة وتحديث دوري كل 6 شهور بناءً على إحصائيات الأعمال الفعلية) -->
+        <div class="hero-stats-bar" id="heroStats">
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">+30</span>
+            <span class="hero-stat-label" data-i18n="home.stat_years">عاماً من الخبرة</span>
+          </div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">+1500</span>
+            <span class="hero-stat-label" data-i18n="home.stat_projects">مشروع منجز</span>
+          </div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">100%</span>
+            <span class="hero-stat-label" data-i18n="home.stat_satisfaction">رضا العملاء</span>
+          </div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">24/7</span>
+            <span class="hero-stat-label" data-i18n="home.stat_support">خدمة ومتابعة</span>
+          </div>
         </div>
-        <div class="hero-stat-item">
-          <span class="hero-stat-num">24/7</span>
-          <span class="hero-stat-label" data-i18n="home.stat_support">خدمة ومتابعة</span>
-        </div>
+      </div>
+
+      <!-- Subtle Scroll Prompt Indicator -->
+      <div class="hero-scroll-prompt" id="heroScrollPrompt">
+        <span data-i18n="home.scroll_prompt">اسحب للأسفل لاستكشاف التفاصيل</span>
+        <div class="scroll-mouse-icon"></div>
       </div>
     </div>
   </section>
@@ -1174,6 +1191,10 @@ src="https://www.facebook.com/tr?id=38373061858975722&ev=PageView&noscript=1"
   <!-- Scripts -->
   <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
+  <!-- GSAP & Cinematic Scroll-Driven Hero Motion -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/hero-scroll.js"></script>
 </body>
 
 </html>
