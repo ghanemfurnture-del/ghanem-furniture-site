@@ -15,3 +15,5 @@ Thumbs.db
 .vercel
 .vscode/
 .idea/
+scripts/inspect-page.js
+scripts/test-scroll.js
