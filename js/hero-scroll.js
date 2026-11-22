@@ -289,15 +289,19 @@
       const cta = document.getElementById('heroCta');
       const stats = document.getElementById('heroStats');
 
+      const header = document.querySelector('.site-header');
+      const headerHeight = header ? header.offsetHeight : 96;
+
       // Main ScrollTrigger Timeline
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: heroSection,
-          start: 'top top',
+          start: 'top top+=' + headerHeight,
           end: 'bottom bottom',
           scrub: 0.5,
           pin: heroContainer,
           anticipatePin: 1,
+          pinSpacing: true,
           onUpdate: function (self) {
             if (scrollPrompt) {
               if (self.progress > 0.04) {

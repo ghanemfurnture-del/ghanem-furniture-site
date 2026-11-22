@@ -24,7 +24,6 @@ const server = http.createServer((req, res) => {
   if (reqPath === '/' || reqPath === '') reqPath = '/index.html';
 
   const fullPath = path.join(ROOT, reqPath);
-  console.log(`[REQ] ${req.method} ${req.url} -> ${fullPath}`);
 
   if (fs.existsSync(fullPath) && fs.statSync(fullPath).isFile()) {
     const ext = path.extname(fullPath).toLowerCase();
@@ -36,12 +35,23 @@ const server = http.createServer((req, res) => {
     });
     fs.createReadStream(fullPath).pipe(res);
   } else {
-    console.warn(`[404] Not Found: ${req.url}`);
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('404 Not Found');
   }
 });
 
-server.listen(PORT, '0.0.0.0', () => {
-  console.log(`Development Server listening at http://localhost:${PORT}/`);
-});
+function start(port) {
+  server.listen(port, '127.0.0.1', () => {
+    console.log(`Development Server listening at http://127.0.0.1:${port}/ and http://localhost:${port}/`);
+  });
+  server.on('error', (err) => {
+    if (err.code === 'EACCES' || err.code === 'EADDRINUSE') {
+      console.warn(`Port ${port} unavailable (${err.code}). Trying ${port === 8080 ? 5050 : port + 1}...`);
+      start(port === 8080 ? 5050 : port + 1);
+    } else {
+      console.error('Server error:', err);
+    }
+  });
+}
+
+start(PORT);

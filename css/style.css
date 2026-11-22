@@ -659,22 +659,35 @@ p:last-child { margin-bottom: 0; }
   margin-top: 2.5rem;
 }
 
+/* Ensure Header and Top Bar are always fixed/sticky on top */
+.top-bar {
+  position: relative;
+  z-index: 1001;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000 !important;
+}
+
 /* ==========================================================================
    Hero Section & Cinematic Scroll-Driven Motion
    ========================================================================== */
 .hero {
   position: relative;
-  min-height: 88vh;
+  min-height: calc(100vh - 142px);
   display: flex;
   align-items: center;
   background-color: var(--dark-950);
   color: var(--text-white);
-  padding: 6rem 0 5rem 0;
+  padding: 4rem 0;
   overflow: hidden;
 }
 
 .hero-motion-section {
   position: relative;
+  display: block; /* CRITICAL: Block layout prevents flexbox vertical-centering bug */
   height: 250vh;
   padding: 0;
   margin: 0;
@@ -684,8 +697,8 @@ p:last-child { margin-bottom: 0; }
 .hero-pinned-container {
   position: relative;
   width: 100%;
-  height: 100vh;
-  min-height: 100vh;
+  height: calc(100vh - 142px);
+  min-height: calc(100vh - 142px);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -707,12 +720,6 @@ p:last-child { margin-bottom: 0; }
   width: 100%;
   height: 100%;
   z-index: 1;
-  transition: opacity 0.5s ease;
-}
-
-.hero-fallback-pic.hidden {
-  opacity: 0;
-  pointer-events: none;
 }
 
 .hero-bg-img,
@@ -723,16 +730,6 @@ p:last-child { margin-bottom: 0; }
   object-fit: cover;
   object-position: center;
   filter: brightness(0.85) contrast(1.05);
-}
-
-.hero-bg-img {
-  transform: scale(1.05);
-  animation: heroZoom 20s infinite alternate ease-in-out;
-}
-
-@keyframes heroZoom {
-  0% { transform: scale(1.02); }
-  100% { transform: scale(1.1); }
 }
 
 /* Canvas: placed over poster, starts transparent, fades in seamlessly once frame 1 is rendered */
@@ -773,6 +770,12 @@ html[dir="ltr"] .hero-gradient-overlay {
   background:
     linear-gradient(to right, rgba(14, 16, 21, 0.88) 0%, rgba(14, 16, 21, 0.72) 38%, rgba(14, 16, 21, 0.25) 70%, rgba(14, 16, 21, 0.08) 100%),
     linear-gradient(to top, rgba(14, 16, 21, 0.94) 0%, rgba(14, 16, 21, 0.45) 15%, transparent 35%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 4;
+  max-width: 840px;
 }
 
 /* Luxury Gold Preloader Bar */
