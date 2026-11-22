@@ -81,6 +81,28 @@
     const currentProfile = isMobile ? config.mobile : config.desktop;
     const totalFrames = currentProfile.framesCount;
 
+    // Dynamically calculate header & top-bar height for exact viewport adaptation
+    function updateHeaderDimensions() {
+      const topBar = document.querySelector('.top-bar');
+      const siteHeader = document.querySelector('.site-header');
+      let total = 0;
+      if (topBar && window.getComputedStyle(topBar).display !== 'none') {
+        total += topBar.offsetHeight;
+      }
+      if (siteHeader && window.getComputedStyle(siteHeader).display !== 'none') {
+        total += siteHeader.offsetHeight;
+      }
+      if (total > 0) {
+        document.documentElement.style.setProperty('--header-total-height', total + 'px');
+      }
+      return {
+        total: total || 142,
+        headerHeight: siteHeader ? siteHeader.offsetHeight : 96
+      };
+    }
+
+    updateHeaderDimensions();
+
     // Cache of Image objects
     const images = new Array(totalFrames);
     let loadedCount = 0;
@@ -218,9 +240,16 @@
       });
     }
 
-    // Setup canvas dimensions immediately
+    // Setup canvas and dimensions immediately
+    function onResize() {
+      updateHeaderDimensions();
+      resizeCanvas();
+      if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
+      }
+    }
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
 
     // Step 0: Immediate visual check from preloaded poster in DOM
     if (fallbackImg && fallbackImg.complete && fallbackImg.naturalWidth > 0) {
