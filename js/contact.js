@@ -1,6 +1,6 @@
 /**
  * GHANEM FURNITURE
- * Contact Form Validation, Image Compression, ImgBB Cloud Upload & EmailJS Integration
+ * Contact Form Validation, Image Compression, Direct Signed Cloudinary Upload & Inquiries Integration
  */
 
 function initContact() {
@@ -9,7 +9,6 @@ function initContact() {
   const formStatus = document.getElementById('formStatus');
   const sendWhatsAppBtn = document.getElementById('sendWhatsAppBtn');
   const whatsappNumber = '201000363618';
-  const IMGBB_API_KEY = 'ec8c122dae2b32dc53c6595cb835d7a2';
 
   // Photo Upload Elements
   const referencePhotosInput = document.getElementById('referencePhotos');
@@ -241,28 +240,59 @@ function initContact() {
     if (photoLimitAlert) photoLimitAlert.style.display = 'none';
   }
 
-  // Upload compressed photos to ImgBB
-  async function uploadPhotosToImgBB(photos) {
+  // Upload compressed photos directly to Cloudinary using signed upload parameters
+  async function uploadPhotosToCloudinary(photos) {
+    if (!photos || photos.length === 0) return [];
+
+    // Step A: Request secure signed upload parameters from Vercel Serverless Function
+    let signData;
+    try {
+      const signRes = await fetch('/api/upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      if (!signRes.ok) {
+        throw new Error(`Signature endpoint returned status ${signRes.status}`);
+      }
+      signData = await signRes.json();
+      if (!signData || !signData.signature || !signData.apiKey || !signData.cloudName) {
+        throw new Error('Invalid signature response from /api/upload');
+      }
+    } catch (signErr) {
+      console.error('[contact.js] Failed to get signed upload params:', signErr);
+      throw new Error(isEnglish()
+        ? 'Could not connect to image upload service. Please check your internet connection or send without photos.'
+        : 'تعذر الاتصال بخدمة رفع الصور. يرجى التحقق من اتصالك أو إرسال الرسالة بدون صور.');
+    }
+
+    // Step B: Upload each photo directly to Cloudinary via HTTPS
     const uploadedUrls = [];
     for (let i = 0; i < photos.length; i++) {
       const item = photos[i];
       const formData = new FormData();
-      formData.append('image', item.file);
+      formData.append('file', item.file);
+      formData.append('api_key', signData.apiKey);
+      formData.append('timestamp', signData.timestamp);
+      formData.append('signature', signData.signature);
+      formData.append('folder', signData.folder);
+      formData.append('tags', signData.tags);
 
-      const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${signData.cloudName}/image/upload`, {
         method: 'POST',
         body: formData
       });
 
       if (!response.ok) {
-        throw new Error(`ImgBB upload failed with status ${response.status}`);
+        const errText = await response.text().catch(() => '');
+        console.error('[contact.js] Cloudinary upload error:', response.status, errText);
+        throw new Error(`Cloudinary upload failed with status ${response.status}`);
       }
 
       const resData = await response.json();
-      if (resData && resData.data && resData.data.url) {
-        uploadedUrls.push(resData.data.url);
+      if (resData && resData.secure_url) {
+        uploadedUrls.push(resData.secure_url);
       } else {
-        throw new Error('Invalid response from ImgBB');
+        throw new Error('Invalid upload response from Cloudinary');
       }
     }
     return uploadedUrls;
@@ -306,9 +336,9 @@ function initContact() {
       let uploadedPhotoUrls = [];
 
       try {
-        // 1. Upload photos to ImgBB if any
+        // 1. Upload photos to Cloudinary directly if any
         if (attachedPhotos.length > 0) {
-          uploadedPhotoUrls = await uploadPhotosToImgBB(attachedPhotos);
+          uploadedPhotoUrls = await uploadPhotosToCloudinary(attachedPhotos);
         }
 
         // 2. Build complete message including reference photo links

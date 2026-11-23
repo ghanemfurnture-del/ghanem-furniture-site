@@ -1,0 +1,88 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // --- Authentication & Role Helper Functions ---
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function getAdminDoc() {
+      return get(/databases/$(database)/documents/admins/$(request.auth.uid)).data;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && getAdminDoc().role == 'admin';
+    }
+
+    function isEditor() {
+      return isAuthenticated() && (getAdminDoc().role == 'admin' || getAdminDoc().role == 'editor');
+    }
+
+    // --- 1. Projects & Woodwork Catalog ---
+    // Unified published boolean. Editors create & edit; permanent delete restricted to Admin only.
+    match /projects/{projectId} {
+      allow read: if resource.data.published == true || isEditor();
+      allow create, update: if isEditor();
+      allow delete: if isAdmin();
+    }
+
+    // --- 2. Categories (Kitchens, Bedrooms, B2B Woodwork, etc.) ---
+    match /categories/{catId} {
+      allow read: if true;
+      allow create, update: if isEditor();
+      allow delete: if isAdmin();
+    }
+
+    // --- 3. Site Settings (Divided by Sensitivity) ---
+    // Content/text/images editable by admin & editor; pricing & integrations strictly admin-only.
+    match /siteSettings/{docId} {
+      allow read: if true;
+      allow create, update: if (docId in ['general', 'hero', 'about', 'contactInfo'] && isEditor()) 
+                            || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // --- 4. Testimonials & Client Reviews ---
+    // Status strictly: 'pending', 'approved', 'rejected'.
+    // Direct client writes are blocked (allow create: if false) because visitor reviews pass
+    // through /api/inquiries with Admin SDK for spam protection & rate limiting.
+    match /testimonials/{reviewId} {
+      allow read: if resource.data.status == 'approved' || isEditor();
+      allow create: if false; 
+      allow update: if isEditor();
+      allow delete: if isAdmin();
+    }
+
+    // --- 5. Messages (Contact Form Inquiries) ---
+    // Visitor messages pass through /api/inquiries via Firebase Admin SDK.
+    // Editors can view and mark read; deletion is admin-only.
+    match /messages/{messageId} {
+      allow read, update: if isEditor();
+      allow create: if false;
+      allow delete: if isAdmin();
+    }
+
+    // --- 6. Leads (B2B Workshop & Engineering Requests) ---
+    match /leads/{leadId} {
+      allow read, update: if isEditor();
+      allow create: if false;
+      allow delete: if isAdmin();
+    }
+
+    // --- 7. Admins Directory ---
+    // Authenticated users can read their own record to verify permissions; full management is admin-only.
+    match /admins/{uid} {
+      allow read: if isAuthenticated() && (request.auth.uid == uid || isAdmin());
+      allow write: if isAdmin();
+    }
+
+    // --- 8. Audit Log (Administrative Activity Trail) ---
+    // Must be authenticated, actor UID must match auth UID, completely immutable (no update or delete).
+    match /auditLog/{logId} {
+      allow read: if isAdmin();
+      allow create: if isAuthenticated() && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if false;
+    }
+  }
+}
