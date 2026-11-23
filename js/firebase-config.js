@@ -45,3 +45,6 @@ export async function getFirebaseServices() {
     return null;
   }
 }
+
+// Make accessible to standard scripts
+window.getFirebaseServices = getFirebaseServices;

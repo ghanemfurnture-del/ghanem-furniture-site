@@ -133,10 +133,45 @@
     }
   ];
 
-  // Active reviews list loaded from data/reviews-published.json
+  // Active reviews list loaded from Firestore with fallback to data/reviews-published.json
   let publishedReviews = [...FALLBACK_REVIEWS];
 
   async function fetchPublishedReviews() {
+    // 1. Try reading approved reviews from Firestore collection 'testimonials'
+    try {
+      if (typeof window.getFirebaseServices === 'function') {
+        const services = await window.getFirebaseServices();
+        if (services && services.db) {
+          const { collection, getDocs, query, where } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+          const q = query(
+            collection(services.db, 'testimonials'),
+            where('status', '==', 'approved')
+          );
+          const snap = await getDocs(q);
+          if (snap && !snap.empty) {
+            const list = snap.docs.map(doc => {
+              const d = doc.data();
+              return {
+                id: doc.id,
+                name: d.name || 'عميل غانم للأثاث',
+                rating: Number(d.rating) || 5,
+                date: d.date || '',
+                quote: d.comment || d.quote || ''
+              };
+            });
+            if (list.length > 0) {
+              console.log(`[testimonials.js] Successfully loaded ${list.length} approved reviews from Firestore`);
+              publishedReviews = list;
+              return;
+            }
+          }
+        }
+      }
+    } catch (fsErr) {
+      console.info('[testimonials.js] Firestore read bypassed or failed, using local fallback:', fsErr.message);
+    }
+
+    // 2. Local JSON fallback
     try {
       const res = await fetch('data/reviews-published.json?v=' + Date.now());
       if (res.ok) {
@@ -144,6 +179,7 @@
         const list = Array.isArray(data.reviews) ? data.reviews : (Array.isArray(data) ? data : []);
         if (list.length > 0) {
           publishedReviews = list;
+          console.log(`[testimonials.js] Loaded ${list.length} reviews from local data/reviews-published.json`);
         }
       }
     } catch (err) {

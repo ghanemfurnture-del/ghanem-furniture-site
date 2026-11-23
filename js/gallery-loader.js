@@ -116,15 +116,83 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTranslations(lang);
   });
 
-  Promise.all(
-    GALLERY_SECTIONS.map((section) =>
-      fetch(`data/gallery/${section}.json`, { cache: 'no-store' })
-        .then((res) => (res.ok ? res.json() : { items: [] }))
-        .catch(() => ({ items: [] }))
-    )
-  )
-    .then((sections) => {
-      loadedItems = sections.flatMap((data) => (Array.isArray(data) ? data : (data.items || [])));
+  async function fetchGalleryItems() {
+    // 1. Session Storage Cache (5 min TTL) to save Firestore Spark reads quota
+    const CACHE_KEY = 'ghanem_projects_cache';
+    const CACHE_TIME_KEY = 'ghanem_projects_cache_time';
+    const CACHE_TTL_MS = 5 * 60 * 1000;
+
+    try {
+      const cached = sessionStorage.getItem(CACHE_KEY);
+      const cachedTime = sessionStorage.getItem(CACHE_TIME_KEY);
+      if (cached && cachedTime && (Date.now() - Number(cachedTime) < CACHE_TTL_MS)) {
+        const parsed = JSON.parse(cached);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          console.log('[gallery-loader] Loaded from sessionStorage cache (' + parsed.length + ' items)');
+          return parsed;
+        }
+      }
+    } catch (e) {}
+
+    // 2. Try Firestore 'projects' collection
+    try {
+      if (typeof window.getFirebaseServices === 'function') {
+        const services = await window.getFirebaseServices();
+        if (services && services.db) {
+          const { collection, getDocs, query, where } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+          const q = query(
+            collection(services.db, 'projects'),
+            where('published', '==', true)
+          );
+          const snap = await getDocs(q);
+          if (snap && !snap.empty) {
+            const items = snap.docs.map((doc, idx) => {
+              const d = doc.data();
+              return {
+                title: d.title,
+                description: d.description,
+                badge: d.badge,
+                alt: d.alt,
+                category: d.category || [],
+                image: d.image,
+                slug: d.id || doc.id || generateSlug(d, idx),
+                order: d.order || 999
+              };
+            });
+
+            // Sort by order ascending
+            items.sort((a, b) => (a.order || 999) - (b.order || 999));
+
+            if (items.length > 0) {
+              console.log(`[gallery-loader] Successfully loaded ${items.length} projects from Firestore`);
+              try {
+                sessionStorage.setItem(CACHE_KEY, JSON.stringify(items));
+                sessionStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
+              } catch (e) {}
+              return items;
+            }
+          }
+        }
+      }
+    } catch (fsErr) {
+      console.info('[gallery-loader] Firestore read bypassed or failed, using local JSON fallback:', fsErr.message);
+    }
+
+    // 3. Graceful Fallback: Fetch from data/gallery/*.json
+    console.log('[gallery-loader] Loading items from local data/gallery/ JSON files');
+    const sections = await Promise.all(
+      GALLERY_SECTIONS.map((section) =>
+        fetch(`data/gallery/${section}.json`, { cache: 'no-store' })
+          .then((res) => (res.ok ? res.json() : { items: [] }))
+          .catch(() => ({ items: [] }))
+      )
+    );
+    return sections.flatMap((data) => (Array.isArray(data) ? data : (data.items || [])));
+  }
+
+  fetchGalleryItems()
+    .then((items) => {
+      loadedItems = items;
       const lang = getCurrentLang();
       renderItems(loadedItems, lang);
     })
