@@ -279,6 +279,9 @@ function initContact() {
       if (signData.allowedFormats) {
         formData.append('allowed_formats', signData.allowedFormats);
       }
+      if (signData.uploadPreset) {
+        formData.append('upload_preset', signData.uploadPreset);
+      }
 
       const response = await fetch(`https://api.cloudinary.com/v1_1/${signData.cloudName}/image/upload`, {
         method: 'POST',
