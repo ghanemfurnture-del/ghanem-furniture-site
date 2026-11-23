@@ -4,15 +4,17 @@
  * 
  * Note: Firebase client config values are public identifiers, NOT secrets.
  * Private keys and Admin privileges remain strictly on serverless endpoints (/api/).
+ * Storage & Analytics SDKs are intentionally not imported (Cloudinary & existing GA4 are used).
  */
 
 const FIREBASE_CONFIG = window.FIREBASE_CONFIG || {
-  apiKey: "AIzaSyYOUR_PUBLIC_API_KEY_HERE",
+  apiKey: "AIzaSyAbfXIYHDWJ0kxmySXfZkYC8HXgPRAVBoc",
   authDomain: "ghanem-furniture.firebaseapp.com",
   projectId: "ghanem-furniture",
-  storageBucket: "ghanem-furniture.appspot.com",
-  messagingSenderId: "123456789012",
-  appId: "1:123456789012:web:abcdef123456"
+  storageBucket: "ghanem-furniture.firebasestorage.app",
+  messagingSenderId: "598710757808",
+  appId: "1:598710757808:web:b423752b9e1d1b39048e75",
+  measurementId: "G-Z5ZY30NV9W"
 };
 
 // Expose configuration globally for static script usage
@@ -20,6 +22,7 @@ window.GHANEM_FIREBASE_CONFIG = FIREBASE_CONFIG;
 
 /**
  * Helper to dynamically load Firebase Web SDK Modular modules when needed
+ * Imports Auth & Firestore only.
  */
 export async function getFirebaseServices() {
   if (window.__firebaseServices) {
